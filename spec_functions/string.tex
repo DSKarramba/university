@@ -1,84 +1,13 @@
-\documentclass[a4paper, 14pt]{extarticle}
-\usepackage[russian]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage[margin=1cm, left=2cm]{geometry}
-\usepackage{pscyr}
-\usepackage{setspace}
-\usepackage{graphicx}
-\onehalfspacing
-\usepackage{caption}
-\captionsetup{labelsep=period}
-\usepackage{tocvsec2}
-\usepackage{array, amsmath}
+\input{../.preambles/01-semester_work}
+\input{../.preambles/10-russian}
+\input{../.preambles/20-math}
 
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhead{}
-\fancyfoot{}
-\fancyfoot[C]{\vspace*{-2.5em}\thepage}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
-
-\parindent=1.25cm
-
-\usepackage[square, numbers, sort&compress]{natbib}
-\makeatletter
-\bibliographystyle{unsrt}
-\renewcommand{\@biblabel}[1]{#1.} 
-\makeatother
-
-\renewcommand{\phi}{\varphi}
-\renewcommand{\theta}{\vartheta}
-\renewcommand{\d}{\,\mathrm{d}}
-\newcommand{\pder}[2]{\frac{\partial #1}{\partial #2}}
-\newcommand{\pdder}[2]{\frac{\partial^2 #1}{\partial #2^2}}
-\newcommand{\der}[2]{\frac{\d #1}{\d #2}}
-\newcommand{\dder}[2]{\frac{\d^2 #1}{\d #2^2}}
-
-\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1\textwidth}}
 \newcolumntype{L}[1]{>{\flushleft\arraybackslash}m{#1\textwidth}}
 
 \begin{document}
-\begin{titlepage}
-    \singlespacing
-    \newpage
-    \begin{center}
-        Министерство образования и науки Российской Федерации \\
-        Федеральное государственное бюджетное образовательное \\
-        учреждение высшего профессионального образования \\
-        <<Волгоградский государственный технический университет>> \\
-        Факультет электроники и вычислительной техники \\
-        Кафедра физики
-    \end{center}
-
-    \vspace{14em}
-
-    \begin{center}
-        \large Семестровая работа по дисциплине
-        \\ <<Специальные функции>>
-    \end{center}
-
-    \vspace{5em}
-
-    \begin{flushright}
-        \begin{minipage}{.3\textwidth}
-            Выполнил:\\студент группы Ф-369\\Чечеткин~И.~А.
-            \vspace{1em}\\        
-            Преподаватель:\\к.~ф.-м.~н., доцент\\Никулин~Р.~Н.
-            \\ \underline{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 
-            \ \ }
-            \\ Оценка \underline{\ \ \ \ \ \ }б, \underline{\ \ \ \ \ \ \ \ \ }
-        \end{minipage}
-    \end{flushright}
-
-    \vspace{\fill}
-
-    \begin{center}
-        Волгоград, 2012
-    \end{center}
-
-\end{titlepage}
-\setcounter{page}{2}
+\maketitlepage{Факультет электроники и вычислительной техники}{физики}
+{Специальные функции}{студент группы Ф-369\\Чечеткин~И.~А.}
+{к.~ф.-м.~н., доцент\\Никулин~Р.~Н.}{\!\!}
 
 \begin{table}[h!]
     \center
@@ -101,7 +30,7 @@
 \vspace*{2em}
 \emph{Решение}. Так как рассматриваются малые колебания, то:
 \begin{align*}
-    & \sin\alpha(x) = \frac{\tg^2\alpha(x)}{\sqrt{1 + \tg^2\alpha(x)}} =
+    & \sin\alpha(x) = \frac{\tg\alpha(x)}{\sqrt{1 + \tg^2\alpha(x)}} =
     \frac{\pder{u}{x}}{\sqrt{1 + \left(\pder{u}{x}\right)^2}} \approx \pder{u}{x}, \\
     & \cos\alpha(x) = \frac{1}{\sqrt{1 + \tg^2\alpha(x)}} =
     \frac{1}{\sqrt{1 + \left(\pder{u}{x}\right)^2}} \approx 1,
@@ -136,7 +65,7 @@
 только горизонтальной составляющей силы \eqref{eq:horizontal}. Тогда
 искомое дифференциальное уравнение малых колебаний подвешенной нити:
 \begin{equation}
-    \pder{}{x}\left(x\pder{u}{x}\right) = \frac{1}{g}\pdder{u}{t}.
+    \pder{}{x}\left(x\pder{u}{x}\right) = \frac{1}{g}\ppder{u}{t}.
     \label{eq:equation}
 \end{equation}
 Задача о колебании подвешенной нити сводится к интегрированию уравнения
@@ -155,7 +84,7 @@
 \eqref{eq:equation} к новой переменной \( \xi = \sqrt{x} \), тогда преобразованное
 уравнение примет вид:
 \begin{equation}
-    \frac{1}{4\xi}\pder{}{\xi}\left(\xi\pder{u}{\xi}\right) = \frac{1}{g}\pdder{u}{t}.
+    \frac{1}{4\xi}\pder{}{\xi}\left(\xi\pder{u}{\xi}\right) = \frac{1}{g}\ppder{u}{t}.
     \label{eq:eq_xi}
 \end{equation}
 
@@ -172,7 +101,7 @@
 Обозначая обе части равенства через постоянную \( -\lambda^2 \), получим два
 уравнения:
 \begin{align}
-    & \der{}{\xi}\left(\xi\der{v}{\xi}\right) + \lambda\xi v = 0, \label{eq:v_xi} \\
+    & \der{}{\xi}\left(\xi\der{v}{\xi}\right) + \lambda^2\xi v = 0, \label{eq:v_xi} \\
     & \dder{T}{t} + g\left(\frac{\lambda}{2}\right)^2T = 0. \label{eq:T_t}
 \end{align}
 
@@ -194,7 +123,7 @@
     \sum\limits_{k = 0}^\infty \frac{(-1)^k\left(\frac{\lambda\xi}{2}\right)^{2k}}{(k!)^2}
     \frac{\Gamma'(k+1)}{\Gamma(k+1)}.
 \]
-Так как при \( \xi \to 0 \) функция \( Y_0(\lambda\xi) \to \infty \), то постоянная \( C_2 \) в
+Так как при \( \xi \to 0 \) функция \( Y_0(\lambda\xi) \to -\infty \), то постоянная \( C_2 \) в
 уравнении \eqref{eq:v_common} должна равняться нулю. Тогда граничное условие
 \eqref{condition_corner} даст
 \[
