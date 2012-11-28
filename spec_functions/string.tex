@@ -47,22 +47,22 @@
 равнодействующей сил натяжения, действующих на концы элемента \( MM_1 \),
 выражается разностью
 \[
-    \left(g\rho x\pder{u}{x}\right)_{M_1} - \left(g\rho x\pder{u}{x}\right)_M,
+    T_H = \left(g\rho x\pder{u}{x}\right)_{M_1} - \left(g\rho x\pder{u}{x}\right)_M,
 \]
 которая с точностью до бесконечно малых высшего порядка равна выражению
-\begin{equation}
-    g\rho\pder{}{x}\left(x\pder{u}{x}\right)\d x.
-    \label{eq:horizontal}
-\end{equation}
+\[
+    T_H = g\rho\pder{}{x}\left(x\pder{u}{x}\right)\d x.
+\]
+
 Вертикальная составляющая равна
 \[
-    (g\rho x\cos\alpha(x))_{M_1} - (g\rho x\cos\alpha(x))_M \approx g\rho\d x.
+    T_V = (g\rho x\cos\alpha(x))_{M_1} - (g\rho x\cos\alpha(x))_M \approx g\rho\d x.
 \]
 
 Отсюда видно, что вертикальная составляющая равнодействующей сил натяжения
 и сила тяжести, равная \( g\rho\d x \) и направленная вниз, взаимно уничтожаются.
 Поэтому можно считать, что элемент нити \( MM_1 \) движется под действием
-только горизонтальной составляющей силы \eqref{eq:horizontal}. Тогда
+только горизонтальной составляющей силы \( T_H \). Тогда
 искомое дифференциальное уравнение малых колебаний подвешенной нити:
 \begin{equation}
     \pder{}{x}\left(x\pder{u}{x}\right) = \frac{1}{g}\ppder{u}{t}.
@@ -123,8 +123,8 @@
     \sum\limits_{k = 0}^\infty \frac{(-1)^k\left(\frac{\lambda\xi}{2}\right)^{2k}}{(k!)^2}
     \frac{\Gamma'(k+1)}{\Gamma(k+1)}.
 \]
-Так как при \( \xi \to 0 \) функция \( Y_0(\lambda\xi) \to -\infty \), то постоянная \( C_2 \) в
-уравнении \eqref{eq:v_common} должна равняться нулю. Тогда граничное условие
+Так как при \( \xi \to 0 \) значение \( |Y_0(\lambda\xi)| \to \infty \), то постоянную \( C_2 \)
+в уравнении \eqref{eq:v_common} приравниваем к нулю. Тогда граничное условие
 \eqref{condition_corner} даст
 \[
     J_0(\lambda\sqrt{l}) = 0.
