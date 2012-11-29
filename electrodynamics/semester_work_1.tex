@@ -2,6 +2,9 @@
 \input{../.preambles/10-russian}
 \input{../.preambles/20-math}
 \input{../.preambles/30-physics}
+
+\newcommand{\rot}{\mathrm{rot\,}}
+
 \begin{document}
 \maketitlepage{Факультет электроники и вычислительной техники}{физики}
 {Электродинамика}{студент группы Ф-369\\Чечеткин~И.~А.}
@@ -86,8 +89,63 @@
 
 \vspace*{2em}
 \emph{Решение:}
-\vfill
+Найдем магнитный момент сферы. Для этого возьмем на поверхности сферы узкий
+кольцевой сегмент, заключенный между углами \( \theta \) и \( \theta + \d\theta \).
+Заряд, вращаясь вместе со сферой, создает ток, величина которого на выделенном
+сегменте равна
+\[
+    \d J = v\sigma a\d\theta = \frac{1}{4\pi}e\omega\sin\theta\d\theta,
+\]
+где \( v = \omega a\sin\theta \) -- скорость вращения сегмента, \( \sigma =
+e/4\pi a^2 \) -- поверхностная плотность заряда. Магнитный момент этого тока:
+\[
+    \d\vec{m} = \frac{\d J\vec{s}}{c} = \frac{\pi a^2e\vec{\omega}}{4\pi c}
+    \sin^3\theta\d\theta.
+\]
+
+Интегрируя по \( \theta \), найдем магнитный момент всей сферы:
+\[
+    \vec{m} =  \frac{ea^2\vec{\omega}}{4c}\int\limits_0^\pi \sin^3\theta\d\theta
+    = \frac{ea^2\vec{\omega}}{3c}.
+\]
+
+Тогда поле \( \vec{H} \) при \( r > a \) можно найти через векторный потенциал:
+\[
+    \vec{H} = \rot\vec{A} = \rot\frac{\vec{m}\times\vec{r}}{r^3} =
+    \frac{3\vec{r}(\vec{m}\cdot\vec{r})}{r^5} - \frac{\vec{m}}{r^3} =
+    \frac{2\vec{r}(\vec{\omega}\cdot\vec{r})}{cr^5} - \frac{2e\vec{\omega}}{3cr^3}.
+\]
+
+При \( r < a \) можно воспользоваться законом Био--Савара--Лапласа:
+\[
+    \d\vec{H} = \frac{J}{cr^3}\vec{r}\times\d\vec{l}.
+\]
+
+Так как \( \vec{r} \perp \d\vec{l} \), то \( \vec{r}\times\d\vec{l} = r\d l\,\vec{n} \).
+
+Интегрируя, получим:
+\[
+    H = \frac{\vec{J}}{cr^2}\oint\limits_L \d l = \frac{2\pi\vec{J}}{cr}.
+\]
+Так как \( \vec{J} = e\vec{\omega}\sin\theta\d\theta/4\pi \) и \( r = a\sin\theta \), то
+\[
+    \d\vec{H} = \frac{2\pi\d\vec{J}}{cr} = \frac{e\vec{\omega}}{2ca\sin\theta}
+    \sin\theta\d\theta = \frac{e\vec{\omega}}{2ca}\d\theta.
+\]
+
+Интегрируя от \( 0 \) до \( \pi \), получим окончательный результат:
+\[
+    \vec{H} = \frac{e\vec{\omega}}{2ca}\int\limits_0^\pi \d\theta =
+    \frac{e\pi\vec{\omega}}{2ca}.
+\]
+
+\vspace*{2em}
 \emph{Ответ:}
+\begin{align*}
+    & \vec{H}_{in} = \frac{e\pi\vec{\omega}}{2ca}; \\
+    & \vec{H}_{ex} = \frac{2\vec{r}(\vec{\omega}\cdot\vec{r})}{cr^5} -
+    \frac{2e\vec{\omega}}{3cr^3}.
+\end{align*}
 \newpage
 %-------------------------------------------------------------------------------
 \emph{548.} Пусть для измерения времени используется периодический процесс
