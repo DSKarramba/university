@@ -1,0 +1,185 @@
+\input{../01-semester_work}
+\input{../.preambles/10-russian}
+\input{../.preambles/20-math}
+\input{../.preambles/30-physics}
+
+\renewcommand{\div}{\mathrm{\,div\,}}
+\newcommand{\grad}{\mathrm{\,grad\,}}
+\newcommand{\rot}{\mathrm{\,rot\,}}
+\renewcommand{\L}{\,\Delta\,}
+
+\begin{document}
+\maketitlepage{Факультет электроники и вычислительной техники}{физики}
+{Специальные функции}{студентка группы Ф-369\\Слоква~В.~И.}
+{к.~ф.-м.~н., доцент\\Никулин~Р.~Н.}{\!\!}
+
+№15. Решить задачу о распространении ТЕ-волн в полости проводника,
+представляющей круглый цилиндр неограниченной длины (круглая труба).
+    
+[Найти составляющие \( H_{z, nm}(\rho, \phi)\).]
+
+\vspace*{2em}
+\emph{Решение}. Данный волновод представляет собой полую бесконечно
+протяженную трубку с внутренним радиусом \( \rho_0 \).
+На границе волновода \( \left.\pder{H_z}{\rho}\right|_{\rho_0} = 0 \).
+
+Запишем уравнения Максвелла для нашей задачи:
+\begin{align*}
+    & \rot\vec{H} = \lambda\vec{E} + \eps\Ezero\pder{\vec{E}}{t}, \\
+    & \rot\vec{E} = -\mu\mu_0\pder{\vec{H}}{t}, \\
+    & \div\vec{E} = 0, \\
+    & \div\vec{H} = 0.
+\end{align*}
+
+Найдем ротор от обеих частей первого уравнения, учитывая, что порядок операций
+ротора и производной по времени можно менять
+\( \left(\rot\pder{\vec{E}}{t}= \pder{\rot\vec{E}}{t}\right) \):
+\begin{equation}
+    \rot\!\rot\vec{H} = \lambda\rot\vec{E} + \eps\Ezero\pder{\rot\vec{E}}{t}.
+    \label{eq:1}
+\end{equation}
+
+Продифференцируем по \( t \) второе уравнение:
+\begin{equation}
+    \pder{\rot\vec{E}}{t} = -\mu\mu_0\ppder{\vec{H}}{t}.
+    \label{eq:2}
+\end{equation}
+
+Подставляя \eqref{eq:2} в \eqref{eq:1}, получим:
+\[
+    \rot\!\rot\vec{H} = -\lambda\mu\mu_0\pder{\vec{H}}{t} - \eps\Ezero\mu\mu_0
+    \ppder{\vec{H}}{t}.
+\]
+
+С учетом того, что \( \rot\!\rot\vec{H} = \grad\div\vec{H} - \L\vec{H} \) и
+\( \div\vec{H} = 0 \), получим:
+\begin{equation}
+    \L\vec{H} = \lambda\mu\mu_0\pder{\vec{H}}{t} + \eps\Ezero\mu\mu_0
+    \ppder{\vec{H}}{t}.
+    \label{eq:4}
+\end{equation}
+
+Представим \( \vec{H} \) в виде волны, распространяющейся вдоль оси \( z \):
+\begin{equation}
+    \vec{H} =\vec{H}(r, \phi) e^{i(kz -\omega t)},
+    \label{eq:7}
+\end{equation}
+где \( \vec{H}(r, \phi) \) -- функция, зависящая только от \( r \) и \( \phi \).
+
+Лапласиан в цилиндрических координатах имеет вид:
+\[
+    \L = \ppder{}{\rho} + \frac{1}{\rho} \pder{}{\rho} + \frac{1}{\rho^2} \ppder{}{\phi}
+    + \ppder{}{z}.
+\]
+
+Учитывая, что
+\begin{align*}
+    & \pder{\vec{H}}{z} = \vec{H}(r, \phi)\, ike^{i(kz - \omega t)} = ik\vec{H}, \\
+    & \pder{\vec{H}}{t} = -i\omega\vec{H}, \; \ \ppder{\vec{H}}{z} = -k^2\vec{H}, \;\ 
+    \ppder{\vec{H}}{t} = \omega^2\vec{H};
+\end{align*}
+получим, перенося производную по \( z \) в правую часть:
+\[
+    \L_{\rho\phi}\vec{H} = [\omega^2\eps\Ezero\mu\mu_0 - i\lambda\mu\mu_0\omega
+    + k^2]\vec{H}
+    = \gamma\vec{H},
+\]
+где \( \gamma = -i\lambda\mu\mu_0\omega + \omega^2\eps\Ezero\mu\mu_0 + k^2 \).
+
+Нас интересует только проекция на ось \( z \), поэтому:
+\[
+    \L_{\rho\phi} H_z = \gamma H_z.
+\]
+
+Расписывая радиальную и полярную части лапласиана, получим уравнение:
+\begin{equation}
+    \ppder{H_z}{\rho} + \frac{1}{\rho} \pder{H_z}{\rho} + \frac{1}{\rho^2} \ppder{H_z}{\phi}
+    = \gamma H_z.
+    \label{eq:extra_0}
+\end{equation}
+
+Используем метод разделения переменных:
+\begin{equation}
+    \tilde{H}(r, \phi) = v(r)\cdot w(\phi).
+    \label{eq:extra_1}
+\end{equation}
+
+Подставляя \eqref{eq:extra_1} в уравнение \eqref{eq:extra_0}, получим:
+\[
+    w\dder{v}{\rho} + w\frac{1}{\rho}\der{v}{\rho} + \frac{1}{\rho^2}v\dder{w}{\phi}
+    = \gamma vw.
+\]
+
+Домножив это уравнение на \( \rho^2 \) и разделив на \( vw \), получим:
+\[
+    \rho^2\frac{v''}{v} + \rho\frac{v'}{v} - \gamma\rho^2 = -\frac{w''}{w}.
+\]
+
+Левая часть зависит только от \( \rho \), а правая -- только от \( \phi \). Следовательно,
+справедливы равенства:
+\begin{align*}
+    & \rho^2\frac{v''}{v} + \rho\frac{v'}{v} - \gamma\rho^2 = \beta, \\
+    & -\frac{w''(\phi)}{w(\phi)} = \beta.
+\end{align*}
+
+Таким образом, получаем систему дифференциальных уравнений:
+\begin{align}
+    & \rho^2v'' + \rho v' + (\gamma\rho^2 - \beta)v = 0, \label{eq:extra_2} \\
+    & w'' + \beta w = 0. \label{eq:extra_3}
+\end{align}
+
+Из условия периодичности этой функции \( w(\phi) = w(\phi + 2\pi) \) следует, что
+\( \beta = n^2 \), где \( n = 1, 2, \ldots \). Тогда
+\[
+    w = A\cos n\phi + B\sin n\phi.
+\]
+
+Подставляя \( \beta \) в уравнение \eqref{eq:extra_2}, получим:
+\[
+    \rho^2v'' + \rho v' + (\gamma\rho^2 - n^2)v = 0.
+\]
+
+Проведем замену: \( -\gamma = \alpha \), \( \sqrt{\alpha}\rho = r \),
+\( \sqrt{\alpha}\d\rho = \d r \). Тогда уравнение примет вид уравнения Бесселя:
+\[
+    r^2\dder{v}{r} + r\der{v}{r} + (r^2 - n^2)v = 0.
+\]
+
+Его общим решением является функция вида
+\[
+    v(r) = C_1 J_n(r) + C_2 Y_n(r),
+\]
+где \( C_1 \) и \( C_2 \) -- некоторые постоянные, \( J_n(r) \) -- функция Бесселя
+первого рода, \( Y_n(r) \) -- функция Неймана.
+
+Так как \( |Y_n(0)| \to \infty \), то постоянную \( C_2 \) полагаем равной нулю.
+Таким образом, функция \( v(r) \):
+\[
+    v(r) = C_1 J_n(\sqrt{\alpha_{nm}}\rho),
+\]
+где значения \( \sqrt{\alpha_{nm}} \) находятся из уравнения, определяемого
+граничным условием:
+\[
+    \left.\pder{H_z}{\rho}\right|_{\rho_0} = 0\ \Rightarrow
+    \left.\der{v}{\rho}\right|_{\rho_0} = 0\ \Rightarrow
+    \left.\der{J_n(\sqrt{\alpha_{nm}}\rho_0)}{\rho}\right|_{\rho_0} = 0.
+\]
+
+Таким образом, частные решения уравнения \eqref{eq:extra_0}, удовлетворяющие
+граничному условию, имеют вид:
+\[
+    H_{z, nm}(\rho, \phi) = J_n(\sqrt{\alpha_{nm}}\rho)
+    \left[A_{nm}\cos n\phi + B_{nm}\sin n\phi \right],
+\]
+где \( A_{nm} \) и \( B_{nm} \) -- произвольные постоянные.
+
+\newpage
+\addcontentsline{toc}{section}{Список литературы}
+\begin{thebibliography}{9}
+    \bibitem{Koshljakov}Кошляков,~Н.~С. Уравнения в частных производных
+    математической физики [Текст] / Кошляков~Н.~С., Глинер~Е.~Б., Смирнов~М.~М.
+    Учебное пособие. -- М.: <<Высшая школа>>, 1970.-- 712с.
+    \bibitem{Tarabrin}Тарабрин,~Г.~Т.  Методы математической физики [Текст] /
+    Тарабрин~Г.~Т. Учебное пособие. -- М.: <<АСВ>>, 2009.-- 208с.
+\end{thebibliography}
+\end{document}
