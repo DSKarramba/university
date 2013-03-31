@@ -1,0 +1,150 @@
+\documentclass[a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[paper=a4paper, top=1cm, right=1cm, bottom=1.5cm, left=2cm]{geometry}
+\usepackage{setspace}
+\usepackage{pscyr}
+\onehalfspacing
+
+\usepackage{graphicx}
+
+\parindent=1.25cm
+\pagestyle{plain}
+\setcounter{tocdepth}{0}
+
+% устанавливаем стандартным размером шрифта 14пт и 16пт для \large
+
+\renewcommand{\normalsize}{\fontsize{14pt}{16pt}}
+
+\renewcommand{\normalfont}{\fontencoding{T2A}%
+\fontseries{m}\fontshape{n}\normalsize%
+\selectfont
+}
+
+\newcommand{\largesize}{\fontsize{16pt}{18pt}}
+
+\renewcommand{\large}{\fontencoding{T2A}%
+\fontseries{m}\fontshape{n}\largesize%
+\selectfont
+}
+
+% играемся с видом заголовков
+\usepackage{titlesec}
+
+\renewcommand{\thechapter}{\arabic{chapter}.}
+
+\titleformat{\chapter}{\large\bfseries}{Глава \thechapter\hspace{1em}}{0pt}
+{\large\bfseries}
+
+\titleformat{\section}
+    {\normalsize\bfseries}
+    {\thesection}
+    {1em}{}
+
+\titleformat{\subsection}
+    {\normalsize\bfseries}
+    {\thesubsection}
+    {1em}{}
+
+% настраиваем отступы
+\titlespacing*{\chapter}{0pt}{0pt}{1em}
+\titlespacing*{\section}{\parindent}{*4}{*4}
+\titlespacing*{\subsection}{\parindent}{*4}{*4}
+
+% список литературы
+\usepackage[square, numbers, sort&compress]{natbib}
+\makeatletter
+\bibliographystyle{unsrt}
+\renewcommand{\@biblabel}[1]{#1.} 
+\makeatother
+
+% ------------------------------------------------
+
+\newcommand{\maketitlepage}[6]{
+    \begin{titlepage}
+        \singlespacing
+        \normalfont
+        \newpage
+        \begin{center}
+            Министерство образования и науки Российской Федерации \\
+            Федеральное государственное бюджетное образовательное \\
+            учреждение высшего профессионального образования \\
+            <<Волгоградский государственный технический университет>> \\
+            #1 \\
+            Кафедра #2
+        \end{center}
+
+
+        \vspace{14em}
+
+        \begin{center}
+            \large Реферат #6 на тему
+            \\ <<#3>>
+        \end{center}
+
+        \vspace{5em}
+
+        \begin{flushright}
+            \begin{minipage}{.3\textwidth}
+                Выполнил:\\#4
+                \vspace{1em}\\
+                Проверил:\\#5
+                \\
+                \\ Оценка \underline{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+            \end{minipage}
+        \end{flushright}
+
+        \vspace{\fill}
+
+        \begin{center}
+            Волгоград, 2013
+        \end{center}
+
+    \end{titlepage}
+    \setcounter{page}{2}
+}
+
+% ------------------------------------------------
+
+\newcommand{\maketitlepagefemale}[6]{
+    \begin{titlepage}
+        \singlespacing
+        \normalfont
+        \newpage
+        \begin{center}
+            Министерство образования и науки Российской Федерации \\
+            Федеральное государственное бюджетное образовательное \\
+            учреждение высшего профессионального образования \\
+            <<Волгоградский государственный технический университет>> \\
+            #1 \\
+            Кафедра #2
+        \end{center}
+
+
+        \vspace{14em}
+
+        \begin{center}
+            \large Реферат #6 на тему
+            \\ <<#3>>
+        \end{center}
+
+        \vspace{5em}
+
+        \begin{flushright}
+            \begin{minipage}{.35\textwidth}
+                Выполнила:\\#4
+                \vspace{1em}\\
+                Проверил:\\#5
+                \\
+                \\ Оценка \underline{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+            \end{minipage}
+        \end{flushright}
+
+        \vspace{\fill}
+
+        \begin{center}
+            Волгоград, 2013
+        \end{center}
+
+    \end{titlepage}
+    \setcounter{page}{2}
+}
