@@ -9,7 +9,7 @@
 
 \parindent=1.25cm
 \pagestyle{plain}
-\setcounter{tocdepth}{0}
+%\setcounter{tocdepth}{0}
 
 % устанавливаем стандартным размером шрифта 14пт и 16пт для \large
 
@@ -34,6 +34,8 @@
 
 \titleformat{\chapter}{\large\bfseries}{Глава \thechapter\hspace{1em}}{0pt}
 {\large\bfseries}
+
+\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}.}
 
 \titleformat{\section}
     {\normalsize\bfseries}

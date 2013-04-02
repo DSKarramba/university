@@ -17,6 +17,11 @@
 
 \vspace*{2em}
 \emph{Решение:}
+
+\begin{minipage}{.4\textwidth}
+    \includegraphics[width=\textwidth]{electric_ball}
+\end{minipage}
+\begin{minipage}{.55\textwidth}
 Учитывая, что задача имеет сферическую симметрию, воспользуемся для решения
 сферической системой координат. Тогда можно записать следующие соотношения:
 \[
@@ -24,9 +29,8 @@
 \]
 
 Запишем уравнение Максвелла для индукции электрического поля:
-\[
-	\div{\vec{D}} = \rho.
-\]
+\( \div{\vec{D}} = \rho \).
+\end{minipage}
 
 Воспользовавшись теоремой Остроградского-Гаусса, имеем:
 \[
@@ -60,13 +64,41 @@ E = \frac{Q}{4\pi\Ezero\eps(r) \cdot r^2} \).
 \vspace*{2em}
 \emph{Решение:}
 
-По определению емкости плоского конденсатора, с учетом того, что поле
-\( \vec{D} \) порождается только свободным поверхностным зарядом, т. е.
-\( D = \sigma = \eps\Ezero E\):
+\begin{minipage}{.4\textwidth}
+    \includegraphics[width=\textwidth]{capacitor}
+\end{minipage}
+\begin{minipage}{.55\textwidth}
+По определению емкости плоского конденсатора:
+\( \ds C = \frac{q}{\Delta\phi} = \frac{q}{Ed} = \frac{\sigma S}{Ed} \).
+
+Окружим малый участок пластины замкнутой цилиндрической поверхностью.
+Запишем теорему Гаусса для \( \vec{D} \):
 \[
-    C = \frac{q}{\Delta\phi} = \frac{q}{Ed} = \frac{\sigma S}{Ed} =
-    \frac{\eps\Ezero ES}{Ed} = \frac{\eps\Ezero S}{d}.
+    \oiint\limits_S \vec{D}\d\vec{S} = \sigma S_{\emph{тор}_H}.
 \]
+
+Интеграл в правой части можно расписать следующим образом:
+\end{minipage}
+\[
+    \oiint\limits_S \vec{D}\d\vec{S} = \iint\limits_{S_\emph{бок}} \vec{D}
+    \d\vec{S} + \iint\limits_{S_{\emph{тор}_H}} \vec{D}\d\vec{S} +
+    \iint\limits_{S_{\emph{тор}_B}} \vec{D}\d\vec{S}.
+\]
+
+Так как вне конденсатора поля нет, то \( \ds \iint\limits_{S_{\emph{тор}_B}}
+\vec{D}\d\vec{S} = 0 \), а так же поскольку поле \( \vec{D} \) в этом цилиндре
+направлено от одной обкладки к другой, перпендикулярно ей, то, следовательно,
+\( \ds \iint\limits_{S_\emph{бок}} \vec{D}\d\vec{S} = 0 \).
+
+Тогда \( \ds
+    \sigma S_{\emph{тор}_H} = \iint\limits_{S_{\emph{тор}_H}} \vec{D}\d\vec{S} =
+    D\iint\limits_{S_{\emph{тор}_H}} dS = DS_{\emph{тор}_H}
+\), откуда \( D = \sigma = \eps\Ezero E\).
+
+Тогда емкость:
+\( \ds
+    C = \frac{\sigma S}{Ed} = \frac{\eps\Ezero ES}{Ed} = \frac{\eps\Ezero S}{d}
+\).
 
 Для вычисления емкости двухслойного конденсатора представим его в виде
 последовательного соединения двух однослойных, емкости которых:
@@ -75,16 +107,15 @@ E = \frac{Q}{4\pi\Ezero\eps(r) \cdot r^2} \).
 \]
 
 Тогда:
-\[
+\( \ds
     C = \frac{C_1C_2}{C_1 + C_2} = \frac{\eps_1\eps_2\Ezero^2 S^2}
     {S\Ezero d_1d_2\left(\frac{\eps_1}{d_1} + \frac{\eps_2}{d_2}\right)} =
-    \frac{\Ezero\eps_1\eps_2 S}{\eps_1d_2 + \eps_2d_1}.
-\]
+    \frac{\Ezero\eps_1\eps_2 S}{\eps_1d_2 + \eps_2d_1}
+\).
 
-\vspace*{2em}
 \emph{Ответ:} \( C = \cfrac{\Ezero\eps_1\eps_2 S}{\eps_1d_2 + \eps_2d_1} \).
 
-\newpage
+\pagebreak
 %-------------------------------------------------------------------------------
 Задача 1.116: \emph{Найти распределение зарядов, индуцированных на поверхности
 цилиндра предыдущей задачи, и суммарный заряд, индуцированный на единице длины
@@ -145,5 +176,73 @@ E = \frac{Q}{4\pi\Ezero\eps(r) \cdot r^2} \).
 \vspace*{2em}
 \emph{Решение:}
 
-\emph{Ответ:}
+\begin{figure}[h!]
+	\includegraphics[width=.4\textwidth]{mu1_mu2} \hspace*{2em}
+	\includegraphics[width=.5\textwidth]{borderline}
+\end{figure}
+
+Направим ось \( z \) в перпендикулярно плоскости раздела сред в сторону первой
+среды. Плоскость же раздела возьмем за координату \( z = 0 \).
+
+Векторный потенциал искомого поля будем искать в виде:
+\[
+	\vec{A}_1 = \frac{\mu_1 I}{c} \oint \frac{d\vec{l}}{r} + k_1\frac{\mu_1 I}{c}
+	\oint \frac{d\vec{l'}}{r'}; \quad
+	\vec{A}_2 = k_2\frac{\mu_2 I}{c} \oint \frac{d\vec{l}}{r},
+\]
+где \( l' \) -- изображение контура \( l \), \( r \) и \( r' \) -- расстояние
+рассматриваемой точки поля от элемента длины \( dl \) и \( dl' \).
+
+Рассмотрим граничные условия. Первое: условие непрерывности векторного
+потенциала на границе двух сред \( A_1 = A_2 \):
+\[
+	r = h\cos\theta; \quad r' = h\cos\theta.
+\]
+
+Подставляя в уравнение получаем:
+\[
+	\frac{\mu_1 I}{ch\cos\theta} \oint dl + k_1\frac{\mu_1 I}{ch\cos\theta}
+	\oint dl' = \frac{\mu_2 I}{ch\cos\theta} \oint dl.
+\]
+
+В силу произвольности элемента \( dl \) и \( dl' \):
+\[ 
+	\mu_1 + k_1\mu_1 = k_2\mu_2.
+\]
+
+Второе: условие непрерывности нормальной производной от векторного потенциала
+на границе:
+\[
+	\frac{1}{\mu_1}\pder{A_1}{n} + \frac{1}{\mu_2}\pder{A_2}{n} = \frac{I}{c}.
+\]
+
+Подставляя уравнения для потенциалов и учитывая произвольность элементов 
+\( dl \) и \( dl' \), получаем:
+\[
+	k_1 + k_2 = 1.
+\]
+
+С учетом первого граничного условия получаем:
+\[
+	k_1 = \frac{\mu_2 - \mu_1}{\mu_2 + \mu_1}; \quad
+	k_2 = \frac{2\mu_1}{\mu_1 + \mu_2}.
+\]
+
+Подставляя в векторный потенциал получаем:
+\[
+	\vec{A}_1 = \frac{\mu_1 I}{c} \oint \frac{d\vec{l}}{r} + 
+	\left(\frac{\mu_2 - \mu_1}{\mu_2 + \mu_1}\right)
+	\frac{\mu_1 I}{c} \oint \frac{d\vec{l'}}{r'}; \quad
+	\vec{A}_2 = \left(\frac{2\mu_1}{\mu_1 + \mu_2}\right)
+	\frac{\mu_2 I}{c} \oint \frac{d\vec{l}}{r}.
+\]
+
+Тогда поле в произвольной точке будет иметь вид:
+\[
+	\vec{B} = \rot\vec{A}_1 + \rot\vec{A}_2; \quad
+	\vec{H} = \frac{1}{\mu_1}\rot\vec{A}_1 + \frac{1}{\mu_2}\rot\vec{A}_2.
+\]
+
+\emph{Ответ:} \( \ds \vec{B} = \rot\vec{A}_1 + \rot\vec{A}_2 \),
+\( \ds \vec{H} = \frac{1}{\mu_1}\rot\vec{A}_1 + \frac{1}{\mu_2}\rot\vec{A}_2 \).
 \end{document}
