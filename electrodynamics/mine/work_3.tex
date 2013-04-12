@@ -69,49 +69,34 @@ E = \frac{Q}{4\pi\Ezero\eps(r) \cdot r^2} \).
 \end{minipage}
 \begin{minipage}{.55\textwidth}
 По определению емкости плоского конденсатора:
-\( \ds C = \frac{q}{\Delta\phi} = \frac{q}{Ed} = \frac{\sigma S}{Ed} \).
+\( C = q/\Delta\phi = \sigma S/\Delta\phi \).
 
-Окружим малый участок пластины замкнутой цилиндрической поверхностью.
-Запишем теорему Гаусса для \( \vec{D} \):
+По определению разности потенциалов:
 \[
-    \oiint\limits_S \vec{D}\d\vec{S} = \sigma S_{\emph{тор}_H}.
+    \Delta\phi = \int\limits_0^{d_1 + d_2} \vec{E}\cdot\d\vec{l} =
+    \int\limits_0^{d_1} \vec{E}_1\cdot\d\vec{l} +
+    \int\limits_{d_1}^{d_1 + d_2} \vec{E}_2\cdot\d\vec{l}.
 \]
 
-Интеграл в правой части можно расписать следующим образом:
+Поле внутри однослойного конденсатора: \( E = \sigma/(\eps\Ezero) \).
 \end{minipage}
+
+Тогда, с учетом, что поле \( \vec{E} \uparrow\!\uparrow \d\vec{l} \), имеем:
 \[
-    \oiint\limits_S \vec{D}\d\vec{S} = \iint\limits_{S_\emph{бок}} \vec{D}
-    \d\vec{S} + \iint\limits_{S_{\emph{тор}_H}} \vec{D}\d\vec{S} +
-    \iint\limits_{S_{\emph{тор}_B}} \vec{D}\d\vec{S}.
+    \Delta\phi = \frac{\sigma}{\eps_1\Ezero}\int\limits_0^{d_1} dl +
+    \frac{\sigma}{\eps_2\Ezero}\int\limits_{d_1}^{d_1 + d_2} dl =
+    \frac{\sigma d_1}{\eps_1\Ezero} +
+    \frac{\sigma (d_1 + d_2 - d_1)}{\eps_2\Ezero} =
+    \frac{\sigma}{\Ezero}\left(\frac{d_1}{\eps_1} + \frac{d_2}{\eps_2}\right).
 \]
-
-Так как вне конденсатора поля нет, то \( \ds \iint\limits_{S_{\emph{тор}_B}}
-\vec{D}\d\vec{S} = 0 \), а так же поскольку поле \( \vec{D} \) в этом цилиндре
-направлено от одной обкладки к другой, перпендикулярно ей, то, следовательно,
-\( \ds \iint\limits_{S_\emph{бок}} \vec{D}\d\vec{S} = 0 \).
-
-Тогда \( \ds
-    \sigma S_{\emph{тор}_H} = \iint\limits_{S_{\emph{тор}_H}} \vec{D}\d\vec{S} =
-    D\iint\limits_{S_{\emph{тор}_H}} dS = DS_{\emph{тор}_H}
-\), откуда \( D = \sigma = \eps\Ezero E\).
 
 Тогда емкость:
-\( \ds
-    C = \frac{\sigma S}{Ed} = \frac{\eps\Ezero ES}{Ed} = \frac{\eps\Ezero S}{d}
-\).
-
-Для вычисления емкости двухслойного конденсатора представим его в виде
-последовательного соединения двух однослойных, емкости которых:
 \[
-    C_1 = \frac{\eps_1\Ezero S}{d_1}, \quad C_2 = \frac{\eps_2\Ezero S}{d_2}.
-\]
-
-Тогда:
-\( \ds
-    C = \frac{C_1C_2}{C_1 + C_2} = \frac{\eps_1\eps_2\Ezero^2 S^2}
-    {S\Ezero d_1d_2\left(\frac{\eps_1}{d_1} + \frac{\eps_2}{d_2}\right)} =
-    \frac{\Ezero\eps_1\eps_2 S}{\eps_1d_2 + \eps_2d_1}
-\).
+    C = \frac{\sigma S}{\frac{\sigma}{\Ezero}
+    \left(\frac{d_1}{\eps_1} + \frac{d_2}{\eps_2}\right)} =
+    \frac{\Ezero S}{\left(\frac{d_1}{\eps_1} + \frac{d_2}{\eps_2}\right)} =
+    \frac{\Ezero\eps_1\eps_2 S}{\eps_1d_2 + \eps_2d_1}.
+\].
 
 \emph{Ответ:} \( C = \cfrac{\Ezero\eps_1\eps_2 S}{\eps_1d_2 + \eps_2d_1} \).
 
@@ -135,8 +120,8 @@ E = \frac{Q}{4\pi\Ezero\eps(r) \cdot r^2} \).
 
 Из решения задачи 1.115:
 \[
-    E_R = -\pder{\phi}{R} = 2\chi \Biggl(\frac{R - l\cos\theta}{R_1^2} -
-    \frac{R - l'\cos\theta}{R_2^2}\Biggr),
+    E_R = -\pder{\phi}{R} = \frac{\chi}{2\pi\Ezero}
+    \left(\frac{R - l\cos\theta}{R_1^2} - \frac{R - l'\cos\theta}{R_2^2}\right),
 \]
 где \( R_1 = \sqrt{l^2 + R^2 - 2lR\cos\theta} \), \( R_2 = \sqrt{l'^2 + R^2 -
 2l'R\cos\theta} \), \( l' = a^2/l \).
@@ -144,26 +129,28 @@ E = \frac{Q}{4\pi\Ezero\eps(r) \cdot r^2} \).
 Распределение заряда на поверхности определяется формулой:
 \begin{gather*}
     \sigma = -\Ezero\pder{\phi}{R}\biggr|_{R = a} = \Ezero E_R\bigr|_{R = a} =
-    2\chi\Ezero\Biggl(\frac{R - l\cos\theta}{l^2 + R^2 - 2lR\cos\theta} - \\ -
-    \frac{R - a^2/l\cos\theta}{a^4/l^2 + R^2 - 2a^2R/l\cos\theta}\Biggr)_{R = a}
-    = 2\chi\Ezero\Biggl(\frac{a - l\cos\theta}{l^2 + a^2 - 2al\cos\theta} - \\ -
-    \frac{a - a^2/l\cos\theta}{a^4/l^2 + a^2 - 2a^3/l\cos\theta}\Biggr) =
-    2\chi\Ezero\Biggl(\frac{a^2-al\cos\theta}{a(a^2 + l^2 - 2al\cos\theta)} - \\
-    - \frac{l^2 - al\cos\theta}{a(a^2 + l^2 - 2al\cos\theta)}\Biggr) =
-    2\chi\Ezero\frac{a^2 - l^2}{a(a^2 + l^2 - 2al\cos\theta)}.
+    \frac{\chi}{2\pi}\Biggl(\frac{R - l\cos\theta}{l^2 + R^2 - 2lR\cos\theta} -
+    \\ -\frac{R - a^2/l\cos\theta}{a^4/l^2 + R^2 -
+    2a^2R/l\cos\theta}\Biggr)_{R = a} = \frac{\chi}{2\pi}
+    \Biggl(\frac{a - l\cos\theta}{l^2 + a^2 - 2al\cos\theta} - \\
+    -\frac{a - a^2/l\cos\theta}{a^4/l^2 + a^2 - 2a^3/l\cos\theta}\Biggr) =
+    \frac{\chi}{2\pi}\Biggl(\frac{a^2-al\cos\theta}{a(a^2 + l^2 -
+    2al\cos\theta)} - \\ - \frac{l^2 - al\cos\theta}{a(a^2 + l^2 -
+    2al\cos\theta)}\Biggr) = \frac{\chi}{2\pi}\frac{a^2 - l^2}
+    {a(a^2 + l^2 - 2al\cos\theta)}.
 \end{gather*}
 
 Суммарный заряд, индуцированный на единице длины цилиндра, можно выразить через
 поверхностную плотность зарядов следующим образом:
 \[
     q_\emph{и} = \int \sigma\,dS = \int\limits_0^{2\pi} a\sigma\d\theta =
-    2\chi\Ezero \int\limits_0^{2\pi} \frac{a^2 - l^2}{a^2 + l^2 -
-    2al\cos\theta}\d\theta = 2\chi\Ezero\cdot (-2\pi) = -4\pi\Ezero\chi.
+    \frac{\chi}{2\pi} \int\limits_0^{2\pi} \frac{a^2 - l^2}{a^2 + l^2 -
+    2al\cos\theta}\d\theta = \frac{\chi}{2\pi}\cdot (-2\pi) = -\chi.
 \]
 
 \vspace*{2em}
-\emph{Ответ:} \( \sigma = \cfrac{2\chi\Ezero(a^2 - l^2)}{a(a^2 + l^2 -
-2al\cos\theta)} \), \( q_\emph{и} = -4\pi\Ezero\chi \).
+\emph{Ответ:} \( \sigma = \cfrac{\chi\ (a^2 - l^2)}{2a\pi(a^2 + l^2 -
+2al\cos\theta)} \), \( q_\emph{и} = -\chi \).
 
 \newpage
 %-------------------------------------------------------------------------------
@@ -186,23 +173,23 @@ E = \frac{Q}{4\pi\Ezero\eps(r) \cdot r^2} \).
 
 Векторный потенциал искомого поля будем искать в виде:
 \[
-	\vec{A}_1 = \frac{\mu_1 I}{c} \oint \frac{d\vec{l}}{r} + k_1\frac{\mu_1 I}{c}
-	\oint \frac{d\vec{l'}}{r'}; \quad
-	\vec{A}_2 = k_2\frac{\mu_2 I}{c} \oint \frac{d\vec{l}}{r},
+	\vec{A}_1 = \frac{\mu_1 I}{2\pi} \oint \frac{d\vec{l}}{r} +
+	k_1\frac{\mu_1 I}{2\pi} \oint \frac{d\vec{l'}}{r'}; \quad
+	\vec{A}_2 = k_2\frac{\mu_2 I}{2\pi} \oint \frac{d\vec{l}}{r},
 \]
 где \( l' \) -- изображение контура \( l \), \( r \) и \( r' \) -- расстояние
-рассматриваемой точки поля от элемента длины \( dl \) и \( dl' \).
+рассматриваемой точки поля от элемента длины \( dl \) и \( dl' \),
+\( k_1 \), \( k_2 \) -- константы токов: \( I' = k_1I \), \( I'' = k_2I \).
 
-Рассмотрим граничные условия. Первое: условие непрерывности векторного
-потенциала на границе двух сред \( A_1 = A_2 \):
+Рассмотрим граничные условия. Первое: условие непрерывности тангенциальной
+составляющей векторного потенциала на границе двух сред. Так как в данной
+задаче контур параллелен границе раздела, то у векторного потенциала будет
+только эта составляющая: \( A_1 = A_2 \), и тогда, учитывая то, что на
+границе: \( r = h\cos\theta; \quad r' = h\cos\theta \), и подставляя вид
+векторных потенциалов, получаем:
 \[
-	r = h\cos\theta; \quad r' = h\cos\theta.
-\]
-
-Подставляя в уравнение получаем:
-\[
-	\frac{\mu_1 I}{ch\cos\theta} \oint dl + k_1\frac{\mu_1 I}{ch\cos\theta}
-	\oint dl' = \frac{\mu_2 I}{ch\cos\theta} \oint dl.
+	\frac{\mu_1 I}{2\pi h\cos\theta} \oint dl + k_1\frac{\mu_1 I}{2\pi h\cos\theta}
+	\oint dl' = \frac{\mu_2 I}{2\pi h\cos\theta} \oint dl.
 \]
 
 В силу произвольности элемента \( dl \) и \( dl' \):
@@ -213,7 +200,7 @@ E = \frac{Q}{4\pi\Ezero\eps(r) \cdot r^2} \).
 Второе: условие непрерывности нормальной производной от векторного потенциала
 на границе:
 \[
-	\frac{1}{\mu_1}\pder{A_1}{n} + \frac{1}{\mu_2}\pder{A_2}{n} = \frac{I}{c}.
+	\frac{1}{\mu_1}\pder{A_1}{n} + \frac{1}{\mu_2}\pder{A_2}{n} = \frac{I}{2\pi}.
 \]
 
 Подставляя уравнения для потенциалов и учитывая произвольность элементов 
@@ -230,19 +217,21 @@ E = \frac{Q}{4\pi\Ezero\eps(r) \cdot r^2} \).
 
 Подставляя в векторный потенциал получаем:
 \[
-	\vec{A}_1 = \frac{\mu_1 I}{c} \oint \frac{d\vec{l}}{r} + 
+	\vec{A}_1 = \frac{\mu_1 I}{2\pi} \oint \frac{d\vec{l}}{r} + 
 	\left(\frac{\mu_2 - \mu_1}{\mu_2 + \mu_1}\right)
-	\frac{\mu_1 I}{c} \oint \frac{d\vec{l'}}{r'}; \quad
-	\vec{A}_2 = \left(\frac{2\mu_1}{\mu_1 + \mu_2}\right)
-	\frac{\mu_2 I}{c} \oint \frac{d\vec{l}}{r}.
+	\frac{\mu_1 I}{2\pi} \oint \frac{d\vec{l'}}{r'}; \quad
+	\vec{A}_2 = \left(\frac{\mu_1}{\mu_1 + \mu_2}\right)
+	\frac{\mu_2 I}{\pi} \oint \frac{d\vec{l}}{r}.
 \]
 
 Тогда поле в произвольной точке будет иметь вид:
 \[
 	\vec{B} = \rot\vec{A}_1 + \rot\vec{A}_2; \quad
-	\vec{H} = \frac{1}{\mu_1}\rot\vec{A}_1 + \frac{1}{\mu_2}\rot\vec{A}_2.
+	\vec{H} = \frac{1}{\mu_0\mu_1}\rot\vec{A}_1 +
+	\frac{1}{\mu_0\mu_2}\rot\vec{A}_2.
 \]
 
 \emph{Ответ:} \( \ds \vec{B} = \rot\vec{A}_1 + \rot\vec{A}_2 \),
-\( \ds \vec{H} = \frac{1}{\mu_1}\rot\vec{A}_1 + \frac{1}{\mu_2}\rot\vec{A}_2 \).
+\( \ds \vec{H} = \frac{1}{\mu_0\mu_1}\rot\vec{A}_1 + \frac{1}{\mu_0\mu_2}
+\rot\vec{A}_2 \).
 \end{document}
