@@ -1,4 +1,5 @@
 \input{../../../../.preambles/02-lab_work}
+\input{../../../../.preambles/20-math}
 \newgeometry{top=1.5cm, bottom=1.5cm, left=1cm, right=1cm}
 \begin{document}
     \begin{table}[h!]
@@ -17,6 +18,15 @@
 
     \emph{Цель работы:} Ознакомиться с принципом работы, конструкциями и
     характеристиками электронно-лучевых трубок (ЭЛТ).
+    
+    \begin{figure}[h!]
+        \center
+        % поиграй с размерами дабы уместить все до \pagebreak на одну страницу
+        \includegraphics[width=.3\textwidth]{look} \hspace*{2em}
+        \includegraphics[width=.5\textwidth]{crt}
+        \parbox{.3\textwidth}{\caption{Внешний вид установки}} \hspace*{2em}
+        \parbox{.5\textwidth}{Схема подключения напряжений к электродам ЭЛТ}
+    \end{figure}
     
     \begin{table}[h!]
         \center
@@ -54,16 +64,33 @@
         \end{tabular}
     \end{table}
     
+    \begin{figure}[h!]
+        \center
+        \includegraphics[width=.45\textwidth]{x} \hspace{2em}
+        \includegraphics[width=.45\textwidth]{y}
+        \parbox{.45\textwidth}{\caption{Зависимость смещения луча по
+        горизонтали от величины отклоняющего напряжения}} \hspace{2em}
+        \parbox{.45\textwidth}{\caption{Зависимость смещения луча по
+        вертикали от величины отклоняющего напряжения}}
+    \end{figure}
+    
+    \pagebreak
+    
     \begin{table}[h!]
         \center
         \caption{Зависимость катодного тока от напряжения на модуляторе}
         \begin{tabular}{|C{.064}|*{12}{C{.05}|}} \hline
             \( J_K \),~мкА & -11,35 & -11,03 & -10,90 & -10,70 & -10,60 & -10,30
             & -9,36 & -7,05 & 0,00 & 2,66 & 20,10 & 39,80 \\ \hline
-            \( U_M \),~мВ & -67,3 & -65,0 & -64,0 & -62,4 & -61,7 & -59,6
+            \( U_M \),~В & -67,3 & -65,0 & -64,0 & -62,4 & -61,7 & -59,6
             & -55,3 & -50,7 & -46,3 & -45,4 & -40,8 & -37,2 \\ \hline
         \end{tabular}
     \end{table}
+
+    \begin{figure}
+        \center
+        \includegraphics[width=.45\textwidth]{j}
+    \end{figure}
     
     \begin{table}[h!]
         \center
@@ -73,11 +100,11 @@
             Чувствительность \( D_y \) & Погрешность измерений \( \Delta_y \) &
             Потенциал запирания \( U_\emph{з} \) & Погрешность измерений
             \( \Delta_J \) \\ \hline
-            0,46 & & 0,59 & & -46,3~мВ & \\ \hline
+            0,46 & 0,546 & 0,59 & 0,670 & -46,3~В & 0 \\ \hline
         \end{tabular}
     \end{table}
-    \emph{Вывод:}
-\begin{figure}
-\includegraphics[width=\textwidth]{j}
-\end{figure}
+    
+    \emph{Вывод:} в результате работы ознакомился с принципом работы
+    электронно-лучевых трубок, а так же нашел характеристики ЭЛТ:
+    чувствительность и запирающий потенциал.
 \end{document}
