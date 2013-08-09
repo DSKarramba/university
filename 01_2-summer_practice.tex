@@ -1,0 +1,87 @@
+\documentclass[a4paper, 14pt]{extarticle}
+\usepackage[utf8]{inputenc}
+\usepackage[paper=a4paper, top=1cm, right=1cm, bottom=1.5cm, left=2cm]{geometry}
+\usepackage{setspace}
+\usepackage{ifthen}
+\usepackage{array}
+\usepackage{bm}
+\onehalfspacing
+
+\usepackage{graphicx}
+\graphicspath{{plots/}, {images/}}
+
+\parindent=1.25cm
+
+\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}.}
+
+\usepackage{titlesec}
+
+\titleformat{\section}
+    {\normalsize\bfseries}
+    {\thesection}
+    {1em}{}
+
+\titleformat{\subsection}
+    {\normalsize\bfseries}
+    {\thesubsection.}
+    {1em}{}
+
+% Настройка вертикальных и горизонтальных отступов
+\titlespacing*{\section}{\parindent}{*4}{*4}
+\titlespacing*{\subsection}{\parindent}{*4}{*4}
+
+\usepackage[square, numbers, sort&compress]{natbib}
+\makeatletter
+\bibliographystyle{unsrt}
+\renewcommand{\@biblabel}[1]{#1.} 
+\makeatother
+
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1\textwidth}}
+\renewcommand{\arraystretch}{1.2}
+
+\usepackage{color}
+\definecolor{darkgreen}{rgb}{0,.5,0}
+\usepackage[colorlinks,linkcolor=black,filecolor=blue,citecolor=darkgreen]{hyperref}
+
+\newcommand{\maketitlepage}[1]{
+    \begin{titlepage}
+        \singlespacing
+        \newpage
+        \begin{center}
+            Министерство образования и науки Российской Федерации \\
+            Федеральное государственное бюджетное образовательное \\
+            учреждение высшего профессионального образования \\
+            <<Волгоградский государственный технический университет>> \\
+            Факультет электроники и вычислительной техники \\
+            Кафедра физики
+        \end{center}
+        \vspace{9em}
+        \begin{center}
+           { \large\bfseries ОТЧЕТ }
+            \\ О научно-исследовательской практике на \( \underset{\text{наименование организации}}{\rule{.35\textwidth}{.5pt}\hrulefill} \)
+        \end{center}
+        \vspace{4em}
+        \begin{table}[h!]
+            \center         
+            \begin{tabular}{b{.3\textwidth}ccl}
+                Руководитель практики от организации & \( \underset{\text{должность}}{\rule{3cm}{.5pt}\hrulefill} \) & \( \underset{\text{подпись}}{\rule{3cm}{.5pt}\hrulefill} \) & Виснер~С.~В. \\
+                Руководитель практики от университета & доцент & \( \underset{\text{подпись}}{\rule{3cm}{.5pt}\hrulefill} \) & Поляков~И.~В. \\
+                Студент группы Ф-369 & \multicolumn{2}{c}{\( \underset{\text{подпись}}{\rule{6.5cm}{.5pt}\hrulefill} \)} & #1
+            \end{tabular}
+        \end{table}
+        \vspace{5em}
+
+        \begin{flushright}
+            \begin{minipage}{.5\textwidth}
+                Отчет защищен с оценкой \hrulefill
+            \end{minipage}
+        \end{flushright}
+        \vspace{\fill}
+        \begin{center}
+            Волгоград, \the\year
+        \end{center}
+
+    \end{titlepage}
+    \setcounter{page}{2}
+}
