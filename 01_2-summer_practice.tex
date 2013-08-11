@@ -1,4 +1,6 @@
 \documentclass[a4paper, 14pt]{extarticle}
+\input{../../.preambles/10-russian}
+\input{../../.preambles/20-math}
 \usepackage[utf8]{inputenc}
 \usepackage[paper=a4paper, top=1cm, right=1cm, bottom=1.5cm, left=2cm]{geometry}
 \usepackage{setspace}
@@ -14,17 +16,24 @@
 
 \renewcommand{\thesection}{\arabic{section}.}
 \renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}.}
+\numberwithin{equation}{section}
+
+\usepackage{caption}
+\DeclareCaptionLabelFormat{figure}{Рисунок #2}
+\DeclareCaptionLabelFormat{table}{Таблица #2}
+\DeclareCaptionLabelSeparator{sep}{~---~}
+\captionsetup{labelsep=sep,justification=centering,font=small}
+\captionsetup[figure]{labelformat=figure}
+\captionsetup[table]{labelformat=table}
 
 \usepackage{titlesec}
-
 \titleformat{\section}
-    {\normalsize\bfseries}
+    {\centering\normalsize\bfseries}
     {\thesection}
     {1em}{}
-
 \titleformat{\subsection}
     {\normalsize\bfseries}
-    {\thesubsection.}
+    {\thesubsection}
     {1em}{}
 
 % Настройка вертикальных и горизонтальных отступов
@@ -36,13 +45,15 @@
 \bibliographystyle{unsrt}
 \renewcommand{\@biblabel}[1]{#1.} 
 \makeatother
+\addto\captionsrussian{\def\bibname{Список использованных источников}}
+\addto\captionsrussian{\def\refname{Список использованных источников}}
 
 \newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1\textwidth}}
 \renewcommand{\arraystretch}{1.2}
 
 \usepackage{color}
 \definecolor{darkgreen}{rgb}{0,.5,0}
-\usepackage[colorlinks,linkcolor=black,filecolor=blue,citecolor=darkgreen]{hyperref}
+\usepackage[colorlinks,linkcolor=black,filecolor=blue,citecolor=darkgreen,urlcolor=black]{hyperref}
 
 \newcommand{\maketitlepage}[1]{
     \begin{titlepage}
