@@ -1,6 +1,4 @@
 \documentclass[a4paper, 14pt]{extarticle}
-\input{../../.preambles/10-russian}
-\input{../../.preambles/20-math}
 \usepackage[utf8]{inputenc}
 \usepackage[paper=a4paper, top=1cm, right=1cm, bottom=1.5cm, left=2cm]{geometry}
 \usepackage{setspace}
@@ -8,15 +6,17 @@
 \usepackage{array}
 \usepackage{bm}
 \onehalfspacing
+\input{../../.preambles/10-russian}
+\input{../../.preambles/20-math}
 
 \usepackage{graphicx}
 \graphicspath{{plots/}, {images/}}
 
 \parindent=1.25cm
 
-\renewcommand{\thesection}{\arabic{section}.}
-\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}.}
-\numberwithin{equation}{section}
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+\renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
 
 \usepackage{caption}
 \DeclareCaptionLabelFormat{figure}{Рисунок #2}
