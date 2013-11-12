@@ -12,81 +12,78 @@
 \labname{Лазер}
 
 \begin{document}
-    \makeheader
+  \makeheader
 
-    \emph{Цель работы:} ознакомление с принципом действия гелий-неонового
-    оптического квантового генератора (ОКГ) и изучение некоторых характеристик
-    лазерного излучения.
-    
-    \emph{Используемые при расчетах формулы:}
-    \( \phi = \arctg\frac{h}{l}, d\sin\phi = k\lambda,
-        \alpha = \arctg\frac{D_1 - D_2}{2l}, I_1 = I - I_\varphi \).
+  \emph{Цель работы:} ознакомление с принципом действия гелий-неонового
+  оптического квантового генератора (ОКГ) и изучение некоторых характеристик
+  лазерного излучения.
 
-    \begin{figure}[h!]
-        \center
-        \includegraphics[width=.4\textwidth]{appearance}\\
-        \parbox{.4\textwidth}{\caption{Внешний вид установки}}
-    \end{figure}
-    \vspace*{-2em}
-    
-    \begin{table}[h!]
-        \center \caption{Определение длины волны излучения лазера}
-        \begin{tabular}{|*{8}{C{.08}|}} \hline
-            \( d \), мм & \( l \), мм & \( k \) & \( h \), мм &
-                \( \phi \), град & \( \sin\phi \) & \( \lambda \), мм &
-                \( \midnum{\lambda} \), мм \\ \hline
-            \multirow{2}{*}{} & \multirow{2}{*}{} &&&&&&
-                \multirow{2}{*}{} \\ \cline{3-7}
-            &&&&&&& \\ \hline
-            \multirow{2}{*}{} & \multirow{2}{*}{} &&&&&&
-                \multirow{2}{*}{} \\ \cline{3-7}
-            &&&&&&& \\ \hline
-        \end{tabular}
-    \end{table}
-    
-    \begin{table}[h!]
-        \center \caption{Оценка направленности излучения лазера}
-        \begin{tabular}{|*{7}{C{.08}|}} \hline
-            & \( l \), мм & \( D_1 \), мм & \( D_2 \), мм & \( D_3 \), мм &
-                \( \midnum{D} \), мм & \( \alpha \) \\ \hline
-            1 & \multirow{2}{*}{} &&&&& \\ \cline{1-1}\cline{3-7}
-            2 &&&&&& \\ \hline
-        \end{tabular}
-    \end{table}
-    
-    \begin{table}[h!]
-        \center \caption{Наблюдение и подтверждение линейной поляризации
-            излучения лазера}
-        \begin{tabular}{|*{2}{*{3}{C{.08}|}|}*{3}{C{.08}|}} \hline
-            \( \phi \) & \( I \) & \( I_1 \) &
-                \( \phi \) & \( I \) & \( I_1 \) &
-                \( \phi \) & \( I \) & \( I_1 \) \\ \hline
-            0   && & 60  && & 120 && \\
-            5   && & 65  && & 125 && \\
-            10  && & 70  && & 130 && \\
-            15  && & 75  && & 135 && \\
-            20  && & 80  && & 140 && \\
-            25  && & 85  && & 145 && \\
-            30  && & 90  && & 150 && \\
-            35  && & 95  && & 155 && \\
-            40  && & 100 && & 160 && \\
-            45  && & 105 && & 165 && \\
-            50  && & 110 && & 170 && \\
-            55  && & 115 && & 175 && \\
-            180 && &&&&&& \\ \hline
-        \end{tabular}
-    \end{table}
-    
-    \pagebreak
-    
-    \subsection{Подсчет погрешности и окончательные результаты}
+  \emph{Используемые при расчетах формулы:}
+  \( \phi = \arctg\frac{h}{l}, d\sin\phi = k\lambda,
+    \alpha = \arctg\frac{D_1 - D_2}{2l}, I_1 = I - I_\varphi \).
+
+  \begin{figure}[h!]
     \center
-    \rule{.95\textwidth}{.5pt} \\ \rule{.95\textwidth}{.5pt}
-    \rule{.95\textwidth}{.5pt} \\ \rule{.95\textwidth}{.5pt}
-    \rule{.95\textwidth}{.5pt} \\ \rule{.95\textwidth}{.5pt}
-    \rule{.95\textwidth}{.5pt} \\ \rule{.95\textwidth}{.5pt}
-    \rule{.95\textwidth}{.5pt} \\ \vspace*{2em}
-    
-    \emph{Вывод:} \rule{.885\textwidth}{.5pt}
-    \rule{.95\textwidth}{.5pt} \\ \rule{.95\textwidth}{.5pt}
+    \includegraphics[width=.4\textwidth]{appearance}\\
+    \parbox{.4\textwidth}{\caption{Внешний вид установки}}
+  \end{figure}
+  \vspace*{-2em}
+
+  \begin{table}[h!]
+    \center \caption{Определение длины волны излучения лазера}
+    \begin{tabular}{|*{8}{C{.08}|}} \hline
+      \( d \), мм & \( l \), мм & \( k \) & \( h \), мм &
+        \( \phi \), град & \( \sin\phi \) & \( \lambda \), мм &
+        \( \midnum{\lambda} \), мм \\ \hline
+      \multirow{2}{*}{0,01} & \multirow{2}{*}{900} &
+        1 & 60  &&&&
+        \multirow{2}{*}{} \\ \cline{3-7}
+      &&
+        2 & 120 &&&
+        & \\ \hline
+      \multirow{2}{*}{0,01} & \multirow{2}{*}{700} &
+        1 & 46  &&&&
+        \multirow{2}{*}{} \\ \cline{3-7}
+      &&
+        2 & 192 &&&
+        & \\ \hline
+    \end{tabular}
+  \end{table}
+
+  \begin{table}[h!]
+    \center \caption{Оценка направленности излучения лазера}
+    \begin{tabular}{|*{7}{C{.08}|}} \hline
+      & \( l \), мм & \( 1 \), мм & \( 2 \), мм & \( 3 \), мм &
+        \( \midnum{D} \), мм & \( \alpha \) \\ \hline
+      \( D_1 \) & \multirow{2}{*}{800} &
+        3 & 3 & 3 & 3 &
+        \multirow{2}{*}{\( 4,\!65\cdot 10^{-2} \)} \\ \cline{1-1}\cline{3-6}
+      \( D_2 \) &&
+        4 & 4 & 5 & 4,3 & \\ \hline
+    \end{tabular}
+  \end{table}
+
+  \begin{table}[h!]
+    \center \caption{Наблюдение и подтверждение линейной поляризации
+      излучения лазера}
+    \begin{tabular}{|*{2}{*{3}{C{.08}|}|}*{3}{C{.08}|}} \hline
+      \( \phi \) & \( I \) & \( I_1 \) &
+        \( \phi \) & \( I \) & \( I_1 \) &
+        \( \phi \) & \( I \) & \( I_1 \) \\ \hline
+      0   && & 60  && & 120 && \\
+      5   && & 65  && & 125 && \\
+      10  && & 70  && & 130 && \\
+      15  && & 75  && & 135 && \\
+      20  && & 80  && & 140 && \\
+      25  && & 85  && & 145 && \\
+      30  && & 90  && & 150 && \\
+      35  && & 95  && & 155 && \\
+      40  && & 100 && & 160 && \\
+      45  && & 105 && & 165 && \\
+      50  && & 110 && & 170 && \\
+      55  && & 115 && & 175 && \\ \cline{1-6}
+      \multicolumn{6}{|c||}{\( I_\varphi = \) \hspace*{4em}} &
+        180 && \\ \hline
+    \end{tabular}
+  \end{table}
 \end{document}
