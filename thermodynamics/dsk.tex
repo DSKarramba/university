@@ -1,15 +1,14 @@
 \documentclass[pscyr]{hedsemwork}
 \usepackage[russian]{babel}
 \usepackage[utf8]{inputenc}
-\usepackage{hedmaths}
-\usepackage{hedphysics}
+\usepackage[root]{hedmaths}
 
 \faculty{Факультет электроники и вычислительной техники}
 \department{физики}
 \subject{Термодинамика и статистическая физика}
 \variant{19}
 \student[m]{студент группы Ф-469\\Чечеткин И. А.}
-\teacher[m]{доцент Крючков С. В.}
+\teacher[m]{профессор,\\доктор физ.-мат. наук\\Крючков С. В.}
 
 \begin{document}
 \maketitle
@@ -153,7 +152,7 @@
 \vspace*{2em}
 \emph{Решение:}
 
-Из первого начала термодинамики:
+из первого начала термодинамики:
 \[
   dQ = dU + dA = C_V\cdot dT + P\cdot dV.
 \]
@@ -201,8 +200,50 @@
 \vspace*{2em}
 \emph{Решение:}
 
+изменение энтропии:
+\[
+  \Delta S = S_\text{уст} - (S_1 + S_2).
+\]
+
+Энтропия:
+\[
+  S = \int\frac{\delta Q}{T} = \int\frac{\Delta U + \delta A}{T} =
+    \int\frac{\nu C_V\,dT + \nu R\,dT}{T} = \nu(C_V + R)\ln T.
+\]
+
+Энтропии веществ до соприкосновения:
+\begin{gather*}
+  S_1 = \frac{m}{\mu}(C_V + R)\ln T_1, \\
+  S_2 = \frac{m}{\mu}(C_V + R)\ln T_2.
+\end{gather*}
+
+Энтропия вещества после установления равновесия:
+\[
+  S_\text{уст} = \frac{2m}{\mu}(C_V + R)\ln T_\text{уст}.
+\]
+
+Тогда изменение энтропии:
+\[
+  \Delta S = \frac{m}{\mu}\big (C_V + R \big)\big(2\ln T_\text{уст} -
+    (\ln T_1 + \ln T_2)\big) =
+    \frac{m}{\mu}C_P\cdot\ln\left( \frac{T_\text{уст}^2}{T_1T_2} \right).
+\]
+
+Так как вещество по условию одинаково, массы равны, то установившаяся
+температура будет полусуммой температур масс до соприкосновения:
+\[
+  T_\text{уст} = \frac{T_1 + T_2}{2}.
+\]
+
+Окончательно,
+\[
+  \Delta S = \frac{m}{\mu}C_P\cdot
+    \ln\left( \frac{(T_1 + T_2)^2}{4T_1T_2} \right).
+\]
+
 \vspace*{2em}
-\emph{Ответ:}
+\emph{Ответ:} \( \Delta S = \dfrac{m}{\mu}C_P\cdot
+  \ln \left( \dfrac{(T_1 + T_2)^2}{4T_1T_2} \right) \).
 
 \newpage %----------------------------------------------------------------------
 
@@ -212,8 +253,36 @@
 \vspace*{2em}
 \emph{Решение:}
 
+запишем распределения Максвелла по скоростям:
+\[
+  f(v) = \left( \frac{m}{2\pi kT} \right)^{3/2}\cdot 4\pi v^2\cdot
+   \exp\left( -\frac{mv^2}{2kT} \right).
+\]
+
+Температура, соответствующая максимальному числу молекул в интервале скоростей
+\( (v, v + dv) \), находится из условия экстремума функции \( f(v) \):
+\[
+  \pder{f}{T} = \left( \frac{m}{2\pi k} \right)^{3/2}\cdot 4\pi v^2\cdot
+    \exp\left( -\frac{mv^2}{2kT} \right)\cdot
+    \left(-\frac{3}{2}T^{-5/2} + \frac{mv^2}{2kT^2}T^{-3/2} \right) = 0.
+\]
+
+Так как \( T \ne 0 \), то:
+\begin{gather*}
+  -\frac{3}{2}T^{-5/2} + \frac{mv^2}{2kT^2}T^{-3/2} = 0, \text{ или} \\
+  -\frac{3}{2} + \frac{mv^2}{2kT} = 0,
+\end{gather*}
+откуда \( T = \dfrac{mv^2}{3k} \).
+
+Экстремум в этой точке является максимумом, так как вторая производная
+оказывается отрицательной:
+\[
+  \left. \ppder{f}{T} \right|_{T = \frac{mv^2}{3k}} = -81
+  \sqrt{\frac{3}{2\pi}}e^{-3/2}\cdot \left( \frac{k}{mv^{5/2}} \right)^2 < 0.
+\]
+
 \vspace*{2em}
-\emph{Ответ:}
+\emph{Ответ:} \( T = \dfrac{mv^2}{3k} \).
 
 \newpage %----------------------------------------------------------------------
 
@@ -227,7 +296,42 @@
 \vspace*{2em}
 \emph{Решение:}
 
+запишем уравнение Ван-дер-Ваальса:
+\[
+  \left( P + \frac{a}{V^2} \right)\Big( V - b \Big) = RT.
+\]
+
+Домножим на \( V^2 \) и раскроем скобки:
+\[
+  PV^3 - (RT + Pb)V^2 + aV - ab = 0.
+\]
+
+По определению критических параметров это уравнение можно записать в виде:
+\[
+  P_\text{к}(V - V_\text{к})^3 = 0.
+\]
+
+Отсюда, раскрыв куб и сравнив коэффициенты, получим три уравнения:
+\[
+  3P_\text{к}V_\text{к}^2 = a, \quad
+  P_\text{к}V_\text{к}^3 = ab, \quad
+  3P_\text{к}V_\text{к} = RT_\text{к} + P_\text{к}b.
+\]
+
+Решая, получим:
+\[
+  V_\text{к} = 3b, \quad
+  P_\text{к} = \frac{a}{27b^2}, \quad
+  T_\text{к} = \frac{8}{27}\frac{a}{bR}.
+\]
+
+По определению, температура Бойля: \( T_B = \dfrac{a}{bR} \).
+Сравнивая ее с критической температурой, видно, что:
+\[
+  T_B = \frac{27}{8}T_\text{к}.
+\]
+
 \vspace*{2em}
-\emph{Ответ:}
+\emph{Ответ:} \( T_B = 27/8\cdot T_\text{к} \).
 
 \end{document}
