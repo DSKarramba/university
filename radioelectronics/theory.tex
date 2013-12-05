@@ -1,0 +1,149 @@
+\documentclass[14pt,a4paper]{extarticle}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage{geometry}
+\geometry{top=2cm, right=1cm, bottom=2cm, left=2cm}
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+
+\usepackage{setspace}
+\usepackage{pscyr}
+
+\begin{document}
+  \begin{titlepage}
+    \singlespacing
+    \begin{center}
+      Министерство образования и науки Российской Федерации \\
+      Федеральное государственное бюджетное образовательное \\
+      учреждение высшего профессионального образования \\
+      <<Волгоградский государственный технический университет>> \\
+      Факультет электроники и вычислительной техники \\
+      Кафедра физики
+    \end{center}
+
+    \vspace{9em}
+
+    \begin{center}
+      \large Семестровая работа по дисциплине \\
+      <<Радиоэлектроника>>
+    \end{center}
+
+    \vspace{5em}
+
+    \begin{flushright}
+      \begin{minipage}{.40\textwidth}
+        Выполнили \\
+        студенты группы Ф-469 \\
+        Слоква В. И., \\
+        Чечеткин И. А. \\
+
+        \vspace{1em}
+
+        Проверил профессор, \\
+        доктор физ.-мат. наук \\
+        Смоляр В. А.
+      \end{minipage}
+    \end{flushright}
+
+    \vspace{\fill}
+
+    \begin{center}
+      Волгоград, \the\year
+    \end{center}
+  \end{titlepage}
+
+  \setcounter{page}{2}
+  \tableofcontents
+  \newpage
+
+  Концентрация электронов в зоне проводимости равна:
+  \begin{equation}
+    n = 2\cdot\int\limits_{E_C}^\infty N(E) f(E, T) dE.
+    \label{G1.9}
+  \end{equation}
+  
+  Если уровень Ферми \( F \) лежит в запрещенной зоне энергий и удален от края
+  зоны \( Е_C \) хотя бы на \( 2kT \). Тогда в распределении Ферми-Дирака
+  \eqref{G1.7}
+  \begin{equation}
+    f(E, T) = \frac{1}{1 + e^{\cfrac{E - F}{kT}}}
+    \label{G1.7}
+  \end{equation}
+  единицей в знаменателе можно пренебречь и оно переходит в распределение
+  Максвелла-Больцмана классической статистики (для кремния показаны на
+  рис.~\ref{picF}, рис.~\ref{picF2}). Это случай невырожденного полупроводника:
+  \begin{equation}
+    f(E, T) = e^{-\cfrac{E - F}{kT}}.
+    \label{G1.8}
+  \end{equation}
+
+  \begin{figure}[ht]
+    \center
+    \includegraphics[width=.75\textwidth]{f1500K}\\
+    \caption{Функции Ферми-Дирака \( f \) и Больцмана \( f_\emph{Б} \) для
+      температуры 1500 К}
+    \label{picF}
+  \end{figure}
+
+  Плотность состояний в зоне проводимости \( N(E) \) выражается формулой
+  \begin{equation}
+    N(E) = \frac{4\pi m_n^{3/2}\cdot\sqrt{2(E - E_C)}}{h^3},
+    \label{G1.6}
+  \end{equation}
+  где \( m_n^{3/2} \)~-- эффективная масса электрона, \( E_C \)~-- энергия,
+  соответствующая дну зоны проводимости.
+
+  Если вместо \( (E - E_C) \) подставить \( (E_V - E) \), а вместо \( m_n \)~--
+  эффективную массу дырки \( m_p \), то получим формулу плотности состояний в
+  валентной зоне.
+
+  Для кремния \( N(E) \) выглядит так, как показано на рисунке~\ref{picNE}.
+  \begin{figure}[ht]
+    \center
+    \includegraphics[width=.75\textwidth]{N(E)}
+    \caption{Функция распределения плотности состояний в зоне проводимости
+      \( N(E) \)}
+    \label{picNE}
+  \end{figure}
+
+  Подставив \eqref{G1.8} и \eqref{G1.6} в \eqref{G1.9}, получим:
+  \begin{equation}
+    n = N_C\cdot e^{-\cfrac{E_C - F}{kT}},
+    \label{G1.10}
+  \end{equation}
+  где \( N_C \) -- эффективная плотность состояний в зоне проводимости:
+  \[
+    N_C = 2\cdot\left( \frac{2\pi m_n kT}{h^2} \right)^{3/2}.
+  \]
+
+  Концентрация дырок в валентной зоне:
+  \begin{equation}
+    p = N_V\cdot e^{-\cfrac{F - E_V}{kT}},
+    \label{G1.13}
+  \end{equation}
+  где \( N_V \) -- эффективная плотность состояний в валентной зоне:
+  \[
+    N_V = 2\cdot\left( \frac{2\pi m_p kT}{h^2} \right)^{3/2}.
+  \]
+
+  Для расчета \( n \) и \( p \) по уравнениям \eqref{G1.10} и \eqref{G1.13}
+  необходимо знать положение уровня Ферми \( F \). Однако произведение
+  концентраций электронов и дырок для невырожденного полупроводника не зависит
+  от уровня Ферми, хотя зависит от температуры:
+  \begin{equation}
+    n\cdot p = (n_i)^2 = N_C\cdot N_V\cdot e^{-\cfrac{E_g}{kT}}.
+    \label{G1.14}
+  \end{equation}
+
+  Концентрацию собственных носителей заряда в зоне проводимости и в валентной
+  зоне рассчитаем из формулы \eqref{G1.14}. Для кремния зависимость
+  \( n_i(T) \), \( N_C(T) \), \( N_V(T) \) отображена на рисунке~\ref{picNi}.
+  \begin{figure}[ht]
+    \includegraphics[width=.75\textwidth]{n(i)}
+    \caption{Зависимость \( n_i(T) \)}
+    \label{picNi}
+  \end{figure}
+\end{document}
