@@ -1,0 +1,39 @@
+\documentclass[pscyr,titlepage]{hedreport}
+\usepackage[russian]{babel}
+\usepackage{hedmaths}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+
+\usepackage{color}
+\usepackage[colorlinks,linkcolor=black,urlcolor=black]{hyperref}
+\renewcommand{\UrlFont}{\rm\small}
+
+\faculty{Факультет электроники и вычислительной техники}
+\department{физики}
+\subject{дисциплине\\<<Методы и средства физического эксперимента>>}
+\topic{Измерение сопротивлений косвенными методами}
+\student[m]{студент группы Ф-469\\Чечеткин И. А.}
+\teacher[m]{старший преподаватель\\Аршинов А. В.}
+
+\begin{document}
+  \maketitle
+  \tableofcontents
+
+  \pagebreak
+  \renewcommand{\bibname}{Список литературы}
+
+  \begin{thebibliography}{9} \addcontentsline{toc}{section}{Список литературы}
+    \bibitem{1} Раннев,~Г.~Г. Методы и средства измерений: Учебник для вузов~/
+      Г.~Г.~Раннев, А.~П.~Тарасенко~-- М.:~Издательский центр <<Академия>>,
+      2004.~-- 336~с.
+    \bibitem{2}
+    \bibitem{3} 
+    \bibitem{4} Измерение сопротивления постоянному току. Режим доступа:\\
+      \url{http://www.sonel.ru/ru/biblio/article/resistance-directcurrent/}\\
+      (дата обращения 20.11.2013).
+    \bibitem{5} Измерение ультрамалых сопротивлений. Режим доступа:\\
+      \url{http://radioradar.net/articles/technics_measurements/%
+      measurements_ultra.html}\\
+      (дата обращения 20.11.2013).
+  \end{thebibliography}
+\end{document}
