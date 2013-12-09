@@ -1,53 +1,63 @@
-\documentclass[pscyr, notitle]{hedsemwork}
+\documentclass[pscyr,titlepage]{hedreport}
+\usepackage[utf8]{inputenc}
 \usepackage[russian]{babel}
 \usepackage{hedmaths}
+
 \usepackage{graphicx}
-\usepackage{setspace}
 \graphicspath{{images/}}
+
+\usepackage{setspace}
 
 \renewcommand{\thesection}{\arabic{section}.}
 \renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
 
 \DeclareCaptionLabelFormat{figure}{Рисунок #2.}
+\DeclareCaptionLabelFormat{table}{Таблица #2.}
 \DeclareCaptionLabelSeparator{sep}{~}
 \captionsetup{labelsep=sep,justification=centering,font=small}
-\renewcommand{\thefigure}{3.\arabic{figure}}
 
-\renewcommand{\theequation}{3.\arabic{equation}}
+\newcommand{\makemethodicpage}{
+  \begin{titlepage}
+    \singlespacing
+    \newpage
+    \begin{center}
+      Министерство образования и науки Российской Федерации \\
+      Федеральное государственное бюджетное образовательное \\
+      учреждение высшего профессионального образования \\
+      <<Волгоградский государственный технический университет>> \\
+      Факультет электроники и вычислительной техники\\
+      Кафедра физики
+    \end{center}
+    \vspace{9em}
+    \begin{center}
+      Лабораторная работа\\[.5em]
+      \Large\scshape <<Исследование статических характеристик триода>>
+    \end{center}
+    \vspace{1em}    
+    \begin{center}
+      Методические указания
+    \end{center}
+    \vspace{3em}
+    
+    \vspace{\fill}
+    \begin{center}
+      Волгоград, \the\year
+    \end{center}
 
-\newcommand{\maketitlepage}{
-    \begin{titlepage}
-        \singlespacing
-        \newpage
-        \begin{center}
-            Министерство образования и науки Российской Федерации \\
-            Федеральное государственное бюджетное образовательное \\
-            учреждение высшего профессионального образования \\
-            <<Волгоградский государственный технический университет>> \\
-            Факультет электроники и вычислительной техники\\
-            Кафедра физики
-        \end{center}
-        \vspace{9em}
-        \begin{center}
-            Лабораторная работа\\[.5em]
-            \Large\scshape <<Исследование статических характеристик триода>>
-        \end{center}
-        \vspace{1em}        
-        \begin{center}
-            Методические указания
-        \end{center}
-        \vspace{3em}
-        
-        \vspace{\fill}
-        \begin{center}
-            Волгоград, \the\year
-        \end{center}
-
-    \end{titlepage}
-    \setcounter{page}{2}
+  \end{titlepage}
 }
 
+\faculty{Факультет электроники и вычислительной техники}
+\department{физики}
+\type{Курсовая работа}
+\subject{дисциплине\\<<Вакуумная и газоразрядная электроника>>}
+\topic{??}
+\student[m]{студент группы Ф-469\\}
+\teacher[m]{доцент Ковтун~Д.~Г.}
+
 \begin{document}
-    \maketitlepage
-    \input{text}
+  \maketitle
+  \makemethodicpage
+  \setcounter{page}{3}
+  \input{text}
 \end{document}
