@@ -6,10 +6,13 @@
 \usepackage{graphicx}
 \graphicspath{{images/}}
 
+\usepackage[normalem]{ulem}
+
 \usepackage{setspace}
 
 \renewcommand{\thesection}{\arabic{section}.}
 \renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
+\newcommand{\ul}[1]{\uline{#1}}
 
 \DeclareCaptionLabelFormat{figure}{Рисунок #2.}
 \DeclareCaptionLabelFormat{table}{Таблица #2.}
@@ -25,12 +28,12 @@
       Федеральное государственное бюджетное образовательное \\
       учреждение высшего профессионального образования \\
       <<Волгоградский государственный технический университет>> \\
-      Факультет электроники и вычислительной техники\\
+      Факультет электроники и вычислительной техники \\
       Кафедра физики
     \end{center}
     \vspace{9em}
     \begin{center}
-      Лабораторная работа\\[.5em]
+      Лабораторная работа \\[.5em]
       \Large\scshape <<Исследование статических характеристик триода>>
     \end{center}
     \vspace{1em}    
@@ -47,13 +50,65 @@
   \end{titlepage}
 }
 
-\faculty{Факультет электроники и вычислительной техники}
-\department{физики}
-\type{Курсовая работа}
-\subject{дисциплине\\<<Вакуумная и газоразрядная электроника>>}
-\topic{Исследование статических характеристик триода}
-\student[m]{студент группы Ф-469\\}
-\teacher[m]{доцент Ковтун~Д.~Г.}
+\renewcommand{\maketitle}{
+  \begin{titlepage}
+    \singlespacing
+    \newpage
+    \begin{center}
+      Министерство образования и науки Российской Федерации \\
+      Федеральное государственное бюджетное образовательное \\
+      учреждение высшего профессионального образования \\
+      <<Волгоградский государственный технический университет>> \\
+    \end{center}
+  
+    \onehalfspacing	
+    \noindent Факультет \ul{Электроники и Вычислительной техники} \\
+    Направление (специальность) \ul{011200.62-физика} \\
+    Кафедра \ul{Физики} \\
+    Дисциплина \ul{Вакуумная и газоразрядная электроника}
+    
+    \vspace{2em}
+    
+    \begin{flushright}
+      \begin{minipage}{.4\textwidth}
+        Утверждаю \\
+        Зав. кафедрой \hrulefill \\
+        <<\rule{1.5em}{1pt}>> \hrulefill\ 20\rule{1.5em}{1pt}г.
+      \end{minipage}
+    \end{flushright}
+    
+    \vspace{2em}
+        
+    \begin{center}
+      \bf ЗАДАНИЕ \\
+      на курсовую работу (проект)
+    \end{center}
+    	
+    \noindent Студент \( \underset{\small\text{(фамилия, имя, отчество)}}
+      {\ul{\text{Чечеткин Илья Александрович}}} \) \\
+    Группа \ul{Ф-469} \\
+    \begin{enumerate}
+    
+       \item Тема: \ul{<<Модернизация лабораторного макета:
+        Исследование статических характеристик триода>>} \\
+        Утверждена приказом от <<\ul{24}>> \ul{октября} 20\ul{13} г.
+          №\ul{1569-ст}
+      \item Срок предоставления работы (проекта) к защите
+        <<\ul{24}>> \ul{декабря} 20\ul{13} г.
+      \item Содержание расчетно-пояснительной записки:
+      \item Перечень графического материала: \\
+        \rule{.95\textwidth}{.5pt} \\ \rule{.95\textwidth}{.5pt}
+      \item Дата выдачи задания <<\ul{27}>> \ul{сентября} 20\ul{13} г.
+    \end{enumerate}
+    
+    \noindent Руководитель работы (проекта)
+      \( \underset{\small\text{подпись, дата}}{\rule{10em}{.5pt}}
+      \quad \underset{\small\text{инициалы и фамилия}}{\rule{10em}{.5pt}} \) \\
+    Задание принял к исполнению \hskip 2mm
+      \( \underset{\small\text{подпись, дата}}{\rule{10em}{.5pt}}
+      \quad \underset{\small\text{инициалы и фамилия}}{\rule{10em}{.5pt}} \) \\
+  \end{titlepage}
+}
 
 \begin{document}
   \maketitle
