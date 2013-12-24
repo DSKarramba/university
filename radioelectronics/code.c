@@ -1,4 +1,4 @@
-﻿#include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 
@@ -97,7 +97,7 @@ int main(void)
     "set title '%s'\n"
     "set xrange [0:1]\n"
     "set xtics 0.1\n"
-    "set format y '%%.1t×10^{%%T}'\n"
+    "set format y '%%.1t\u00D710^{%%T}'\n"
     "set key outside right center spacing 1.3\n"
     "set xlabel 'f'\n"
     "set ylabel 'E, J'\n", elem_name 
@@ -122,7 +122,7 @@ int main(void)
     "set grid\n"
     "set output 'N_E.pdf'\n"
     "set title '%s'\n"
-    "set format x '%%.1t×10^{%%T}'\n"
+    "set format x '%%.1t\u00D710^{%%T}'\n"
     "set format y '%%.2f'\n"
     "set xrange [0:*]\n"
     "set xlabel 'N(E)'\n"
