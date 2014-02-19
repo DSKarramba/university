@@ -4,11 +4,14 @@
 \usepackage{fourier-orns}
 
 \makeatletter
-\renewcommand{\@chapapp}{Лекция}
+  \renewcommand{\@chapapp}{Лекция}
 \makeatother
 
 \let\labelitemi\labelitemii
 \let\labelitemii\textbullet
+
+\usepackage{color}
+\usepackage[colorlinks,linkcolor=black,citecolor=black]{hyperref}
 
 \begin{document}
   \begin{titlepage}
@@ -24,5 +27,6 @@
     \rule{18.2em}{.5pt}
   \end{titlepage}
   
-  \input{01}
+  \input{01} \newpage
+  \input{02}
 \end{document}
