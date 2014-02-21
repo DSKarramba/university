@@ -5,13 +5,16 @@
 
 \makeatletter
   \renewcommand{\@chapapp}{Лекция}
+  \newcommand{\charskip}[1]{\vspace{-\p@}\begin{center}#1\ #1\
+    #1\end{center}\vspace{-\p@}}
 \makeatother
 
 \let\labelitemi\labelitemii
 \let\labelitemii\textbullet
+\renewcommand{\labelenumi}{\arabic{enumi})}
 
-\usepackage{color}
-\usepackage[colorlinks,linkcolor=black,citecolor=black]{hyperref}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage[colorlinks,linkcolor=black,citecolor=black,urlcolor=Blue]{hyperref}
 
 \begin{document}
   \begin{titlepage}
