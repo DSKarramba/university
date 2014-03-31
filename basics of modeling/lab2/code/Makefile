@@ -1,7 +1,7 @@
-all: lab2 data plots
+all: tf data plots
 
 data:
-	./lab2
+	./tf
 
 plots:
 	@echo type python plots.py z1 [z2 z3 ...] to create plots
