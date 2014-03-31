@@ -1,7 +1,14 @@
-\documentclass[10pt,pscyr]{hedlab}
+\documentclass[10pt]{hedlab}
 \usepackage[utf8]{inputenc}
 \usepackage[russian]{babel}
 \usepackage[derivative,root]{hedmaths}
+\usepackage{graphicx}
+
+\usepackage{ucs}
+\usepackage{listings}
+\lstset{extendedchars=\true,inputencoding=utf8x,basicstyle=\footnotesize}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage[colorlinks,linkcolor=black,citecolor=black,urlcolor=Blue]{hyperref}
 
 \student{Чечеткин И. А.}
 \date{04.03.2014}
@@ -107,27 +114,38 @@
       \frac{3\pi}{4} \right)^{2 / 3} = 0,\!885,
     \label{eq:5}
   \end{equation}
-  а вместо \( \phi \) новую неизвестную функцию \( \chi \):
+  а вместо \( \phi \) новую неизвестную функцию \( \Phi \):
   \begin{equation}
-    \phi(r) = \frac{Z}{r} \chi \left( \frac{rZ^{1 / 3}}{b} \right) =
-      \frac{Z^{4 / 3}}{b} \frac{\chi(x)}{x},
+    \phi(r) = \frac{Z}{r} \Phi \left( \frac{rZ^{1 / 3}}{b} \right) =
+      \frac{Z^{4 / 3}}{b} \frac{\Phi(x)}{x},
     \label{eq:6}
   \end{equation}
   в единицах СГС:
   \[
-    \phi(r) = \frac{Ze}{r} \chi \left( \frac{rZ^{1 / 3}}{0,\!885}r_B \right).
+    \phi(r) = \frac{Ze}{r} \Phi \left( \frac{rZ^{1 / 3}}{0,\!885}r_B \right).
   \]
   Получим уравнение
   \begin{equation}
-    x^{1 / 2} \dder{\chi}{x} = \chi^{3 / 2}
+    x^{1 / 2} \dder{\Phi}{x} = \Phi^{3 / 2}
     \label{eq:7}
   \end{equation}
-  с граничными условиями \( \chi = 1 \) при \( x = 0 \) и \( \chi = 0 \) при
+  с граничными условиями \( \Phi = 1 \) при \( x = 0 \) и \( \Phi = 0 \) при
   \( x = \infty \). Это уравнение не содержит уже никаких параметров и
-  определяет универсальную функцию экранирования Томаса-Ферми \( \chi(x) \).
+  определяет универсальную функцию экранирования Томаса-Ферми \( \Phi(x) \).
 
   \section{Численное решение}
-
-  <insert text here>
-
+  \begin{figure}[h!]
+    \vspace{-1em} \hspace{-2em}
+      \includegraphics[width=.55\textwidth]{common} \hspace{-3em}
+      \includegraphics[width=.55\textwidth]{Z_21_42} \\
+    \parbox{.49\textwidth}{\caption{Решение уравнения Томаса--Ферми
+      \eqref{eq:7}} \label{fig:1}}
+      \parbox{.49\textwidth}{\caption{Зависимость потенциальной энергии
+      электрона \( U \) от координаты \( r \)} \label{fig:2}}    
+  \end{figure}
+  \newpage
+  \section{Листинги программ}
+  \lstinputlisting[language=c++,caption=Расчёт решения уравнения Томаса-Ферми]{code/lab2.cpp}
+  \lstinputlisting[language=python,caption=Построение графиков]{code/lab2.py}
+ 
 \end{document}
