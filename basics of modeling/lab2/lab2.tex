@@ -6,7 +6,12 @@
 
 \usepackage{ucs}
 \usepackage{listings}
-\lstset{extendedchars=\true,inputencoding=utf8x,basicstyle=\footnotesize}
+\lstset{
+    extendedchars=\true,
+    inputencoding=utf8x,
+    basicstyle=\footnotesize,
+    keepspaces=true
+}
 \usepackage[usenames,dvipsnames]{color}
 \usepackage[colorlinks,linkcolor=black,citecolor=black,urlcolor=Blue]{hyperref}
 
@@ -145,7 +150,8 @@
   \end{figure}
   \newpage
   \section{Листинги программ}
-  \lstinputlisting[language=c++,caption=Расчёт решения уравнения Томаса-Ферми]{code/lab2.cpp}
-  \lstinputlisting[language=python,caption=Построение графиков]{code/lab2.py}
+  \lstinputlisting[language=c++,
+      caption=Расчёт решения уравнения Томаса-Ферми]{code/tf.cpp}
+  \lstinputlisting[language=python,caption=Построение графиков]{code/plots.py}
  
 \end{document}

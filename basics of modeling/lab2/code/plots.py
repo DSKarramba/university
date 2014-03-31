@@ -77,7 +77,8 @@ def plot_phi():
     X_mol = linspace(0, 60, 101)
     beta = [.6, 1.2, .3]
     B = [.1, .55, .35]
-    f = lambda x: sum([x * y for x, y in zip(B, map(lambda t: e**(-t * x / b), beta))])
+    f = lambda x: sum(
+        [x * y for x, y in zip(B, map(lambda t: e**(-t * x / b), beta))])
     F_mol = list(map(f, X_mol))
     p3, = plt.plot(X_mol, F_mol, "r-")
 
@@ -95,15 +96,15 @@ def plot_potential(Z):
     i = R.index(R_w[0])
     j = R.index(R_w[-1])
     U_w = U[i:j+1]
-    p, = plt.plot(R_w, U_w)
+    n = len(R_w) // 100 + 1;
+    p, = plt.plot(R_w[::n], U_w[::n])
     plt.xlim(0, 1.1e-8)
     plt.xlabel(r"\( r,~\text{см} \)")
     plt.ylabel(r"\( U,~\text{эВ} \)")
     return p
 
 if __name__ == '__main__':
-    #plot_phi()
-    plt.cla()
+    plot_phi()
     Z_list = list(map(int, argv[1:]))
     lines = [plot_potential(Z) for Z in Z_list]
     labels = ["Z = %d" % Z for Z in Z_list]
