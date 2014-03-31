@@ -8,12 +8,14 @@
 \usepackage{listings}
 \lstset{
     extendedchars=\true,
-    inputencoding=utf8x,
+    inputencoding=utf8,
     basicstyle=\footnotesize,
-    keepspaces=true
+    keepspaces=true,
+    breaklines=true,
 }
 \usepackage[usenames,dvipsnames]{color}
 \usepackage[colorlinks,linkcolor=black,citecolor=black,urlcolor=Blue]{hyperref}
+\renewcommand{\lstlistingname}{Листинг}
 
 \student{Чечеткин И. А.}
 \date{04.03.2014}
@@ -152,6 +154,8 @@
   \section{Листинги программ}
   \lstinputlisting[language=c++,
       caption=Расчёт решения уравнения Томаса-Ферми]{code/tf.cpp}
+  
+  \vspace{1.5em}
   \lstinputlisting[language=python,caption=Построение графиков]{code/plots.py}
  
 \end{document}
