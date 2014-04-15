@@ -10,6 +10,19 @@
 \usepackage[colorlinks,linkcolor=black,citecolor=black,urlcolor=black]{hyperref}
 \renewcommand{\UrlFont}{\rmfamily}
 
+\usepackage[column]{hedfeatures}
+\usepackage{caption}
+\DeclareCaptionFormat{table-up}{
+  {\raggedleft #1
+  
+  }
+  
+  { \centering #3 
+  
+  }
+}
+\captionsetup[table]{format=table-up}
+
 \makeatletter
   \renewcommand{\@evenhead}{\vbox{\hbox to \textwidth {\hfil\thepage\hfil}}}
   \renewcommand{\@oddhead} {\vbox{\hbox to \textwidth {\hfil\thepage\hfil}}}
