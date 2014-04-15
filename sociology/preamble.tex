@@ -61,15 +61,19 @@
     \global\let\@fletter\@empty
     \global\let\fletter\relax
   }
-  
-  \renewcommand{\thesection}      {\arabic{section}.}
-  \renewcommand{\thesubsection}   {\thesection\arabic{subsection}.}
-  \renewcommand{\thesubsubsection}{\thesubsection\arabic{subsubsection}.}
-  
-  \renewcommand{\l@section}      {\@dottedtocline{1}{0em}{1em}}
-  \renewcommand{\l@subsection}   {\@dottedtocline{2}{1em}{2em}}
-  \renewcommand{\l@subsubsection}{\@dottedtocline{3}{2em}{3em}}
 \makeatother
+
+\usepackage{titletoc}
+\titlecontents{section}[0em]{}{\contentslabel{1.75em}}{}
+  {\titlerule*[1pc]{.}\contentspage}
+\titlecontents{subsection}[0em]{}{\contentslabel{2.1em}}{}
+  {\titlerule*[1pc]{.}\contentspage}
+\titlecontents{subsubsection}[0em]{}{\contentslabel{2.5em}}{}
+  {\titlerule*[1pc]{.}\contentspage}
+  
+\renewcommand{\thesection}      {\arabic{section}.}
+\renewcommand{\thesubsection}   {\thesection\arabic{subsection}.}
+\renewcommand{\thesubsubsection}{\thesubsection\arabic{subsubsection}.}
 
 \usepackage{setspace}
 
