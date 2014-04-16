@@ -11,6 +11,11 @@
 \renewcommand{\UrlFont}{\rmfamily}
 
 \usepackage[column]{hedfeatures}
+\usepackage{multirow}
+
+\usepackage{graphicx}
+\graphicspath{{images/}}
+
 \usepackage{caption}
 \DeclareCaptionFormat{table-up}{
   {\raggedleft #1
@@ -20,6 +25,7 @@
   { \centering #3 
   
   }
+  \medskip
 }
 \captionsetup[table]{format=table-up}
 
