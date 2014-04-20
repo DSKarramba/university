@@ -9,12 +9,17 @@
 \student[m]{студент группы Ф-469 \\ Чечеткин И. А.}
 \teacher[m]{профессор, д. физ.-мат. н. \\ Крючков С. В.}
 
+\newcommand{\vg}{{\vphantom{\gamma}}}
+
 \renewcommand{\labelenumi}{\asbuk{enumi})}
 
 \makeatletter
   \@addtoreset{equation}{task}
   \renewcommand{\theequation}{\thetask.\arabic{equation}}
 \makeatother
+
+\usepackage{graphicx}
+\graphicspath{{images/dsk_}}
 
 \begin{document}
 
@@ -43,14 +48,14 @@
         \nonumber \\
       P_\text{к} (V^3 - 3V^2 V_\text{к} + 3V V_\text{к}^2 - V_\text{к}^3),
         \text{ или,}\nonumber \\
-      P_\text{к} V^3 - 3P_\text{к} V^2 V_\text{к} + 3P_\text{к} V V_\text{к}^2 -
-        P_\text{к} V_\text{к}^3 = 0. \label{eq:1.2}
+      P_\text{к} V^3 - 3P_\text{к} V^2 V_\text{к} + 3P_\text{к}^\vg V
+        V_\text{к}^2 - P_\text{к}^\vg V_\text{к}^3 = 0. \label{eq:1.2}
     \end{gather}
 
     Сравнивая \eqref{eq:1.2} с \eqref{eq:1.1} видно, что:
     \[
-      ab = P_\text{к} V_\text{к}^3; \quad
-        3P_\text{к} V_\text{к}^2 = a; \quad
+      ab = P_\text{к}^\vg V_\text{к}^3; \quad
+        3P_\text{к}^\vg V_\text{к}^2 = a; \quad
         RT_\text{к} + P_\text{к}b = 3P_\text{к} V_\text{к}.
     \]
 
@@ -80,12 +85,12 @@
     \[
       PV = \nu RT, \quad P = \nu R\frac{T}{V}.
     \]
-    
+
     Подставляя \( P \) в уравнение политропы, получим
     \[
       PV^{1,45} = TV^{0,45} = \const.
     \]
-    
+
     Поскольку газ сжимается, то объем уменьшается, а температура, следовательно,
     возрастает: \( \D T > 0 \).
 
@@ -99,6 +104,65 @@
     можно считать идеальным газом.
   }
 
+    \begin{figure}[h!]
+      \center
+      \begin{minipage}{.38\textwidth}
+        \includegraphics[width=\textwidth]{3}
+      \end{minipage} \hfill
+      \begin{minipage}{.6\textwidth}
+        К.~п.~д. цикла равен:
+        \begin{equation}
+          \eta = \frac{A}{Q_i} = \frac{Q_i - Q_o}{Q_i}.
+          \label{eq:3.1}
+        \end{equation}
+
+        Теплота \( Q_i \) поступает при изохорическом процессе \( 2 \to 3 \),
+        теплота \( Q_o \) уходит при изохорическом процессе \( 4 \to 1 \).
+
+        Тогда
+        \begin{equation}
+          Q_i = C_V\nu\D T_{23}, \quad Q_o = C_V\nu\D T_{41},
+          \label{eq:3.2}
+        \end{equation}
+        где \( \D T_{23} = T_3 - T_2 \), \( \D T_{41} = T_4 - T_1 \).
+      \end{minipage}
+    \end{figure}
+
+    Уравнения состояний 1, 2, 3 и 4:
+    \begin{equation}
+      P_1 V_1 = \nu RT_1, \quad P_2 V_2 = \nu RT_2, \quad
+        P_3 V_2 = \nu RT_3, \quad P_4 V_1 = \nu RT_4.
+      \label{eq:3.3}
+    \end{equation}
+
+    Уравнения адиабат \( 3 \to 4 \) и \( 1 \to 2 \):
+    \begin{equation}
+      P_3^\vg V_2^\gamma = P_4^\vg V_1^\gamma, \quad
+        P_1^\vg V_1^\gamma = P_2^\vg V_2^\gamma.
+      \label{eq:3.4}
+    \end{equation}
+
+    Выразим из \eqref{eq:3.3} давления \( P_1 \), \( P_2 \), \( P_3 \) и
+    \( P_4 \) и подставим в \eqref{eq:3.4}:
+    \[
+      T_3^\vg V_2^{\gamma - 1} = T_4^\vg V_1^{\gamma - 1}, \quad
+        T_1^\vg V_1^{\gamma - 1} = T_2^\vg V_2^{\gamma - 1}.
+    \]
+
+    Тогда \( T_3 = T_4 \bigl(V_1 / V_2\big)^{\gamma - 1} \) и
+    \( T_2 = T_1 \bigl(V_1 / V_2\big)^{\gamma - 1} \), откуда
+    \( T_3 - T_2 = \bigl(T_4 - T_1\big)\eps^{\gamma - 1} \).
+
+    Подставим это и \eqref{eq:3.2} в \eqref{eq:3.1}:
+    \[
+      \eta = \frac{\D T_{23} - \D T_{41}}{\D T_{23}} =
+        1 - \frac{\D T_{41}}{\D T_{23}} = 1 - \frac{T_4 - T_1}{T_3 - T_2} =
+        1 - \frac{T_4 - T_1}{T_4 - T_1}\frac{1}{\eps^{\gamma - 1}} =
+        1 - \frac{1}{\eps^{\gamma - 1}}.
+    \]
+
+    Таким образом, \( \eta = 1 - 1 / \eps^{\gamma - 1} \).
+
   \end{task}
 
   \begin{task}{246 (ТД)}{
@@ -109,21 +173,21 @@
     \]
     где \( I \)~-- энтальпия.
   }
-  
+
     По определению энтальпии:
     \[
       dI = T\,dS + V\,dp.
     \]
-    
+
     Первая производная по \( S \) от \( I \) при постоянном \( p \):
     \[
       \left(\pder{I}{S}\right)_{\!\!p} = T.
     \]
-    
+
     Вторая производная:
     \begin{equation}
-      \left(\ppder{I}{S}\right)_{\!\!p} = \left(\pder{T}{S}\right)_{\!\!p} = 
-        T \cdot \left(\frac{\partial T}{T\partial S}\right)_{\!\!p} = 
+      \left(\ppder{I}{S}\right)_{\!\!p} = \left(\pder{T}{S}\right)_{\!\!p} =
+        T \cdot \left(\frac{\partial T}{T\partial S}\right)_{\!\!p} =
         T \cdot \frac{1}{C_p},
       \label{eq:4.1}
     \end{equation}
@@ -131,7 +195,7 @@
     \[
       \frac{\delta Q}{dT} = C; \quad T\,dS = Q.
     \]
-    
+
     Выражая \( C_p \) из \eqref{eq:4.1}, получим в итоге
     \[
       C_p = T \cdot \left[\left(\ppder{I}{S}\right)\right]^{-1}\!\!.
