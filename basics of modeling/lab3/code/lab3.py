@@ -1,6 +1,16 @@
-from numpy import cos, pi, linspace
+from numpy import cos, pi, linspace, exp, arange
 from scipy.integrate import quad
 from matplotlib import pyplot as plt
+import sys
+
+plt.rc("text", usetex=True)
+plt.rc("font", family="serif", size=10)
+plt.rc("text.latex", unicode=True)
+plt.rc("text.latex", preamble="\\usepackage[utf8x]{inputenc}\
+                           \\usepackage[T2A]{fontenc}\
+                           \\usepackage[russian]{babel}\
+                           \\usepackage{amsmath}\
+                           \\usepackage{pscyr}")
 
 
 def salvat_coeff(Z):
@@ -96,57 +106,184 @@ def salvat_coeff(Z):
         [0.2266, 0.6422, 25.684, 3.7922, 0.9335],
         [0.2176, 0.6240, 26.554, 4.0044, 1.0238],
         [0.2413, 0.6304, 25.193, 3.6780, 0.9699],
-        [0.2448, 0.6298, 25.252, 3.6397, 0.9825],
+        [0.2448, 0.6298, 25.252, 3.6397, 0.9825]
     ]
-    A = data[Z][:2] + [1-sum(data[Z][:2])]
-    a = data[Z][2:]
+    A = data[Z-1][:2] + [1-sum(data[Z-1][:2])]
+    a = data[Z-1][2:]
     return A, a
 
 
-def q(theta, E, m=9.1e-31):
-    sqr_k = 2 * E / m / hbar
-    return (2 * sqr_k * (1 - cos(theta))) ** .5
+# функции экранирования
+def screen(A, a, r):
+    return sum((A[i] * exp(-a[i] * r) for i in range(3)))
 
 
-def F(Z, q, appr):
+def mscreen(z):
+    A = [.1, .55, .35]
+    b = 0.88534 * z ** (-1/3)
+    a = list(map(lambda x: x / b, [6, 1.2, .3]))
+    return lambda r: screen(A, a, r)
+
+
+def sscreen(z):
+    A, a = salvat_coeff(z)
+    return lambda r: screen(A, a, r)
+
+
+# плотность
+def density(A, a, z, r):
+    return z*r*sum((A[i] * a[i] ** 2 * exp(-a[i] * r) for i in range(3)))
+
+
+def mdensity(z):
+    A = [.1, .55, .35]
+    b = 0.88534 * z ** (-1/3)
+    a = list(map(lambda x: x / b, [6, 1.2, .3]))
+    return lambda r: density(A, a, z, r)
+
+
+def sdensity(z):
+    A, a = salvat_coeff(z)
+    return lambda r: density(A, a, z, r)
+
+
+# форм-фактор
+def formfactor(A, a, z, r):
     # на самом деле, это F/Z
-    if appr == "Moliere":
-        A = [.1, .55, .35]
-        a = [.6, 1.2, .3]
-    elif appr == "Salvat":
-        A, a = salvat_coeff(Z)
-    return sum((A[i] * a[i] ** 2 / (a[i] ** 2 + q ** 2) for i in range(3)))
+    result = 0
+    for i in range(3):
+        if a[i]:
+            result += A[i] * a[i] ** 2 / (a[i] ** 2 + r ** 2)
+    return result
 
 
-def differential_cross_section(Z, appr):
-    return lambda q: (2 * Z / q ** 2 * (1 - F(Z, q, appr))) ** 2
+def mformfactor(z):
+    A = [.1, .55, .35]
+    b = 0.88534 * z ** (-1/3)
+    a = list(map(lambda x: x / b, [6, 1.2, .3]))
+    return lambda r: formfactor(A, a, z, r)
 
-def cross_section(Z, appr, k_list):
-    # тут я тоже соврал: это \sigma * E
-    integrand = lambda x: 2 * pi * Z ** 2 * x ** -3 * (1 - F(Z, x, appr)) ** 2
+
+def sformfactor(z):
+    A, a = salvat_coeff(z)
+    return lambda r: formfactor(A, a, z, r)
+
+
+# дифференциальное сечение
+def diffsect(z, ff):
+    return lambda q: (2 * z / q ** 2 * (1 - ff(z)(q))) ** 2
+
+
+# полное сечение
+def prod_sect_energy(z, ff, k_list):
+    integrand = lambda x: 4 * pi * z ** 2 * x ** -3 * (1 - ff(z)(x)) ** 2
     result = [0]
     for i in range(1, len(k_list)):
         result.append(result[-1] +
-                      quad(integrand, 2*k_list[i-1], 2*k_list[i])[0])
+                      quad(integrand, 2 * k_list[i-1], 2 * k_list[i])[0])
     return result
 
-def main():
-    Z = 25
-    q_list = linspace(1, 4, 101)
-    plt.plot(q_list, differential_cross_section(Z, "Moliere")(q_list),
-            label="Moliere")
-    q_list = linspace(.01, 4, 100)
-    plt.plot(q_list, differential_cross_section(Z, "Salvat")(q_list),
-            label="Salvat")
-    plt.legend()
-    plt.savefig("dif.png")
+
+def plot_screen(zlist):
     plt.cla()
-    k_list = linspace(.01, 20, 401)
-    plt.plot(k_list, cross_section(Z, "Moliere", k_list), label="Moliere")
-    plt.plot(k_list, cross_section(Z, "Salvat", k_list), label="Salvat")
+    colors = ["r", "b", "g", "p", "k"]
+    rlist = arange(0, 10, 0.1)
+    for c, z in zip(colors, zlist):
+        plt.plot(rlist, mscreen(z)(rlist), c + "-", label="Мольер, Z = %d" % z)
+        plt.plot(rlist, sscreen(z)(rlist), c + "--",
+                 label="Сальват, Z = %d" % z)
+    plt.grid()
     plt.legend()
-    plt.savefig("int.png")
+    plt.xlabel(r'$r, \text{а. е.}$')
+    plt.ylabel(r'$\text{Функция экранирования}$')
+    plt.savefig("screening.pdf")
+
+
+def plot_density(zlist):
+    plt.cla()
+    colors = ["r", "b", "g", "p", "k"]
+    rlist = arange(0, 10, 0.1)
+    for c, z in zip(colors, zlist):
+        plt.plot(rlist, mdensity(z)(rlist), c + "-",
+                 label="Мольер, Z = %d" % z)
+        plt.plot(rlist, sdensity(z)(rlist), c + "--",
+                 label="Сальват, Z = %d" % z)
+    plt.grid()
+    plt.legend()
+    plt.xlabel(r'$r, \text{а. е.}$')
+    plt.ylabel(r'$\text{Плотность заряда, а. е.}$')
+    plt.savefig("density.pdf")
+
+
+def plot_r_density(zlist):
+    plt.cla()
+    colors = ["r", "b", "g", "p", "k"]
+    rlist = arange(0, 10, 0.1)
+    for c, z in zip(colors, zlist):
+        plt.plot(rlist, 4 * pi * rlist ** 2 * mdensity(z)(rlist), c + "-",
+                 label="Мольер, Z = %d" % z)
+        plt.plot(rlist, 4 * pi * rlist ** 2 * sdensity(z)(rlist), c + "--",
+                 label="Сальват, Z = %d" % z)
+    plt.grid()
+    plt.legend()
+    plt.xlabel(r'$r, \text{а. е.}$')
+    plt.ylabel(r'$\text{Радиальная плотность заряда, а. е.}$')
+    plt.savefig("radial_density.pdf")
+
+
+def plot_ff(zlist):
+    plt.cla()
+    colors = ["r", "b", "g", "p", "k"]
+    qlist = arange(0, 10, 0.1)
+    for c, z in zip(colors, zlist):
+        plt.plot(qlist, mformfactor(z)(qlist), c + "-",
+                 label="Мольер, Z = %d" % z)
+        plt.plot(qlist, sformfactor(z)(qlist), c + "--",
+                 label="Сальват, Z = %d" % z)
+    plt.grid()
+    plt.legend()
+    plt.xlabel(r'$\text{Переданный импульс }q\text{, а. е.}$')
+    plt.ylabel(r'$\text{Форм-фактор}$')
+    plt.savefig("form-factor.pdf")
+
+
+def plot_diffsect(zlist):
+    plt.cla()
+    colors = ["r", "b", "g", "p", "k"]
+    qlist = arange(0, 10, 0.1)
+    for c, z in zip(colors, zlist):
+        plt.plot(qlist, diffsect(z, mformfactor)(qlist), c + "-",
+                 label="Мольер, Z = %d" % z)
+        plt.plot(qlist, diffsect(z, sformfactor)(qlist), c + "--",
+                 label="Сальват, Z = %d" % z)
+    plt.grid()
+    plt.legend()
+    plt.xlabel(r'$\text{Переданный импульс }q\text{, а. е.}$')
+    plt.ylabel(r'$\text{Дифференциальное сечение рассеяния}$')
+    plt.savefig("diffsect.pdf")
+
+
+def plot_sect(zlist):
+    plt.cla()
+    colors = ["r", "b", "g", "p", "k"]
+    klist = arange(0, 10, 0.1)
+    for c, z in zip(colors, zlist):
+        plt.plot(klist ** 2 / 2, prod_sect_energy(z, mformfactor, klist),
+                 c + "-", label="Мольер, Z = %d" % z)
+        plt.plot(klist ** 2 / 2, prod_sect_energy(z, sformfactor, klist),
+                 c + "--", label="Сальват, Z = %d" % z)
+    plt.grid()
+    plt.legend()
+    plt.xlabel(r'$\text{Энергия налетающих электронов }E\text{, а. е.}$')
+    plt.ylabel(r'$\sigma\cdot E$')
+    plt.savefig("sect.pdf")
 
 
 if __name__ == '__main__':
-    main()
+    zlist = list(map(int, sys.argv[1:]))
+    plot_screen(zlist)
+    plot_density(zlist)
+    plot_r_density(zlist)
+    plot_ff(zlist)
+    plot_diffsect(zlist)
+    plot_sect(zlist)
