@@ -139,18 +139,9 @@ def moliere(z):
 #       2.1. функция экранирования
 #
 # ----------------------------------------------------------------------------
-def screen(A, a, r):
+def screen(appr, z, r):
+    A, a = appr(z)
     return sum((A[i] * exp(-a[i] * r) for i in range(3)))
-
-
-def mscreen(z, r):
-    A, a = moliere(z)
-    return screen(A, a, r)
-
-
-def sscreen(z, r):
-    A, a = salvat(z)
-    return screen(A, a, r)
 
 
 # -----------------------------------------------------------------------------
@@ -158,85 +149,73 @@ def sscreen(z, r):
 #       2.2. объёмная плотность заряда
 #
 # -----------------------------------------------------------------------------
-def density(A, a, z, r):
+def density(appr, z, r):
+    A, a = appr(z)
     return z*r*sum((A[i] * a[i] ** 2 * exp(-a[i] * r) for i in range(3)))
 
 
-def mdensity(z, r):
-    A, a = moliere(z)
-    return density(A, a, z, r)
-
-
-def sdensity(z, r):
-    A, a = salvat(z)
-    return density(A, a, z, r)
+# -----------------------------------------------------------------------------
+#
+#       2.3. радиальная плотность заряда
+#
+# -----------------------------------------------------------------------------
+def r_density(appr, z, r):
+    return 4 * pi * r ** 2 * density(appr, z, r)
 
 
 # -----------------------------------------------------------------------------
 #
-#       2.3. форм-фактор
+#       2.4. форм-фактор
 #
 # -----------------------------------------------------------------------------
-def formfactor(A, a, z, r):
+def formfactor(appr, z, q):
     # на самом деле, это F/Z
+    A, a = appr(z)
     result = 0
     for i in range(3):
         if a[i]:
-            result += A[i] * a[i] ** 2 / (a[i] ** 2 + r ** 2)
+            result += A[i] * a[i] ** 2 / (a[i] ** 2 + q ** 2)
     return result
 
 
-def mformfactor(z, r):
-    A, a = moliere(z)
-    return formfactor(A, a, z, r)
-
-
-def sformfactor(z, r):
-    A, a = salvat(z)
-    return formfactor(A, a, z, r)
+# -----------------------------------------------------------------------------
+#
+#       2.5. дифференциальное сечение упругого рассеянния
+#
+# -----------------------------------------------------------------------------
+def diffsect(appr, z, q):
+    return (2 * z / q ** 2 * (1 - formfactor(appr, z, q))) ** 2
 
 
 # -----------------------------------------------------------------------------
 #
-#       2.4. дифференциальное сечение упругого рассеянния
-#
-# -----------------------------------------------------------------------------
-def diffsect(ff):
-    return lambda z, q: (2 * z / q ** 2 * (1 - ff(z, q))) ** 2
-
-
-# -----------------------------------------------------------------------------
-#
-#       2.5. произведение полного сечение упругого рассеянния на энергию
+#       2.6. произведение полного сечение упругого рассеянния на энергию
 #            падающей частицы
 # -----------------------------------------------------------------------------
-def prod_sect_energy(ff):
-
-    def inner(z, elist):
-        integrand = lambda x: 4 * pi * z ** 2 * x ** -3 * (1 - ff(z, x)) ** 2
-        result = [0]
-        klist = (2 * elist) ** .5
-        for i in range(1, len(klist)):
-            result.append(result[-1] +
-                          quad(integrand, 2 * klist[i-1], 2 * klist[i])[0])
-        return result
-
-    return inner
+def prod_sect_energy(appr, z, elist):
+    integrand = lambda x: 4 * pi * z ** 2 * x ** -3 *\
+        (1 - formfactor(appr, z, x)) ** 2
+    result = [0]
+    klist = (2 * elist) ** .5
+    for i in range(1, len(klist)):
+        result.append(result[-1] +
+                      quad(integrand, 2 * klist[i-1], 2 * klist[i])[0])
+    return result
 
 
 """
 
-    3. Функции, строящие графики
+    3. Функция, строящая графики
 
 """
 
 
-def plot(zlist, arg, funcs, xlabel, ylabel, fname):
+def plot(zlist, arg, f, xlabel, ylabel, fname):
     plt.cla()
     colors = ["r", "b", "g", "p", "k"]
     for c, z in zip(colors, zlist):
-        for f, stl, lbl in funcs:
-            plt.plot(arg, f(z, arg), c + stl, label=lbl + ", Z = %d" % z)
+        plt.plot(arg, f(moliere, z, arg), c + "--", label="Мольер, Z = %d" % z)
+        plt.plot(arg, f(salvat, z, arg), c + "-", label="Сальват, Z = %d" % z)
     plt.grid()
     plt.legend()
     plt.xlabel(xlabel)
@@ -244,81 +223,35 @@ def plot(zlist, arg, funcs, xlabel, ylabel, fname):
     plt.savefig(fname)
 
 
-def plot_screen(zlist):
-    return plot(zlist, arange(0, 10, 0.1),
-                [
-                    (mscreen, "--", "Мольер"),
-                    (sscreen, "-", "Сальват")
-                ],
-                r"$r\text{, а. е.}$",
-                r"$\text{Функция экранирования}$",
-                "screening.pdf")
-
-
-def plot_density(zlist):
-    return plot(zlist, arange(0, 10, 0.1),
-                [
-                    (mdensity, "--", "Мольер"),
-                    (sdensity, "-", "Сальват")
-                ],
-                r"$r\text{, а. е.}$",
-                r"$\text{Плотность заряда, а. е.}$",
-                "density.pdf")
-
-
-def plot_r_density(zlist):
-    return plot(zlist, arange(0, 10, 0.1),
-                [
-                    (lambda z, r: 4 * pi * r ** 2 * mdensity(z, r),
-                     "--", "Мольер"),
-                    (lambda z, r: 4 * pi * r ** 2 * sdensity(z, r),
-                     "-", "Сальват")
-                ],
-                r"$r\text{, а. е.}$",
-                r"$\text{Радиальная плотность заряда, а. е.}$",
-                "radial_density.pdf")
-
-
-def plot_ff(zlist):
-    return plot(zlist, arange(0, 10, 0.1),
-                [
-                    (mformfactor, "--", "Мольер"),
-                    (sformfactor, "-", "Сальват")
-                ],
-                r"$\text{Переданный импульс }q\text{, а. е.}$",
-                r"$\text{Форм-фактор}$",
-                "form-factor.pdf")
-
-
-def plot_diffsect(zlist):
-    return plot(zlist, arange(0, 10, 0.1),
-                [
-                    (diffsect(mformfactor), "--", "Мольер"),
-                    (diffsect(sformfactor), "-", "Сальват")
-                ],
-                r"$\text{Переданный импульс }q\text{, а. е.}$",
-                r"$\text{Дифференциальное сечение рассеяния}$",
-                "diffsect.pdf")
-
-
-def plot_sect(zlist):
-    return plot(zlist, arange(0, 200, 0.1),
-                [
-                    (prod_sect_energy(mformfactor),
-                     "--", "Мольер"),
-                    (prod_sect_energy(sformfactor),
-                     "-", "Сальват")
-                ],
-                r"$\text{Энергия налетающих электронов }E\text{, а. е.}$",
-                r"$\sigma\cdot E$",
-                "sect.pdf")
-
-
 if __name__ == "__main__":
     zlist = list(map(int, sys.argv[1:]))
-    plot_screen(zlist)
-    plot_density(zlist)
-    plot_r_density(zlist)
-    plot_ff(zlist)
-    plot_diffsect(zlist)
-    plot_sect(zlist)
+
+    plot(zlist, arange(0, 10, 0.1), screen,
+         r"$r\text{, а. е.}$",
+         r"$\text{Функция экранирования}$",
+         "screening.pdf")
+
+    plot(zlist, arange(0, 10, 0.1), density,
+         r"$r\text{, а. е.}$",
+         r"$\text{Плотность заряда, а. е.}$",
+         "density.pdf")
+
+    plot(zlist, arange(0, 10, 0.1), r_density,
+         r"$r\text{, а. е.}$",
+         r"$\text{Радиальная плотность заряда, а. е.}$",
+         "radial_density.pdf")
+
+    plot(zlist, arange(0, 10, 0.1), formfactor,
+         r"$\text{Переданный импульс }q\text{, а. е.}$",
+         r"$\text{Форм-фактор}$",
+         "form-factor.pdf")
+
+    plot(zlist, arange(0, 10, 0.1), diffsect,
+         r"$\text{Переданный импульс }q\text{, а. е.}$",
+         r"$\text{Дифференциальное сечение рассеяния}$",
+         "diffsect.pdf")
+
+    plot(zlist, arange(0, 200, 0.1), prod_sect_energy,
+         r"$\text{Энергия налетающих электронов }E\text{, а. е.}$",
+         r"$\sigma\cdot E$",
+         "sect.pdf")
