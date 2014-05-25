@@ -231,7 +231,7 @@ if __name__ == "__main__":
          r"$\text{Функция экранирования}$",
          "screening.pdf")
 
-    plot(zlist, arange(0, 10, 0.1), density,
+    plot(zlist, arange(0, 10, 0.01), density,
          r"$r\text{, а. е.}$",
          r"$\text{Плотность заряда, а. е.}$",
          "density.pdf")
