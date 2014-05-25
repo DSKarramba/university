@@ -80,12 +80,12 @@
   предполагает использование функции экранирования вида:
   \begin{equation}
     \Phi(r) = \sum_{i = 1}^3 A_i\exp\bigl(-a_ir\big);
-    \label{eq:Salvat11} -_-
+    \label{eq:Salvat} 
   \end{equation}
   при этом параметры функции экранирования \( A_i \), \( a_i \) для каждого
   атома индивидуальны. 
 
-  Параметры функции экранирования~\eq{Salvat11} находились из
+  Параметры функции экранирования~\eq{Salvat} находились из
   требования совпадения значений радиальных моментов \( R_n \),
   полученных из нее, с вычисленными методом ДХФС, для
   \( n = -1, 0, 1, 2, 3, 4 \). Это приводит к следующим соотношениям
@@ -103,7 +103,7 @@
   \begin{equation}
     \rho(r) = \frac{Z}{4\pi r} \der{\Phi(r)}{r} = \frac{Z}{4\pi r}
       \sum\limits_{i = 1}^3 A_i a_i^2 \exp\bigl(-a_ir\big).
-    \label{eq:Poisson} -_-
+    \label{eq:Poisson} 
   \end{equation}
 
   Легко видеть, что
@@ -124,7 +124,7 @@
   \begin{equation}
     \der{\sigma}{\Omega} = \frac{4Z^2}{q^4}
       \left[ 1 - \frac{F(q)}{Z} \right]^2,
-    \label{eq:diff} -_-
+    \label{eq:diff} 
   \end{equation}
   где \( q \)~-- переданный импульс в столкновении и 
   \[
@@ -135,7 +135,7 @@
   принимает простое выражение
   \begin{equation}
     \frac{F(q)}{Z} = \sum_{i=1}^3 \frac{A_ia_i^2}{a_i^2 + q^2}.
-    \label{eq:factor} -_-
+    \label{eq:factor} 
   \end{equation}
 
   Полное сечение рассеяния найдём после интегрирования 
@@ -172,7 +172,7 @@
   \begin{equation}
     \sigma = \pi \frac{4Z^2}{E} \int\limits_0^{2k}
       \left[ \sum_{i = 1}^3 \frac{A_i}{a_i^2 + q^2}  \right]^2 q\,dq
-    \label{eq:sect} -_-
+    \label{eq:sect}
   \end{equation}
 
   Это выражение имеет то преимущество перед~\eq{full}, что
@@ -182,7 +182,7 @@
   Для представления результатов был написан код на Python.
   Он приведён в разделе~\sect{code}. В его основу легли
   таблицы из работы Сальвата и
-  соотношения~\eq{Moliere}--\eq{sect}. Результаты численного
+  соотношения~\eq{Moliere}--\eq{full}. Результаты численного
   моделирования для атомов \seat и \fiat приведены на
   рисунках~\fig{screening}--\fig{sect}.
 
