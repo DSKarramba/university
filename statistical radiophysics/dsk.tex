@@ -23,7 +23,7 @@
     \]
     при \( x \ge 0 \), \( m \ge 1 / 2 \).
   }
-  
+
     Математическое ожидание:
     \[
       M = m_1 = \int\lni \frac{2m^m x^{2m - 1}}{\mu^m\Gamma(m)}\,
@@ -36,7 +36,7 @@
         \int\lni y^{m - \frac{1}{2}}\,e^{-y}\,dy =
         \sqrt{\frac{\mu}{m}} \frac{\Gamma(m + 1/2)}{\Gamma(m)}.
     \]
-    
+
     Второй момент:
     \[
       m_2 = \int\lni \frac{2m^m x^{2m - 1}}{\mu^m\Gamma(m)}\,
@@ -50,7 +50,7 @@
         \frac{\mu}{m} \frac{\Gamma(m + 1)}{\Gamma(m)} =
         \mu\frac{m\Gamma(m)}{m\Gamma(m)} = \mu.
     \]
-    
+
     Дисперсия:
     \[
       D = \mu_2 = m_2 - m_1^2 = \mu - \frac{\mu}{m}
@@ -65,21 +65,21 @@
     \( \eta = e^\xi \), где \( \xi \)~-- случайная гауссовская величина с
     математическим ожиданием \( a \) и дисперсией \( \sigma^2 \).
   }
-  
+
     Плотность вероятности \( w_\xi(x) \):
     \( \ds
       w_\xi(x) = \frac{1}{\sqrt{2\pi}\sigma}\,e^{-\frac{(x - a)^2}{2\sigma^2}}
     \).
-    
+
     Зависимость \( x(y) \): \( x(y) = \ln y \). Производная от \( y \) по
     \( x \): \( \ds \der{y}{x} = e^x = y \).
-    
+
     Таким образом, плотность вероятности \( w_\eta(y) \):
     \[
       w_\eta(y) = \frac{1}{\sqrt{2\pi}\sigma}\,
         e^{-\frac{(\ln y - a)^2}{2\sigma^2}} \frac{1}{y}.
     \]
-    
+
     Проверим нормировку в пределах от \( y_1 = e^{-\infty} = 0 \) до
     \( y_2 = e^\infty = \infty \):
     \[
@@ -89,7 +89,7 @@
         e^{-\frac{(\ln y - a)^2}{2\sigma^2}}\,d(\ln y - a) =
         \frac{1}{\sqrt{2\pi}\sigma} \sqrt{\pi}\sqrt{2\sigma^2} = 1.
     \]
-    
+
     Математическое ожидание:
     \[
       M_\eta = m_1 = \frac{1}{\sqrt{2\pi\sigma^2}} \int\lni y
@@ -111,19 +111,19 @@
         \frac{\sqrt{\pi}\sqrt{2\sigma^2}}{\sqrt{2\pi\sigma^2}} =
         e^{a + \sigma^2 / 2}.
     \]
-    
+
     Производя аналогичные действия, получим для \( m_2 \):
     \[
       m_2 = \frac{1}{\sqrt{2\pi\sigma^2}}
         \int\lni y^2 e^{-\frac{(\ln y - a)^2}{2\sigma^2}}\frac{1}{y}\,dy =
         e^{2(\sigma^2 + a)}.
     \]
-    
+
     Тогда дисперсия: \( D_\eta = m_2 - m_1^2 = e^{2(\sigma^2 + a)} -
     e^{2a + \sigma^2} \).
-  
+
   \end{task}
-  
+
   \begin{task}{39}{
     Вычислить корреляционную функцию \( B_x(t_1, t_2) \) и дисперсию
     \( D_x(t) \) случайного процесса Винера
@@ -133,24 +133,59 @@
     где \( n(t) \)~-- стационарный белый шум с нулевым математическим ожиданием
     и корреляционной функцией \( B_n(\tau) = D\d(\tau) \).
   }
-  
-    
-  
+
+    По определению корреляционной функции:
+    \begin{gather*}
+      B_x(t_1, t_2) = \average{\strut x(t_1)x(t_2)} =
+        \average{\int\limits_0^{t_1} \int\limits_0^{t_2}
+        n(\theta_1)n(\theta_2)\,d\theta_1\,d\theta_2} = \\
+      = \int\limits_0^{t_1} \int\limits_0^{t_2} \average{\strut n(\theta_1)
+        n(\theta_2)}\,d\theta_1\,d\theta_2 = \int\limits_0^{t_1}
+        \int\limits_0^{t_2} D\d(\theta_1 - \theta_2)\,d\theta_1\,d\theta_2.
+    \end{gather*}
+
+    Если \( t_1 \ge t_2 \):
+    \[
+      \int\limits_0^{t_1} \int\limits_0^{t_2} D\d(\theta_1 - \theta_2)
+        \,d\theta_1\,d\theta_2 = \int\limits_0^{t_2} D\,d\theta_2 = Dt_2.
+    \]
+
+    Если \( t_1 < t_2 \), то
+    \[
+      \int\limits_0^{t_1} \int\limits_0^{t_2} D\d(\theta_1 - \theta_2)
+        \,d\theta_1\,d\theta_2 = \int\limits_0^{t_1} D\,d\theta_1 = Dt_1.
+    \]
+
+    Таким образом,
+    \[
+      B_x(t_1, t_2) = \left\{
+        \begin{array}{r@{\text{ при }}l}
+          Dt_2 & t_1 \ge t_2, \\
+          Dt_1 & t_1   < t_2.
+        \end{array}
+        \right.
+    \]
+
+    Дисперсия:
+    \[
+      D_x = B_x\Big|_{t_1 = t_2 = t} = Dt.
+    \]
+
   \end{task}
-  
+
   \begin{task*}{49}{
     Для равномерного прямоугольного распределения на отрезке
     \( \bigl[-\lambda / 2, \lambda / 2 \big] \), \( \lambda > 0 \), найти
     характеристическую функцию, а с ее помощью получить общее выражения для
     моментов.
   }
-  
+
     Плотность распределения:
     \[
       w_x = \frac{1}{\left(\frac{\lambda}{2} + \frac{\lambda}{2}\right)} =
         \frac{1}{\lambda}.
     \]
-    
+
     Тогда характеристическая функция равна
     \begin{align*}
       \theta_x & = \average{e^{jux}} = \int\limits_{-\lambda/2}^{\lambda/2}
@@ -160,14 +195,14 @@
         e^{-ju\frac{\lambda}{2}}\Big) =
         \frac{2}{u\lambda}\sin\left(\frac{u\lambda}{2}\right).
     \end{align*}
-    
+
     Момент \( k \)-порядка:
     \[
       m_k = \frac{1}{j^k} \left(\pkder{\theta_x(u)}{u}{k}\right)\Biggr|_{u=0} =
         \frac{2}{\lambda j^k} \pkder{}{u}{k}\left( \frac{1}{u}
         \sin\left[\frac{u\lambda}{2}\right] \right)\Biggr|_{u=0}.
     \]
-  
+
   \end{task*}
 
 \end{document}
