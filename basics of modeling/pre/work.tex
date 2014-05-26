@@ -1,0 +1,113 @@
+\documentclass[a4paper,14pt]{extarticle} %размер бумаги устанавливаем А4, шрифт 12пунктов
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}%включаем свою кодировку: koi8-r или utf8 в UNIX, cp1251 в
+
+\usepackage[english,russian]{babel}%используем русский и английский языки с переносами
+\usepackage{amssymb,amsfonts,amsmath,mathtext,cite,enumerate,float} %подключаем
+\usepackage[colorlinks=True,urlcolor=blue]{hyperref}
+\usepackage{caption2, array, multirow, tabulary,tabularx, dcolumn} %Чтобы поменять двоеточие в названии таблицы на тире
+\usepackage[pdftex]{graphicx}
+
+\usepackage{geometry, multicol} % Меняем поля страницы
+\geometry{left=1.5cm}% левое поле
+\geometry{right=1.5cm}% правое поле
+\geometry{top=1cm}% верхнее поле
+\geometry{bottom=2cm}% нижнее поле
+
+\renewcommand{\thetable}{\arabic{table}}
+%\renewcommand{\thesubsection}{}
+\renewcommand{\baselinestretch}{1.5}
+
+\renewcommand{\tabularxcolumn}[1]{m{#1}}
+\newcolumntype{C}[1]{>{\setlength{\hsize}{#1\hsize}\centering\arraybackslash}X}
+\newcolumntype{T}[1]{>{\setlength{\hsize}{#1\hsize}}X}
+\newcolumntype{Q}[1]{>{\centering\setlength{\hsize}{#1\hsize}\arraybackslash\vspace{1mm}$\displaystyle}X<{$\vspace{1mm}}}
+\newcolumntype{,}{D{,}{,}{14}}
+\renewcommand{\captionlabeldelim}{\textendash}
+\graphicspath{{images/}}
+
+%\usepackage[usenames,dvipsnames]{color}
+%\usepackage[numbered,framed]{mcode}
+
+\tolerance=10000
+
+\begin{document}
+
+\begin{titlepage}
+\vskip 6cm
+\vskip 4cm
+\begin{center}
+Министерство образования и науки РФ\\
+Федеральное государственное бюджетное образовательное\\
+учреждение высшего профессионального образования\\
+ВОЛГОГРАДСКИЙ ГОСУДАРСТВЕННЫЙ ТЕХНИЧЕСКИЙ УНИВЕРСИТЕТ\\
+(ВолгГТУ)\\
+Факультет «Электроника и вычислительная техника»\\
+Кафедра «Физика»\\
+\vskip 2cm
+Курсовая работа по дисциплине \\
+«Основы моделирования сложных физических систем»\\
+Тема: «Моделирование атомного потенциала и вычисление атомного форм-фактора и
+сечения рассеяния электронов для атомов %s и %s»\\
+\end{center}
+\vskip 2cm
+\begin{flushright}
+\parbox{6cm}{
+Выполнил:\\
+студент группы Ф-469\\
+%s\\
+Проверил:\\
+Профессор, д. ф.-м. н.\\
+Смоляр В.А.\\}
+\vskip 2cm
+\end{flushright}
+\begin{center}
+\def\hrf#1{\hbox to#1{\hrulefill}}
+Оценка работы \hrf{4em} баллов
+\end{center}
+\begin{center}
+\vskip 3cm
+Волгоград, 2014
+\end{center}
+
+\newpage
+\begin{center}
+Министерство образования и науки Российской Федерации\\
+Федеральное государственное бюджетное образовательное учреждение высшего профессионального образования\\
+ «Волгоградский государственный технический университет»
+\end{center}
+\def\hrf#1{\hbox to#1{\hrulefill}}
+Факультет \hrulefill\\
+Кафедра \hrulefill
+\begin{center}
+ПОЯСНИТЕЛЬНАЯ ЗАПИСКА\\
+к курсовой работе (проекту)
+\end{center}
+по дисциплине \hrulefill\\
+на тему \hrulefill\\
+ \hrf{15em}\hrulefill\\
+ \hrf{15em}\hrulefill\\
+Студент\hrulefill\\
+\raisebox{15pt}{\hspace{7cm} {\small (фамилия, имя, отчество)} }\\
+\vskip -1.5cm
+Группа \hrf{12em}\\
+Руководитель работы (проекта)  \hrf{10em} \hspace{0.5cm} \hrulefill\\
+\raisebox{15pt}{\hspace{7cm} {\small (подпись и дата подписания)} \hspace{0.3cm}{\small (инициалы и фамилия)} }
+\vskip -0.5cm
+Члены комиссии:\\
+\hrf{15em} \hspace{1cm} \hrf{15em}\\
+\raisebox{15pt}{\hspace{1cm} {\small (подпись и дата подписания)} \hspace{4cm}{\small (инициалы и фамилия)} }\\
+\hrf{15em} \hspace{1cm} \hrf{15em}\\
+\raisebox{15pt}{\hspace{1cm} {\small (подпись и дата подписания)} \hspace{4cm}{\small (инициалы и фамилия)} }\\
+\hrf{15em} \hspace{1cm} \hrf{15em}\\
+\raisebox{15pt}{\hspace{1cm} {\small (подпись и дата подписания)} \hspace{4cm}{\small (инициалы и фамилия)} }\\
+\vskip -1cm
+Нормоконтролер \hrf{10em} \hspace{1cm} \hrulefill\\
+\raisebox{15pt}{\hspace{5cm} {\small (подпись, дата)} \hspace{4cm}{\small (инициалы и фамилия)} }\\
+\begin{center}
+\vskip -0.9cm
+Волгоград, 2014
+\end{center}
+\end{titlepage}
+
+	\tableofcontents
