@@ -1,7 +1,7 @@
-all: tf data plots
+PYTHON=python
 
-data:
-	./tf
+module:
+	$(PYTHON) setup.py build_ext --inplace
 
-plots:
-	@echo type python plots.py z1 [z2 z3 ...] to create plots
+clean:
+	rm -rf build __pycache__ tf*.so

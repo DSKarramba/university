@@ -9,8 +9,7 @@ plt.rc("text.latex", unicode=True)
 plt.rc("text.latex", preamble="\\usepackage[utf8x]{inputenc}\
                            \\usepackage[T2A]{fontenc}\
                            \\usepackage[russian]{babel}\
-                           \\usepackage{amsmath}\
-                           \\usepackage{pscyr}")
+                           \\usepackage{amsmath}")
 
 
 """

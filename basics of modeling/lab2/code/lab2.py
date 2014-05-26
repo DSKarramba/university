@@ -1,7 +1,7 @@
 from matplotlib import pyplot as plt
 from numpy import linspace
 from math import pi, e
-from data import X, F
+from tf import tf
 from sys import argv
 
 plt.rc("text", usetex=True)
@@ -10,12 +10,12 @@ plt.rc("text.latex", unicode=True)
 plt.rc("text.latex", preamble="\\usepackage[utf8x]{inputenc}\
                            \\usepackage[T2A]{fontenc}\
                            \\usepackage[russian]{babel}\
-                           \\usepackage{amsmath}\
-                           \\usepackage{pscyr}")
+                           \\usepackage{amsmath}")
 
 a0 = 5.292e-9
 b = (3 * pi) ** (2 / 3) / 2 ** (7 / 3)
 q = 4.8e-10
+X, F, G = tf(60, 10000)
 
 def plot_phi():
     n = len(F) // 100 + 1
