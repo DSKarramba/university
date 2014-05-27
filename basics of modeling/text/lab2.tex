@@ -112,14 +112,38 @@
   с граничными условиями \( \Phi = 1 \) при \( x = 0 \) и \( \Phi = 0 \) при
   \( x = \infty \). Это уравнение не содержит уже никаких параметров и
   определяет универсальную функцию экранирования Томаса-Ферми \( \Phi(x) \).
+  Это уравнение не имеет аналитического решения, поэтому будем его решать
+  численно. Представим его в виде системы из двух уравнений первого порядка:
+  \[
+    \left\{
+        \begin{array}{l}
+            \ds \der{\Phi}{x} = \Theta,\\
+            \ds \der{\Theta}{x} = \frac{\Phi^{3/2}}{x^{1/2}}.
+        \end{array}
+    \right.
+  \]
+  Во избежание деления на ноль, разложим \( \Phi(x) \) в ряд вблизи нуля
+  \cite{kamke}:
+  \[
+      \Phi(x) = 1 - 1,\!58x + \frac{4}{3}x^{3/2} + \ldots
+  \]
+  Выберем точку \( x_0 \ll 1 \) и будем искать решение методом
+  Рунге-Кутты. При этом будем считать
+  \[ \Theta(x_0) = \Phi'(x_0) + \eps, \]
+  где поправка \( \eps \) определяется из условия
+  \[ \Phi(\infty) = 0. \]
+  Для её определения воспользуемся методом бисекции на отрезке
+  \( [-1, 1] \).
 
-  \section{Численное решение}
   \begin{figure}[h!]
-    \vspace{-1em} \hspace{-2em}
-      \includegraphics[width=.55\textwidth]{tf} \hspace{-3em}
-      \includegraphics[width=.55\textwidth]{potentials} \\
-    \parbox{.49\textwidth}{\caption{Решение уравнения Томаса--Ферми
-      \eqref{eq:7}} \label{fig:1}}
-      \parbox{.49\textwidth}{\caption{Зависимость потенциальной энергии
-      электрона \( U \) от координаты \( r \)} \label{fig:2}}
+      \center
+      \includegraphics[width=.9\textwidth]{tf}
+      \caption{Решение уравнения Томаса--Ферми
+      \eqref{eq:7}} \label{fig:1}
+  \end{figure}
+  \begin{figure}[h!]
+      \center
+      \includegraphics[width=.9\textwidth]{potentials}
+      \caption{Зависимость потенциальной энергии
+      электрона \( U \) от координаты \( r \)} \label{fig:2}
   \end{figure}

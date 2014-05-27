@@ -1,5 +1,6 @@
 import os
 import sys
+import re
 
 
 def symbol(z):
@@ -40,10 +41,18 @@ def make_work(student, z1, z2):
     os.system("mkdir %s/work" % dest)
     with open("pre/work.tex", "r") as f:
         pre = f.read() % (symbol(z1), symbol(z2), student)
+
     text = ""
-    for i in range(1, 4):
-        with open("text/lab%d.tex" % i, "r") as f:
-            text += f.read()
+    with open("text/lab1.tex", "r") as f:
+        text += "\\section{Системы единиц измерения}\n"
+        text += re.sub("section", "subsection", f.read())
+    with open("text/lab2.tex", "r") as f:
+        text += "\\newpage\n\\section{Атом Томаса--Ферми}\n"
+        text += re.sub("section", "subsection", f.read())
+    with open("text/lab3.tex", "r") as f:
+        text += "\\clearpage\n\\section{Сечение упругого рассеяния в борновском\
+                  приближении}\n"
+        text += re.sub("section", "subsection", f.read())
     with open("post/work.tex", "r") as f:
         post = f.read()
     tex = pre + text + post

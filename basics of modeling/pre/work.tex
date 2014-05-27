@@ -1,8 +1,8 @@
-\documentclass[a4paper,12pt]{extarticle}
+\documentclass[a4paper,14pt]{extarticle}
 \usepackage[utf8]{inputenc}
 \usepackage[russian]{babel}
 \usepackage[derivative,root,shortcuts]{hedmaths}
-\usepackage[column]{hedfeatures} 
+\usepackage[column]{hedfeatures}
 \usepackage{graphicx}
 \graphicspath{{./plots/}}
 
@@ -10,8 +10,25 @@
 \renewcommand\bottomfraction{2}
 \renewcommand\textfraction  {0}
 
-\newcommand{\fiat}{\ensuremath{\mathrm{Be}}~}
-\newcommand{\seat}{\ensuremath{\mathrm{Mn}}~}
+\usepackage{caption2, multirow}
+\DeclareCaptionLabelFormat{figure}{Рисунок #2.}
+\DeclareCaptionLabelFormat{table}{Таблица #2.}
+\DeclareCaptionLabelSeparator{sep}{~}
+\captionsetup{labelsep=sep,justification=centering,font=small}
+\renewcommand{\labelitemi}{---}
+\renewcommand{\labelenumii}{\arabic{enumii})}
+
+\makeatletter
+\renewcommand{\@oddfoot}{\vbox{\hbox to\textwidth{\hfil\thepage}}}
+\renewcommand{\@evenfoot}{\vbox{\hbox to\textwidth{\hfil\thepage}}}
+\makeatother
+
+\usepackage[normalem]{ulem}
+\newcommand{\ul}[1]{\uline{#1}}
+
+\newcommand{\fiat}{\ensuremath{\mathrm{%s}}~}
+\newcommand{\seat}{\ensuremath{\mathrm{%s}}~}
+\newcommand{\student}{%s}
 
 \usepackage{ucs}
 \usepackage{listings}
@@ -24,27 +41,149 @@
 }
 \usepackage[usenames,dvipsnames]{color}
 \renewcommand{\lstlistingname}{Листинг}
+\usepackage{setspace}
 
 \newcommand{\eq}  [1]{\eqref{eq:#1}}
 \newcommand{\fig} [1]{\ref{fig:#1}}
 \newcommand{\tab} [1]{\ref{tab:#1}}
 \newcommand{\sect}[1]{\ref{sec:#1}}
 
+\numberwithin{equation}{section}
 
 \usepackage{cite,enumerate,float}
 \usepackage[unicode, colorlinks=True,urlcolor=blue]{hyperref}
-\usepackage{caption2, multirow}
 
 \usepackage{geometry, multicol}
-\geometry{left=1.5cm}
-\geometry{right=1.5cm}
-\geometry{top=1cm}
+\geometry{left=3cm}
+\geometry{right=2.5cm}
+\geometry{top=2cm}
 \geometry{bottom=2cm}
 
 \renewcommand{\thetable}{\arabic{table}}
 \renewcommand{\baselinestretch}{1.5}
 
-\tolerance=10000
+\newcommand{\makenote}{
+  \singlespacing
+  \thispagestyle{empty}
+  \begin{center}
+    Министерство образования и науки Российской Федерации \\
+    Федеральное государственное бюджетное образовательное \\
+    учреждение высшего профессионального образования \\
+    <<Волгоградский государственный технический университет>> \\
+  \end{center}
+
+  \onehalfspacing
+  \noindent Факультет \ul{Электроники и Вычислительной техники} \\
+  Кафедра \ul{Физика} \\
+
+  \vspace{2em}
+
+  \begin{center}
+    \bf ПОЯСНИТЕЛЬНАЯ ЗАПИСКА \\
+    к курсовой работе (проекту)
+  \end{center}
+
+  \vspace{2em}
+
+  \noindent по дисциплине \ul{Основы моделирования сложных физических систем}\\
+  на тему \ul{<<Моделирование атомного потенциала и вычисление атомного} \\
+  \indent \ul{форм-фактора и сечения рассеяния электронов для атомов \fiat} \\
+  \indent \ul{и \seat\!\!>>} \\
+
+  \vspace{2em}
+
+  \noindent Студент \( \underset{\small\text{(фамилия, имя, отчество)}}
+    {\ul{\text{\student}}} \) \\
+  Группа \ul{Ф-469} \\
+  Руководитель работы (проекта) \
+    \( \underset{\small\text{подпись и дата подписания}}{\rule{8.5em}{.5pt}}
+    \quad \underset{\small\text{инициалы и фамилия}}{\rule{8.5em}{.5pt}} \) \\
+
+  \vspace{.5em}
+
+  \noindent Члены комиссии: \\[.5em]
+    \indent \( \underset{\small\text{подпись и дата подписания}}
+    {\rule{10em}{.5pt}} \quad \underset{\small\text{инициалы и фамилия}}
+    {\rule{10em}{.5pt}} \) \\[1em]
+    \indent \( \underset{\small\text{подпись и дата подписания}}
+    {\rule{10em}{.5pt}} \quad \underset{\small\text{инициалы и фамилия}}
+    {\rule{10em}{.5pt}} \) \\[1em]
+    \indent \( \underset{\small\text{подпись и дата подписания}}
+    {\rule{10em}{.5pt}} \quad \underset{\small\text{инициалы и фамилия}}
+    {\rule{10em}{.5pt}} \) \\[1em]
+
+  \noindent Нормоконтролер \ \( \underset{\small\text{подпись, дата подписания}}
+    {\rule{10em}{.5pt}} \quad \underset{\small\text{инициалы и фамилия}}
+    {\rule{10em}{.5pt}} \) \\
+
+  \vfill
+  \begin{center}
+    Волгоград, \the\yearг.
+  \end{center}
+}
+
+\newcommand{\maketask}{
+  \begin{titlepage}
+  \singlespacing
+  \newpage
+  \begin{center}
+    Министерство образования и науки Российской Федерации \\
+    Федеральное государственное бюджетное образовательное \\
+    учреждение высшего профессионального образования \\
+    <<Волгоградский государственный технический университет>> \\
+  \end{center}
+
+  \noindent Факультет \ul{Электроники и Вычислительной техники} \\[.1em]
+  Направление (специальность) \ul{010700.62-физика} \\[.1em]
+  Кафедра \ul{Физика} \\[.1em]
+  Дисциплина \ul{Основы моделирования сложных систем} \\
+
+  \begin{flushright}
+    \begin{minipage}{.4\textwidth}
+    Утверждаю \\
+    Зав. кафедрой \hrulefill \\
+    <<\rule{1.5em}{.5pt}>> \hrulefill\ 20\rule{1.5em}{.5pt}г.
+    \end{minipage}
+  \end{flushright}
+
+  \vspace{-.5em}
+
+  \begin{center}
+    \bf ЗАДАНИЕ \\
+    на курсовую работу (проект)
+  \end{center}
+
+  \noindent Студент \( \underset{\small\text{(фамилия, имя, отчество)}}
+    {\ul{\text{\student}}} \) \\
+  Группа \ul{Ф-469} \\[-1.1em]
+  \begin{enumerate}
+    \itemsep -.5ex
+    \item Тема: \ul{<<Моделирование атомного потенциала и вычисление атомного
+форм-фактора и сечения рассеяния электронов для атомов \fiat и \seat\!\!>>} \\
+    Утверждена приказом от <<\ul{18}>> \ul{марта} 20\ul{14} г.
+      №\ul{381-ст}
+    \item Срок предоставления работы (проекта) к защите
+    <<\rule{.5cm}{.5pt}>>~\rule{1.8cm}{.5pt}~20\rule{.5cm}{.5pt}~г.
+    \item Содержание расчетно-пояснительной записки:\\
+    \rule{.95\textwidth}{.5pt} \\ \rule{.95\textwidth}{.5pt}
+    \rule{.95\textwidth}{.5pt} \\ \rule{.95\textwidth}{.5pt}
+    \rule{.95\textwidth}{.5pt} \\ \rule{.95\textwidth}{.5pt}
+    \item Перечень графического материала: \\
+    \rule{.95\textwidth}{.5pt} \\ \rule{.95\textwidth}{.5pt}
+    \item Дата выдачи задания
+    <<\rule{.5cm}{.5pt}>>~\rule{2cm}{.5pt}~20\rule{.5cm}{.5pt}~г.
+  \end{enumerate}
+
+  \noindent Руководитель работы (проекта)
+    \( \underset{\small\text{подпись, дата}}{\rule{8.5em}{.5pt}}
+    \quad \underset{\small\text{инициалы и фамилия}}{\rule{8.5em}{.5pt}} \) \\
+  Задание принял к исполнению \hskip 2.5mm
+    \( \underset{\small\text{подпись, дата}}{\rule{8.5em}{.5pt}}
+    \quad \underset{\small\text{инициалы и фамилия}}{\rule{8.5em}{.5pt}} \) \\
+  \end{titlepage}
+}
+
+
 
 \begin{document}
 
@@ -63,14 +202,14 @@
 Курсовая работа по дисциплине \\
 «Основы моделирования сложных физических систем»\\
 Тема: «Моделирование атомного потенциала и вычисление атомного форм-фактора и
-сечения рассеяния электронов для атомов \fiat и \seat»\\
+сечения рассеяния электронов для атомов \fiat и \seat\!\!»\\
 \end{center}
 \vskip 2cm
 \begin{flushright}
 \parbox{6cm}{
 Выполнил:\\
 студент группы Ф-469\\
-%s\\
+\student\\
 Проверил:\\
 Профессор, д. ф.-м. н.\\
 Смоляр В.А.\\}
@@ -81,48 +220,13 @@
 Оценка работы \hrf{4em} баллов
 \end{center}
 \begin{center}
-\vskip 3cm
-Волгоград, 2014
-\end{center}
-
-\newpage
-\begin{center}
-Министерство образования и науки Российской Федерации\\
-Федеральное государственное бюджетное образовательное учреждение высшего профессионального образования\\
- «Волгоградский государственный технический университет»
-\end{center}
-\def\hrf#1{\hbox to#1{\hrulefill}}
-Факультет \hrulefill\\
-Кафедра \hrulefill
-\begin{center}
-ПОЯСНИТЕЛЬНАЯ ЗАПИСКА\\
-к курсовой работе (проекту)
-\end{center}
-по дисциплине \hrulefill\\
-на тему \hrulefill\\
- \hrf{15em}\hrulefill\\
- \hrf{15em}\hrulefill\\
-Студент\hrulefill\\
-\raisebox{15pt}{\hspace{7cm} {\small (фамилия, имя, отчество)} }\\
-\vskip -1.5cm
-Группа \hrf{12em}\\
-Руководитель работы (проекта)  \hrf{10em} \hspace{0.5cm} \hrulefill\\
-\raisebox{15pt}{\hspace{7cm} {\small (подпись и дата подписания)} \hspace{0.3cm}{\small (инициалы и фамилия)} }
-\vskip -0.5cm
-Члены комиссии:\\
-\hrf{15em} \hspace{1cm} \hrf{15em}\\
-\raisebox{15pt}{\hspace{1cm} {\small (подпись и дата подписания)} \hspace{4cm}{\small (инициалы и фамилия)} }\\
-\hrf{15em} \hspace{1cm} \hrf{15em}\\
-\raisebox{15pt}{\hspace{1cm} {\small (подпись и дата подписания)} \hspace{4cm}{\small (инициалы и фамилия)} }\\
-\hrf{15em} \hspace{1cm} \hrf{15em}\\
-\raisebox{15pt}{\hspace{1cm} {\small (подпись и дата подписания)} \hspace{4cm}{\small (инициалы и фамилия)} }\\
-\vskip -1cm
-Нормоконтролер \hrf{10em} \hspace{1cm} \hrulefill\\
-\raisebox{15pt}{\hspace{5cm} {\small (подпись, дата)} \hspace{4cm}{\small (инициалы и фамилия)} }\\
-\begin{center}
-\vskip -0.9cm
+\vfill
 Волгоград, 2014
 \end{center}
 \end{titlepage}
 
+\maketask
+\makenote
+
 	\tableofcontents
+    \newpage

@@ -139,16 +139,16 @@
   не обладает особенностью в 0. Его удобно интегрировать
   численно.
 
-  Для представления результатов был написан код на Python.
-  Он приведён в разделе~\sect{code}. В его основу легли
-  таблицы из работы Сальвата и
+  Для представления результатов был написан код на Python с использованием
+  библиотек matplotlib, numpy и scipy. Он приведён в разделе~\sect{code}.
+  В его основу легли таблицы из работы Сальвата и
   соотношения~\eq{Moliere}--\eq{full}. Результаты численного
   моделирования для атомов \seat и \fiat приведены на
   рисунках~\fig{screening}--\fig{sect}.
 
   \begin{figure}[h!]
     \centering
-    \includegraphics[width=.7\textwidth]{screening}
+    \includegraphics[width=.9\textwidth]{screening}
     \caption{Экранирующие функции для атомов \fiat и
       \seat в приближениях Мольер и Сальвата}
     \label{fig:screening}
@@ -156,7 +156,7 @@
 
   \begin{figure}[h!]
     \centering
-    \includegraphics[width=.7\textwidth]{density}
+    \includegraphics[width=.9\textwidth]{density}
     \caption{Плотность зарядов (электронов) для атомов
       \fiat и \seat}
     \label{fig:density}
@@ -164,7 +164,7 @@
 
   \begin{figure}[h!]
     \centering
-    \includegraphics[width=.7\textwidth]{radial_density}
+    \includegraphics[width=.9\textwidth]{radial_density}
     \caption{Радиальная плотность зарядов (электронов)
       для атомов \fiat и \seat}
     \label{fig:radial}
@@ -172,14 +172,14 @@
 
   \begin{figure}[h!]
     \centering
-    \includegraphics[width=.7\textwidth]{form-factor}
+    \includegraphics[width=.9\textwidth]{form-factor}
     \caption{Форм-фактор для атомов \fiat и \seat}
     \label{fig:factor}
   \end{figure}
 
   \begin{figure}[h!]
     \centering
-    \includegraphics[width=.7\textwidth]{diffsect}
+    \includegraphics[width=.9\textwidth]{diffsect}
     \caption{Дифференциальное эффективное сечение упругого
       рассеяния электронов в борновском приближении для атомов
       \fiat и \seat}
@@ -188,7 +188,7 @@
 
   \begin{figure}[h!]
     \centering
-    \includegraphics[width=.7\textwidth]{sect}
+    \includegraphics[width=.9\textwidth]{sect}
     \caption{Полное сечение упругого рассеяния электронов в
       борновском приближении для атомов \fiat и \seat в
       приближениях Мольер и Сальвата}
