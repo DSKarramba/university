@@ -12,6 +12,12 @@ def make_lab(number, student, z1, z2):
     tex = pre + text + post
     with open("test/lab%d/lab%d.tex" % (number, number), "w") as f:
         f.write(tex)
+    if os.path.exists("code/lab%d" % number):
+        os.system("mkdir test/lab%d/plots" % number)
+        os.system("cp -r code/lab%d test/lab%d/code" % (number, number))
+        os.system("make -C test/lab%d/code PYTHON=%s Z1=%d Z2=%d" %\
+                  (number, sys.executable, z1, z2))
+
 
 def usage():
     print("./deploy.py Фамилия И. О. z1 z2")

@@ -86,7 +86,7 @@ def plot_phi():
         ["Численный расчёт", "Результаты Ландау", "Аппроксимация Мольер"])
     plt.xlabel("\( x \)")
     plt.ylabel("\( \Phi \)")
-    plt.savefig("common.pdf")
+    plt.savefig("../plots/tf.pdf")
     plt.cla()
 
 def plot_potential(Z):
@@ -109,4 +109,4 @@ if __name__ == '__main__':
     lines = [plot_potential(Z) for Z in Z_list]
     labels = ["Z = %d" % Z for Z in Z_list]
     plt.legend(lines, labels, loc=4)
-    plt.savefig("Z_" + "_".join(argv[1:]) + ".pdf")
+    plt.savefig("../plots/potentials.pdf")

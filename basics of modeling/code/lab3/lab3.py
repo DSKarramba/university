@@ -228,29 +228,29 @@ if __name__ == "__main__":
     plot(zlist, arange(0, 10, 0.1), screen,
          r"$r\text{, а. е.}$",
          r"$\text{Функция экранирования}$",
-         "screening.pdf")
+         "../plots/screening.pdf")
 
     plot(zlist, arange(0, 10, 0.01), density,
          r"$r\text{, а. е.}$",
          r"$\text{Плотность заряда, а. е.}$",
-         "density.pdf")
+         "../plots/density.pdf")
 
     plot(zlist, arange(0, 10, 0.1), r_density,
          r"$r\text{, а. е.}$",
          r"$\text{Радиальная плотность заряда, а. е.}$",
-         "radial_density.pdf")
+         "../plots/radial_density.pdf")
 
     plot(zlist, arange(0, 10, 0.1), formfactor,
          r"$\text{Переданный импульс }q\text{, а. е.}$",
          r"$\text{Форм-фактор}$",
-         "form-factor.pdf")
+         "../plots/form-factor.pdf")
 
     plot(zlist, arange(0, 10, 0.1), diffsect,
          r"$\text{Переданный импульс }q\text{, а. е.}$",
          r"$\text{Дифференциальное сечение рассеяния}$",
-         "diffsect.pdf")
+         "../plots/diffsect.pdf")
 
     plot(zlist, arange(0, 200, 0.1), prod_sect_energy,
          r"$\text{Энергия налетающих электронов }E\text{, а. е.}$",
          r"$\sigma\cdot E$",
-         "sect.pdf")
+         "../plots/sect.pdf")
