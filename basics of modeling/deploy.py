@@ -14,7 +14,8 @@ def symbol(z):
 
 
 def make_lab(number, student, z1, z2):
-    os.system("mkdir test/lab%d" % number)
+    dest = student.split("~")[0]
+    os.system("mkdir %s/lab%d" % (dest, number))
     with open("pre/lab%d.tex" % number, "r") as f:
         if number == 1:
             pre = f.read() % student
@@ -22,20 +23,41 @@ def make_lab(number, student, z1, z2):
             pre = f.read() % (symbol(z1), symbol(z2), student)
     with open("text/lab%d.tex" % number, "r") as f:
         text = f.read()
-    with open("post/lab.tex", "r") as f:
+    with open("post/lab%d.tex" % number, "r") as f:
         post = f.read()
     tex = pre + text + post
-    with open("test/lab%d/lab%d.tex" % (number, number), "w") as f:
+    with open("%s/lab%d/lab%d.tex" % (dest, number, number), "w") as f:
         f.write(tex)
     if os.path.exists("code/lab%d" % number):
-        os.system("mkdir test/lab%d/plots" % number)
-        os.system("cp -r code/lab%d test/lab%d/code" % (number, number))
-        os.system("make -C test/lab%d/code PYTHON=%s Z1=%d Z2=%d" %\
-                  (number, sys.executable, z1, z2))
+        os.system("mkdir %s/lab%d/plots" % (dest, number))
+        os.system("cp -r code/lab%d %s/lab%d/code" % (number, dest, number))
+        os.system("make -C %s/lab%d/code PYTHON=%s Z1=%d Z2=%d" %
+                  (dest, number, sys.executable, z1, z2))
 
 
-def make_work():
-    pass
+def make_work(student, z1, z2):
+    dest = student.split("~")[0]
+    os.system("mkdir %s/work" % dest)
+    with open("pre/work.tex", "r") as f:
+        pre = f.read() % (symbol(z1), symbol(z2), student)
+    text = ""
+    for i in range(1, 4):
+        with open("text/lab%d.tex" % i, "r") as f:
+            text += f.read()
+    with open("post/work.tex", "r") as f:
+        post = f.read()
+    tex = pre + text + post
+    with open("%s/work/work.tex" % dest, "w") as f:
+        f.write(tex)
+
+    os.system("mkdir %s/work/plots" % dest)
+    os.system("mkdir %s/work/code" % dest)
+    for i in range(1, 4):
+        if os.path.exists("%s/lab%d/plots" % (dest, i)):
+            os.system("cp %s/lab%d/plots/* %s/work/plots" % (dest, i, dest))
+        if os.path.exists("%s/lab%d/code" % (dest, i)):
+            os.system("cp %s/lab%d/code/*.{py,c} %s/work/code" %
+                      (dest, i, dest))
 
 
 def usage():
@@ -43,11 +65,12 @@ def usage():
 
 
 if __name__ == '__main__':
-    if os.path.exists("test"):
-        os.system("rm -rf test")
-    os.mkdir("test")
+    dest = sys.argv[1]
+    if not os.path.exists(dest):
+        os.mkdir(dest)
     student = "~".join(sys.argv[1:4])
     z1, z2, = map(int, sys.argv[4:])
     make_lab(1, student, z1, z2)
     make_lab(2, student, z1, z2)
     make_lab(3, student, z1, z2)
+    make_work(student, z1, z2)

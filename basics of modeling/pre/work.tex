@@ -1,33 +1,48 @@
-\documentclass[a4paper,14pt]{extarticle} %размер бумаги устанавливаем А4, шрифт 12пунктов
-\usepackage[T2A]{fontenc}
-\usepackage[utf8]{inputenc}%включаем свою кодировку: koi8-r или utf8 в UNIX, cp1251 в
+\documentclass[a4paper,12pt]{extarticle}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[derivative,root,shortcuts]{hedmaths}
+\usepackage[column]{hedfeatures} 
+\usepackage{graphicx}
+\graphicspath{{./plots/}}
 
-\usepackage[english,russian]{babel}%используем русский и английский языки с переносами
-\usepackage{amssymb,amsfonts,amsmath,mathtext,cite,enumerate,float} %подключаем
-\usepackage[colorlinks=True,urlcolor=blue]{hyperref}
-\usepackage{caption2, array, multirow, tabulary,tabularx, dcolumn} %Чтобы поменять двоеточие в названии таблицы на тире
-\usepackage[pdftex]{graphicx}
+\renewcommand\topfraction   {2}
+\renewcommand\bottomfraction{2}
+\renewcommand\textfraction  {0}
 
-\usepackage{geometry, multicol} % Меняем поля страницы
-\geometry{left=1.5cm}% левое поле
-\geometry{right=1.5cm}% правое поле
-\geometry{top=1cm}% верхнее поле
-\geometry{bottom=2cm}% нижнее поле
+\newcommand{\fiat}{\ensuremath{\mathrm{Be}}~}
+\newcommand{\seat}{\ensuremath{\mathrm{Mn}}~}
+
+\usepackage{ucs}
+\usepackage{listings}
+\lstset{
+  extendedchars=\true,
+  inputencoding=utf8,
+  basicstyle=\footnotesize,
+  keepspaces=true,
+  breaklines=true,
+}
+\usepackage[usenames,dvipsnames]{color}
+\renewcommand{\lstlistingname}{Листинг}
+
+\newcommand{\eq}  [1]{\eqref{eq:#1}}
+\newcommand{\fig} [1]{\ref{fig:#1}}
+\newcommand{\tab} [1]{\ref{tab:#1}}
+\newcommand{\sect}[1]{\ref{sec:#1}}
+
+
+\usepackage{cite,enumerate,float}
+\usepackage[unicode, colorlinks=True,urlcolor=blue]{hyperref}
+\usepackage{caption2, multirow}
+
+\usepackage{geometry, multicol}
+\geometry{left=1.5cm}
+\geometry{right=1.5cm}
+\geometry{top=1cm}
+\geometry{bottom=2cm}
 
 \renewcommand{\thetable}{\arabic{table}}
-%\renewcommand{\thesubsection}{}
 \renewcommand{\baselinestretch}{1.5}
-
-\renewcommand{\tabularxcolumn}[1]{m{#1}}
-\newcolumntype{C}[1]{>{\setlength{\hsize}{#1\hsize}\centering\arraybackslash}X}
-\newcolumntype{T}[1]{>{\setlength{\hsize}{#1\hsize}}X}
-\newcolumntype{Q}[1]{>{\centering\setlength{\hsize}{#1\hsize}\arraybackslash\vspace{1mm}$\displaystyle}X<{$\vspace{1mm}}}
-\newcolumntype{,}{D{,}{,}{14}}
-\renewcommand{\captionlabeldelim}{\textendash}
-\graphicspath{{images/}}
-
-%\usepackage[usenames,dvipsnames]{color}
-%\usepackage[numbered,framed]{mcode}
 
 \tolerance=10000
 
@@ -48,7 +63,7 @@
 Курсовая работа по дисциплине \\
 «Основы моделирования сложных физических систем»\\
 Тема: «Моделирование атомного потенциала и вычисление атомного форм-фактора и
-сечения рассеяния электронов для атомов %s и %s»\\
+сечения рассеяния электронов для атомов \fiat и \seat»\\
 \end{center}
 \vskip 2cm
 \begin{flushright}
