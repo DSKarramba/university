@@ -259,7 +259,7 @@ if __name__ == "__main__":
          r"$\text{Дифференциальное сечение рассеяния}$",
          "../plots/diffsect.pdf")
 
-    plot(zlist, arange(0, 5, 0.1), prod_sect_energy,
+    plot(zlist, arange(0, 100, 0.1), prod_sect_energy,
          r"$\text{Энергия налетающих электронов }E\text{, а. е.}$",
          r"$\sigma\cdot E$",
          "../plots/sect.pdf")
