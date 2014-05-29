@@ -22,6 +22,16 @@
 \usepackage[root]{hedmaths}
 \usepackage{pscyr}
 
+\usepackage{caption}
+\DeclareCaptionLabelFormat{figure}{Рисунок #2.}
+\DeclareCaptionLabelFormat{table}{Таблица #2.}
+\DeclareCaptionLabelSeparator{sep}{~}
+\renewcommand{\labelitemi}{---}
+\renewcommand{\labelenumii}{\arabic{enumii})}
+\captionsetup{labelsep=sep,justification=centering,font=small}
+\captionsetup[figure]{labelformat=figure}
+\captionsetup[table]{labelformat=table}
+
 \begin{document}
 
   \begin{table}[h!]
