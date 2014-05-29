@@ -1,6 +1,5 @@
 import sys
 from numpy import cos, pi, linspace, exp, arange, array
-from scipy.integrate import quad
 from matplotlib import pyplot as plt
 
 plt.rc("text", usetex=True)
@@ -194,11 +193,21 @@ def diffsect(appr, z, q):
 def prod_sect_energy(appr, z, elist):
     integrand = lambda x: 4 * pi * z ** 2 * x ** -3 *\
         (1 - formfactor(appr, z, x)) ** 2
-    result = [0]
     klist = (2 * elist) ** .5
-    for i in range(1, len(klist)):
-        result.append(result[-1] +
-                      quad(integrand, 2 * klist[i-1], 2 * klist[i])[0])
+    result = array([0] * len(klist))
+    prev = 0
+    integral = 0
+
+    n = 4
+    # разбиение одного отрезка на 2^n для более точного интегрирования
+    steps = 2 ** n
+    a = array([2 * i + 1 for i in range(steps)])
+    for i, k in enumerate(klist):
+        if k != 0:
+            h = k - prev
+            integral += sum(integrand(2 * k + a * h / steps) * 2 * h / steps)
+            result[i] = integral
+            prev = k
     return result
 
 
@@ -250,7 +259,7 @@ if __name__ == "__main__":
          r"$\text{Дифференциальное сечение рассеяния}$",
          "../plots/diffsect.pdf")
 
-    plot(zlist, arange(0, 200, 0.1), prod_sect_energy,
+    plot(zlist, arange(0, 100, 0.1), prod_sect_energy,
          r"$\text{Энергия налетающих электронов }E\text{, а. е.}$",
          r"$\sigma\cdot E$",
          "../plots/sect.pdf")

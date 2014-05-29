@@ -23,17 +23,18 @@ def make_lab(number, student, z1, z2):
         else:
             pre = f.read() % (symbol(z1), symbol(z2), student)
     with open("text/lab%d.tex" % number, "r") as f:
-        text = f.read()
+        text = re.sub("\\s+\\\\cite{\\w+}\\s+", "", f.read())
     with open("post/lab%d.tex" % number, "r") as f:
         post = f.read()
     tex = pre + text + post
     with open("%s/lab%d/lab%d.tex" % (dest, number, number), "w") as f:
         f.write(tex)
     if os.path.exists("code/lab%d" % number):
-        os.system("mkdir %s/lab%d/plots" % (dest, number))
         os.system("cp -r code/lab%d %s/lab%d/code" % (number, dest, number))
-        os.system("make -C %s/lab%d/code PYTHON=%s Z1=%d Z2=%d" %
-                  (dest, number, sys.executable, z1, z2))
+        if not os.path.exists("%s/lab%d/plots" % (dest, number)):
+            os.system("mkdir %s/lab%d/plots" % (dest, number))
+            os.system("make -C %s/lab%d/code PYTHON=%s Z1=%d Z2=%d" %
+                      (dest, number, sys.executable, z1, z2))
 
 
 def make_work(student, z1, z2):
@@ -65,21 +66,25 @@ def make_work(student, z1, z2):
         if os.path.exists("%s/lab%d/plots" % (dest, i)):
             os.system("cp %s/lab%d/plots/* %s/work/plots" % (dest, i, dest))
         if os.path.exists("%s/lab%d/code" % (dest, i)):
-            os.system("cp %s/lab%d/code/*.{py,c} %s/work/code" %
+            os.system("cp %s/lab%d/code/{lab*.py,*.c} %s/work/code" %
                       (dest, i, dest))
 
 
 def usage():
-    print("./deploy.py Фамилия И. О. z1 z2")
+    print("Пример использования:")
+    print("python3 deploy.py Фамилия И. О. z1 z2")
 
 
 if __name__ == '__main__':
-    dest = sys.argv[1]
-    if not os.path.exists(dest):
-        os.mkdir(dest)
-    student = "~".join(sys.argv[1:4])
-    z1, z2, = map(int, sys.argv[4:])
-    make_lab(1, student, z1, z2)
-    make_lab(2, student, z1, z2)
-    make_lab(3, student, z1, z2)
-    make_work(student, z1, z2)
+    if (len(sys.argv) != 6):
+        usage()
+    else:
+        dest = sys.argv[1]
+        if not os.path.exists(dest):
+            os.mkdir(dest)
+        student = "~".join(sys.argv[1:4])
+        z1, z2, = map(int, sys.argv[4:])
+        make_lab(1, student, z1, z2)
+        make_lab(2, student, z1, z2)
+        make_lab(3, student, z1, z2)
+        make_work(student, z1, z2)
