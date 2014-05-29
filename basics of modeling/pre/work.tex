@@ -10,14 +10,6 @@
 \renewcommand\bottomfraction{2}
 \renewcommand\textfraction  {0}
 
-\usepackage{caption2, multirow}
-\DeclareCaptionLabelFormat{figure}{Рисунок #2.}
-\DeclareCaptionLabelFormat{table}{Таблица #2.}
-\DeclareCaptionLabelSeparator{sep}{~}
-\captionsetup{labelsep=sep,justification=centering,font=small}
-\renewcommand{\labelitemi}{---}
-\renewcommand{\labelenumii}{\arabic{enumii})}
-
 \makeatletter
 \renewcommand{\@oddfoot}{\vbox{\hbox to\textwidth{\hfil\thepage}}}
 \renewcommand{\@evenfoot}{\vbox{\hbox to\textwidth{\hfil\thepage}}}
@@ -26,9 +18,12 @@
 \usepackage[normalem]{ulem}
 \newcommand{\ul}[1]{\uline{#1}}
 
+\newcommand{\fiatz}{\ensuremath{\mathrm{%d}}~}
+\newcommand{\seatz}{\ensuremath{\mathrm{%d}}~}
 \newcommand{\fiat}{\ensuremath{\mathrm{%s}}~}
 \newcommand{\seat}{\ensuremath{\mathrm{%s}}~}
 \newcommand{\student}{%s}
+\newcommand{\studentfull}{%s}
 
 \usepackage{ucs}
 \usepackage{listings}
@@ -53,7 +48,7 @@
 \usepackage{cite,enumerate,float}
 \usepackage[unicode, colorlinks=True,urlcolor=blue]{hyperref}
 
-\usepackage{geometry, multicol}
+\usepackage{geometry, multicol, multirow}
 \geometry{left=3cm}
 \geometry{right=2.5cm}
 \geometry{top=2cm}
@@ -93,7 +88,7 @@
   \vspace{2em}
 
   \noindent Студент \( \underset{\small\text{(фамилия, имя, отчество)}}
-    {\ul{\text{\student}}} \) \\
+    {\ul{\text{\studentfull}}} \) \\
   Группа \ul{Ф-469} \\
   Руководитель работы (проекта) \
     \( \underset{\small\text{подпись и дата подписания}}{\rule{8.5em}{.5pt}}
@@ -154,7 +149,7 @@
   \end{center}
 
   \noindent Студент \( \underset{\small\text{(фамилия, имя, отчество)}}
-    {\ul{\text{\student}}} \) \\
+    {\ul{\text{\studentfull}}} \) \\
   Группа \ul{Ф-469} \\[-1.1em]
   \begin{enumerate}
     \itemsep -.5ex
@@ -182,6 +177,17 @@
     \quad \underset{\small\text{инициалы и фамилия}}{\rule{8.5em}{.5pt}} \) \\
   \end{titlepage}
 }
+
+\usepackage{caption}
+\DeclareCaptionLabelFormat{figure}{Рисунок #2.}
+\DeclareCaptionLabelFormat{table}{Таблица #2.}
+\DeclareCaptionLabelSeparator{sep}{~}
+\renewcommand{\labelitemi}{---}
+\renewcommand{\labelenumii}{\arabic{enumii})}
+\captionsetup{labelsep=sep,justification=centering,font=small}
+\captionsetup[figure]{labelformat=figure}
+\captionsetup[table]{labelformat=table}
+
 
 
 

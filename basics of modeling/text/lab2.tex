@@ -133,17 +133,26 @@
   где поправка \( \eps \) определяется из условия
   \[ \Phi(\infty) = 0. \]
   Для её определения воспользуемся методом бисекции на отрезке
-  \( [-1, 1] \).
+  \( [-1, 1] \). Результаты численного расчёта, результаты Ландау и
+  аналитическое приближение Мольер представлены на рисунке \fig{2-1}.
 
+  График потенциальной энергии электрона
+  \begin{equation}
+  \label{eq:pot_energy}
+      U = -e\phi = -\frac{Ze^2}{r}
+        \Phi \left( \frac{rZ^{1 / 3}}{0,\!885}r_B \right).
+  \end{equation}
+  представлен на рисунке \fig{2-2}.
   \begin{figure}[h!]
       \center
       \includegraphics[width=.9\textwidth]{tf}
       \caption{Решение уравнения Томаса--Ферми
-      \eqref{eq:7}} \label{fig:1}
+      \eqref{eq:7}} \label{fig:2-1}
   \end{figure}
   \begin{figure}[h!]
       \center
       \includegraphics[width=.9\textwidth]{potentials}
       \caption{Зависимость потенциальной энергии
-      электрона \( U \) от координаты \( r \)} \label{fig:2}
+      электрона \( U \) от координаты \( r \)} \eqref{eq:pot_energy}
+      \label{fig:2-2}
   \end{figure}

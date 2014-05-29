@@ -37,12 +37,12 @@ def make_lab(number, student, z1, z2):
                       (dest, number, sys.executable, z1, z2))
 
 
-def make_work(student, z1, z2):
+def make_work(student, student_full, z1, z2):
     dest = student.split("~")[0]
     os.system("mkdir %s/work" % dest)
     with open("pre/work.tex", "r") as f:
-        pre = f.read() % (symbol(z1), symbol(z2), student)
-
+        pre = f.read() % (z1, z2, symbol(z1), symbol(z2),
+                          student, student_full)
     text = ""
     with open("text/lab1.tex", "r") as f:
         text += "\\section{Системы единиц измерения}\n"
@@ -51,7 +51,8 @@ def make_work(student, z1, z2):
         text += "\\newpage\n\\section{Атом Томаса--Ферми}\n"
         text += re.sub("section", "subsection", f.read())
     with open("text/lab3.tex", "r") as f:
-        text += "\\clearpage\n\\section{Сечение упругого рассеяния в борновском\
+        text += "\\clearpage\n\
+                 \\section{Сечение упругого рассеяния в борновском\
                   приближении}\n"
         text += re.sub("section", "subsection", f.read())
     with open("post/work.tex", "r") as f:
@@ -72,7 +73,7 @@ def make_work(student, z1, z2):
 
 def usage():
     print("Пример использования:")
-    print("python3 deploy.py Фамилия И. О. z1 z2")
+    print("python3 deploy.py Фамилия Имя Отчество z1 z2")
 
 
 if __name__ == '__main__':
@@ -82,9 +83,12 @@ if __name__ == '__main__':
         dest = sys.argv[1]
         if not os.path.exists(dest):
             os.mkdir(dest)
-        student = "~".join(sys.argv[1:4])
+        student_full = "~".join(sys.argv[1:4])
+        student = "~".join(sys.argv[1],
+                           sys.argv[2][0] + ".",
+                           sys.argv[3][0] + ".")
         z1, z2, = map(int, sys.argv[4:])
         make_lab(1, student, z1, z2)
         make_lab(2, student, z1, z2)
         make_lab(3, student, z1, z2)
-        make_work(student, z1, z2)
+        make_work(student, student_full, z1, z2)
