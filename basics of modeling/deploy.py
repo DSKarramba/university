@@ -84,9 +84,9 @@ if __name__ == '__main__':
         if not os.path.exists(dest):
             os.mkdir(dest)
         student_full = "~".join(sys.argv[1:4])
-        student = "~".join(sys.argv[1],
+        student = "~".join([sys.argv[1],
                            sys.argv[2][0] + ".",
-                           sys.argv[3][0] + ".")
+                           sys.argv[3][0] + "."])
         z1, z2, = map(int, sys.argv[4:])
         make_lab(1, student, z1, z2)
         make_lab(2, student, z1, z2)
