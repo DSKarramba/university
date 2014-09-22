@@ -1,0 +1,49 @@
+\documentclass[14pt]{hedlab}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[derivative,root]{hedmaths}
+\usepackage{graphicx}
+\graphicspath{{./plots/}}
+
+\usepackage{ucs}
+\usepackage{listings}
+\lstset{
+    extendedchars=\true,
+    inputencoding=utf8,
+    basicstyle=\footnotesize,
+    keepspaces=true,
+    breaklines=true,
+}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage[colorlinks,linkcolor=black,citecolor=black,urlcolor=Blue]{hyperref}
+\renewcommand{\lstlistingname}{Листинг}
+
+\newcommand{\fiat}{\ensuremath{\mathrm{%s}}~}
+\newcommand{\seat}{\ensuremath{\mathrm{%s}}~}
+
+\newcommand{\eq}  [1]{\eqref{eq:#1}}
+\newcommand{\fig} [1]{\ref{fig:#1}}
+\newcommand{\tab} [1]{\ref{tab:#1}}
+\newcommand{\sect}[1]{\ref{sec:#1}}
+
+
+\student{%s}
+\date{04.03.2014}
+\labname{Атом Томаса-Ферми}
+\labnum{2}
+
+\usepackage{caption}
+\DeclareCaptionLabelFormat{figure}{Рисунок #2.}
+\DeclareCaptionLabelFormat{table}{Таблица #2.}
+\DeclareCaptionLabelSeparator{sep}{~}
+\renewcommand{\labelitemi}{---}
+\renewcommand{\labelenumii}{\arabic{enumii})}
+\captionsetup{labelsep=sep,justification=centering,font=small}
+\captionsetup[figure]{labelformat=figure}
+\captionsetup[table]{labelformat=table}
+
+
+\begin{document}
+  \makeheader
+
+

@@ -1,0 +1,52 @@
+\documentclass[14pt,a4paper]{extarticle}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[margin = 1.5cm]{geometry}
+\usepackage{array}
+\pagestyle{empty}
+
+\makeatletter
+  \renewcommand\section{\@startsection{section}{1}{\z@}{3ex}{3ex}
+  {\normalfont\large\bfseries}}
+  \renewcommand\subsection{\@startsection{subsection}{2}{\z@}{2ex}{2ex}
+  {\normalfont\normalsize\bfseries}}
+\makeatother
+\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
+
+\usepackage{multirow}
+
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1\textwidth}}
+\renewcommand{\arraystretch}{1.2}
+
+\usepackage[root]{hedmaths}
+\usepackage{pscyr}
+
+\usepackage{caption}
+\DeclareCaptionLabelFormat{figure}{Рисунок #2.}
+\DeclareCaptionLabelFormat{table}{Таблица #2.}
+\DeclareCaptionLabelSeparator{sep}{~}
+\renewcommand{\labelitemi}{---}
+\renewcommand{\labelenumii}{\arabic{enumii})}
+\captionsetup{labelsep=sep,justification=centering,font=small}
+\captionsetup[figure]{labelformat=figure}
+\captionsetup[table]{labelformat=table}
+
+\begin{document}
+
+  \begin{table}[h!]
+    \center
+    \small
+    \begin{tabular}{|C{.4}|C{.2}|C{.2}|} \hline
+      \multirow{4}{*}{Лабораторная работа №~1}
+      & Студент, группа & %s, Ф-469 \\ \cline{2-3}
+      & Дата выполнения & 13.02.2013 \\ \cline{2-3}
+      & Подпись & \\ \cline{2-3}
+      \multirow{3}{*}{\parbox{.35\textwidth}{\centering Системы единиц
+        измерения}} & Дата отчёта & \\ \cline{2-3}
+      & Оценка & \\ \cline{2-3}
+      & Подпись & \\ \hline
+    \end{tabular}
+  \end{table}
+
+
