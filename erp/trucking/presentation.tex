@@ -1,0 +1,34 @@
+\documentclass[14pt,pdf,hyperref={unicode},aspectratio=169]{beamer}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{graphicx}
+\usetheme{Pittsburgh}
+
+\graphicspath{{images/}}
+
+\makeatletter
+    \long\def\beamer@@frametitle[#1]#2{%
+        \beamer@ifempty{#2}{}{%
+            \gdef\insertframetitle{
+            \centering{#2\ifnum\beamer@autobreakcount>0\relax{}
+            \space\usebeamertemplate*{frametitle continuation}\fi}}%
+            \gdef\beamer@frametitle{#2}%
+            \gdef\beamer@shortframetitle{#1}%
+        }%
+    }
+\makeatother
+
+\usepackage{caption}
+\DeclareCaptionLabelFormat{figure}{Рисунок #2}
+\DeclareCaptionLabelFormat{table}{Таблица #2}
+\DeclareCaptionLabelSeparator{sep}{~---~}
+\captionsetup{labelsep=sep,
+  justification=centering,
+  font=small}
+\captionsetup[figure]{labelformat=figure}
+\captionsetup[table]{labelformat=table}
+
+\begin{document}
+    \input{text}
+\end{document}
