@@ -7,6 +7,7 @@
     url('http://i.s-microsoft.com/fonts/Segoe-UI/Cyrillic/Light/latest.woff') format('woff'),
     url('http://i.s-microsoft.com/fonts/Segoe-UI/Cyrillic/Light/latest.ttf') format('truetype'),
     url('http://i.s-microsoft.com/fonts/Segoe-UI/Cyrillic/Light/latest.svg#web') format('svg'),
+    url('../fnt/segoeuil.ttf') format('truetype'),
     local('Segoe UI Light');
   font-weight: normal;
   font-style: normal;
@@ -21,6 +22,7 @@
     url('http://i.s-microsoft.com/fonts/Segoe-UI/Cyrillic/Normal/latest.woff') format('woff'),
     url('http://i.s-microsoft.com/fonts/Segoe-UI/Cyrillic/Normal/latest.ttf') format('truetype'),
     url('http://i.s-microsoft.com/fonts/Segoe-UI/Cyrillic/Normal/latest.svg#web') format('svg'),
+    url('../fnt/segoeui.ttf') format('truetype'),
     local('Segoe UI');
   font-weight: normal;
   font-style: normal;
@@ -87,6 +89,8 @@ hr {
 #nav a {
   text-decoration: inherit;
   color: inherit;
+  font-family: Segoe_UI_Light;
+  font-size: small;
 }
 
 #nav a:hover {
