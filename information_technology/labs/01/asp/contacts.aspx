@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head runat="server">
-    <title>Контакты | Чоко Пончики</title>
+    <title>РљРѕРЅС‚Р°РєС‚С‹ | Р§РѕРєРѕ РџРѕРЅС‡РёРєРё</title>
     <link rel="stylesheet" href="../css/style.css" type="text/css" />
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon" />
   </head>
@@ -15,23 +15,23 @@
           <div class="nav">
             <ul id="nav">
               <li>
-                <asp:LinkButton id="lb_main" text="Главная" runat="server"
+                <asp:LinkButton id="lb_main" text="Р“Р»Р°РІРЅР°СЏ" runat="server"
                   OnClick="lb_main_Click" />
               </li>
               <li>
-                <asp:LinkButton id="lb_goods" text="Продукция" runat="server"
+                <asp:LinkButton id="lb_goods" text="РџСЂРѕРґСѓРєС†РёСЏ" runat="server"
                   OnCommand="Redirect" CommandArgument="goods" />
               </li>
               <li>
-                <asp:LinkButton id="lb_event" text="Акции" runat="server"
+                <asp:LinkButton id="lb_event" text="РђРєС†РёРё" runat="server"
                   OnCommand="Redirect" CommandArgument="event" />
               </li>
               <li>
-                <asp:LinkButton id="lb_job" text="Вакансии" runat="server"
+                <asp:LinkButton id="lb_job" text="Р’Р°РєР°РЅСЃРёРё" runat="server"
                   OnCommand="Redirect" CommandArgument="job" />
               </li>
               <li class="selected">
-                <asp:LinkButton id="lb_contacts" text="Контакты" runat="server"
+                <asp:LinkButton id="lb_contacts" text="РљРѕРЅС‚Р°РєС‚С‹" runat="server"
                   OnCommand="Redirect" CommandArgument="contacts" />
               </li>
             </ul>
@@ -39,19 +39,19 @@
         </div>
         <div id="content">
           <p>
-            Адрес ИП <span class="bold">&quot;Чоко Пончики&quot;</span><br />
-            <span style="margin-left: 3em">Антартида, ул. им. Королевского
-              Пингвина, д. 1.</span>
+            РђРґСЂРµСЃ РРџ <span class="bold">&quot;Р§РѕРєРѕ РџРѕРЅС‡РёРєРё&quot;</span><br />
+            <span style="margin-left: 3em">РђРЅС‚Р°СЂС‚РёРґР°, СѓР». РёРј. РљРѕСЂРѕР»РµРІСЃРєРѕРіРѕ
+              РџРёРЅРіРІРёРЅР°, Рґ. 1.</span>
           </p>
           <p>
-            По всем вопросам обращаться по электронной почте:
+            РџРѕ РІСЃРµРј РІРѕРїСЂРѕСЃР°Рј РѕР±СЂР°С‰Р°С‚СЊСЃСЏ РїРѕ СЌР»РµРєС‚СЂРѕРЅРЅРѕР№ РїРѕС‡С‚Рµ:
             <span class="bold">illaech@gmail.com</span>.
         </div>
         <div id="footer">
           <span>
-            Вся информация на данном сайте является плодом фантазии автора.
-            Просьба не воспринимать ее всерьез. Все изображения на сайте были
-            взяты из публичных источников, либо сделаны из таковых.
+            Р’СЃСЏ РёРЅС„РѕСЂРјР°С†РёСЏ РЅР° РґР°РЅРЅРѕРј СЃР°Р№С‚Рµ СЏРІР»СЏРµС‚СЃСЏ РїР»РѕРґРѕРј С„Р°РЅС‚Р°Р·РёРё Р°РІС‚РѕСЂР°.
+            РџСЂРѕСЃСЊР±Р° РЅРµ РІРѕСЃРїСЂРёРЅРёРјР°С‚СЊ РµРµ РІСЃРµСЂСЊРµР·. Р’СЃРµ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РЅР° СЃР°Р№С‚Рµ Р±С‹Р»Рё
+            РІР·СЏС‚С‹ РёР· РїСѓР±Р»РёС‡РЅС‹С… РёСЃС‚РѕС‡РЅРёРєРѕРІ, Р»РёР±Рѕ СЃРґРµР»Р°РЅС‹ РёР· С‚Р°РєРѕРІС‹С….
           </span>
         </div>
       </div>

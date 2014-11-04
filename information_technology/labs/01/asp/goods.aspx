@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head runat="server">
-    <title>Продукция | Чоко Пончики</title>
+    <title>РџСЂРѕРґСѓРєС†РёСЏ | Р§РѕРєРѕ РџРѕРЅС‡РёРєРё</title>
     <link rel="stylesheet" href="../css/style.css" type="text/css" />
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon" />
   </head>
@@ -15,23 +15,23 @@
           <div class="nav">
             <ul id="nav">
               <li>
-                <asp:LinkButton id="lb_main" text="Главная" runat="server"
+                <asp:LinkButton id="lb_main" text="Р“Р»Р°РІРЅР°СЏ" runat="server"
                   OnClick="lb_main_Click" />
               </li>
               <li class="selected">
-                <asp:LinkButton id="lb_goods" text="Продукция" runat="server"
+                <asp:LinkButton id="lb_goods" text="РџСЂРѕРґСѓРєС†РёСЏ" runat="server"
                   OnCommand="Redirect" CommandArgument="goods" />
               </li>
               <li>
-                <asp:LinkButton id="lb_event" text="Акции" runat="server"
+                <asp:LinkButton id="lb_event" text="РђРєС†РёРё" runat="server"
                   OnCommand="Redirect" CommandArgument="event" />
               </li>
               <li>
-                <asp:LinkButton id="lb_job" text="Вакансии" runat="server"
+                <asp:LinkButton id="lb_job" text="Р’Р°РєР°РЅСЃРёРё" runat="server"
                   OnCommand="Redirect" CommandArgument="job" />
               </li>
               <li>
-                <asp:LinkButton id="lb_contacts" text="Контакты" runat="server"
+                <asp:LinkButton id="lb_contacts" text="РљРѕРЅС‚Р°РєС‚С‹" runat="server"
                   OnCommand="Redirect" CommandArgument="contacts" />
               </li>
             </ul>
@@ -39,9 +39,9 @@
         </div>
         <div id="content">
           <p>
-            В ассортименте <span class="bold">&quot;Чоко Пончики&quot;</span>
-            26 наименований кондитерских изделий. Самые успешные товары по
-            мнению наших покупателей:
+            Р’ Р°СЃСЃРѕСЂС‚РёРјРµРЅС‚Рµ <span class="bold">&quot;Р§РѕРєРѕ РџРѕРЅС‡РёРєРё&quot;</span>
+            26 РЅР°РёРјРµРЅРѕРІР°РЅРёР№ РєРѕРЅРґРёС‚РµСЂСЃРєРёС… РёР·РґРµР»РёР№. РЎР°РјС‹Рµ СѓСЃРїРµС€РЅС‹Рµ С‚РѕРІР°СЂС‹ РїРѕ
+            РјРЅРµРЅРёСЋ РЅР°С€РёС… РїРѕРєСѓРїР°С‚РµР»РµР№:
           </p>
           
           <table>
@@ -49,10 +49,10 @@
               <th rowspan="2">
                 <img src="../img/prod_choc_ping.jpg" style="height: 200px"/>
               </th>
-              <td class="note">Шоколад &quot;Деловой&quot;</td>
+              <td class="note">РЁРѕРєРѕР»Р°Рґ &quot;Р”РµР»РѕРІРѕР№&quot;</td>
             </tr>
             <tr>
-              <td class="slogan">Надеть галстук перед поеданием</td>
+              <td class="slogan">РќР°РґРµС‚СЊ РіР°Р»СЃС‚СѓРє РїРµСЂРµРґ РїРѕРµРґР°РЅРёРµРј</td>
             </tr>
           </table>
           
@@ -61,10 +61,10 @@
               <th rowspan="2">
                 <img src="../img/prod_cc_whales.jpg" style="height: 200px"/>
               </th>
-              <td class="note">Кексы &quot;Касаточка&quot;</td>
+              <td class="note">РљРµРєСЃС‹ &quot;РљР°СЃР°С‚РѕС‡РєР°&quot;</td>
             </tr>
             <tr>
-              <td class="slogan">Съешь или будешь съеден</td>
+              <td class="slogan">РЎСЉРµС€СЊ РёР»Рё Р±СѓРґРµС€СЊ СЃСЉРµРґРµРЅ</td>
             </tr>
           </table>
           
@@ -73,10 +73,10 @@
               <th rowspan="2">
                 <img src="../img/prod_don_simp.jpg" style="height: 200px"/>
               </th>
-              <td class="note">Пончик &quot;Гомерический&quot;</td>
+              <td class="note">РџРѕРЅС‡РёРє &quot;Р“РѕРјРµСЂРёС‡РµСЃРєРёР№&quot;</td>
             </tr>
             <tr>
-              <td class="slogan">Ммм&hellip; пончик</td>
+              <td class="slogan">РњРјРј&hellip; РїРѕРЅС‡РёРє</td>
             </tr>
           </table>
           
@@ -85,10 +85,10 @@
               <th rowspan="2">
                 <img src="../img/prod_sw_bear.jpg" style="height: 200px"/>
               </th>
-              <td class="note">Конфеты &quot;Белый мишка&quot;</td>
+              <td class="note">РљРѕРЅС„РµС‚С‹ &quot;Р‘РµР»С‹Р№ РјРёС€РєР°&quot;</td>
             </tr>
             <tr>
-              <td class="slogan">Найди себе мишку по вкусу</td>
+              <td class="slogan">РќР°Р№РґРё СЃРµР±Рµ РјРёС€РєСѓ РїРѕ РІРєСѓСЃСѓ</td>
             </tr>
           </table>
           
@@ -97,10 +97,10 @@
               <th rowspan="2">
                 <img src="../img/prod_mm_choc.jpg" style="height: 200px"/>
               </th>
-              <td class="note">Зефир &quot;В шоколаде&quot;</td>
+              <td class="note">Р—РµС„РёСЂ &quot;Р’ С€РѕРєРѕР»Р°РґРµ&quot;</td>
             </tr>
             <tr>
-              <td class="slogan">Просто зефир в шоколаде</td>
+              <td class="slogan">РџСЂРѕСЃС‚Рѕ Р·РµС„РёСЂ РІ С€РѕРєРѕР»Р°РґРµ</td>
             </tr>
           </table>
           
@@ -109,11 +109,11 @@
               <th rowspan="2">
                 <img src="../img/prod_choc_fish.png" style="height: 200px"/>
               </th>
-              <td class="note">Темный шоколад &quot;Повседневный&quot;</td>
+              <td class="note">РўРµРјРЅС‹Р№ С€РѕРєРѕР»Р°Рґ &quot;РџРѕРІСЃРµРґРЅРµРІРЅС‹Р№&quot;</td>
             </tr>
             <tr>
-              <td class="slogan">Разнообразь свой рыбный рацион рыбным
-                десертом</td>
+              <td class="slogan">Р Р°Р·РЅРѕРѕР±СЂР°Р·СЊ СЃРІРѕР№ СЂС‹Р±РЅС‹Р№ СЂР°С†РёРѕРЅ СЂС‹Р±РЅС‹Рј
+                РґРµСЃРµСЂС‚РѕРј</td>
             </tr>
           </table>
           
@@ -122,25 +122,25 @@
               <th rowspan="2">
                 <img src="../img/prod_choc_diag.jpg" style="height: 200px"/>
               </th>
-              <td class="note">Шоколад &quot;Диаграмма&quot;</td>
+              <td class="note">РЁРѕРєРѕР»Р°Рґ &quot;Р”РёР°РіСЂР°РјРјР°&quot;</td>
             </tr>
             <tr>
-              <td class="slogan">Самое время подправить результаты</td>
+              <td class="slogan">РЎР°РјРѕРµ РІСЂРµРјСЏ РїРѕРґРїСЂР°РІРёС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚С‹</td>
             </tr>
           </table>
           
           <hr />
           <p>
-            С отзывами, пожеланиями и предложениями по поводу выпускаемой
-            продукции обращаться в отдел по связям с общественностью по
-            электронной почте: <span class="bold">illaech@gmail.com</span>.
+            РЎ РѕС‚Р·С‹РІР°РјРё, РїРѕР¶РµР»Р°РЅРёСЏРјРё Рё РїСЂРµРґР»РѕР¶РµРЅРёСЏРјРё РїРѕ РїРѕРІРѕРґСѓ РІС‹РїСѓСЃРєР°РµРјРѕР№
+            РїСЂРѕРґСѓРєС†РёРё РѕР±СЂР°С‰Р°С‚СЊСЃСЏ РІ РѕС‚РґРµР» РїРѕ СЃРІСЏР·СЏРј СЃ РѕР±С‰РµСЃС‚РІРµРЅРЅРѕСЃС‚СЊСЋ РїРѕ
+            СЌР»РµРєС‚СЂРѕРЅРЅРѕР№ РїРѕС‡С‚Рµ: <span class="bold">illaech@gmail.com</span>.
           </p>
         </div>
         <div id="footer">
           <span>
-            Вся информация на данном сайте является плодом фантазии автора.
-            Просьба не воспринимать ее всерьез. Все изображения на сайте были
-            взяты из публичных источников, либо сделаны из таковых.
+            Р’СЃСЏ РёРЅС„РѕСЂРјР°С†РёСЏ РЅР° РґР°РЅРЅРѕРј СЃР°Р№С‚Рµ СЏРІР»СЏРµС‚СЃСЏ РїР»РѕРґРѕРј С„Р°РЅС‚Р°Р·РёРё Р°РІС‚РѕСЂР°.
+            РџСЂРѕСЃСЊР±Р° РЅРµ РІРѕСЃРїСЂРёРЅРёРјР°С‚СЊ РµРµ РІСЃРµСЂСЊРµР·. Р’СЃРµ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РЅР° СЃР°Р№С‚Рµ Р±С‹Р»Рё
+            РІР·СЏС‚С‹ РёР· РїСѓР±Р»РёС‡РЅС‹С… РёСЃС‚РѕС‡РЅРёРєРѕРІ, Р»РёР±Рѕ СЃРґРµР»Р°РЅС‹ РёР· С‚Р°РєРѕРІС‹С….
           </span>
         </div>
       </div>
