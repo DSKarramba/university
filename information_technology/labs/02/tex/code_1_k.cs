@@ -52,7 +52,7 @@ public partial class Default2 : System.Web.UI.Page
     
     if (nicks.IndexOf(nickname) == -1)
     {
-      l.Insert(0, String.Format("[{1}] {0} п©я─п╦я│п╬п╣п╢п╦п╫я▐п╣я┌я│я▐ п╨ я┤п╟я┌я┐.", nickname, DateTime.Now.ToString("HH:mm:ss")));
+      l.Insert(0, String.Format("[{1}] {0} присоединяется к чату.", nickname, DateTime.Now.ToString("HH:mm:ss")));
       nicks.Add(nickname);
     }
     l.Insert(0, String.Format("[{2}] {0}: {1}", nickname, message, DateTime.Now.ToString("HH:mm:ss")));

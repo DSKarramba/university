@@ -25,21 +25,31 @@ public partial class Default2 : System.Web.UI.Page
     {
       Session["list"] = new List<string>{};
     }
-
+    
     if (Session["nick"] != null)
     {
       tbN.Text = Session["nick"].ToString();
     }
   }
   
+  public List<string> answers = new List<string>
+  {
+    "Определенно да", "Определенно нет", "Лучше не стоит", "Можно попробовать",
+    "Трудный вопрос, не могу ответить", "Можно, если осторожно", "Да", "Нет",
+    "Стоит хорошенько все обдумать", "Нет-нет-нет", "Скорее да, чем нет",
+    "Скорее нет, чем да", "Ответа нет", "Решай самостоятельно"
+  };
+  
   protected void btSave_Click(object sender, EventArgs e)
   {
-    string nickname, message;
+    string nickname, question, message;
     List<string> nicks, l;
     
     nickname = tbN.Text.ToString();
-    message = tbM.Text.ToString();
+    question = tbQ.Text.ToString();
     l = (List<string>)Session["list"];
+    int i = (new Random()).Next(answers.Count);
+    message = answers[i];
     
     if (Session["nicks"] != null)
     {
@@ -52,13 +62,15 @@ public partial class Default2 : System.Web.UI.Page
     
     if (nicks.IndexOf(nickname) == -1)
     {
-      l.Insert(0, String.Format("[{1}] {0} п©я─п╦я│п╬п╣п╢п╦п╫я▐п╣я┌я│я▐ п╨ я┤п╟я┌я┐.", nickname, DateTime.Now.ToString("HH:mm:ss")));
+      l.Insert(0, String.Format("[{1}] {0} присоединяется к чату.", nickname, DateTime.Now.ToString("HH:mm:ss")));
       nicks.Add(nickname);
     }
-    l.Insert(0, String.Format("[{2}] {0}: {1}", nickname, message, DateTime.Now.ToString("HH:mm:ss")));
+    l.Insert(0, String.Format("[{2}] {0} вопрошает: {1}", nickname, question, DateTime.Now.ToString("HH:mm:ss")));
+    l.Insert(0, String.Format("  Великий Рандом отвечает: {0}", message));    
+    
     Session["nicks"] = nicks;
-    Session["list"] = l;
     Session["nick"] = nickname;
+    Session["list"] = l;
     LOG.Text = String.Join("\n", l);
   }
 

@@ -34,28 +34,73 @@ public partial class Default2 : System.Web.UI.Page
   
   protected void btSave_Click(object sender, EventArgs e)
   {
-    string nickname, message;
+    string nickname, message = "";
     List<string> nicks, l;
+    int cookie, luckystar, steinsgate;
     
     nickname = tbN.Text.ToString();
-    message = tbM.Text.ToString();
     l = (List<string>)Session["list"];
-    
     if (Session["nicks"] != null)
     {
       nicks = (List<string>)Session["nicks"];
     }
     else
     {
-      nicks = new List<string>{"admin"};
+      nicks = new List<string> { };
     }
-    
+
     if (nicks.IndexOf(nickname) == -1)
     {
-      l.Insert(0, String.Format("[{1}] {0} п©я─п╦я│п╬п╣п╢п╦п╫я▐п╣я┌я│я▐ п╨ я┤п╟я┌я┐.", nickname, DateTime.Now.ToString("HH:mm:ss")));
+      l.Insert(0, String.Format("[{1}] {0} присоединяется к чату.", nickname, DateTime.Now.ToString("HH:mm:ss")));
       nicks.Add(nickname);
     }
-    l.Insert(0, String.Format("[{2}] {0}: {1}", nickname, message, DateTime.Now.ToString("HH:mm:ss")));
+    l.Insert(0, String.Format("[{1}] {0} проходит опрос...", nickname, DateTime.Now.ToString("HH:mm:ss")));
+
+    cookie = rbC1.Checked ? 0 : rbC2.Checked ? 1 : 2;
+    switch (cookie)
+    {
+      case 0:
+        message = " - любитель печенек :)";
+        break;
+      case 1:
+        message = ", фу таким быть";
+        break;
+      case 2:
+        message = ", OM NOM NOM NOM";
+        break;
+    }
+    l.Insert(0, String.Format("  {0}{1}", nickname, message));
+
+    luckystar = rbL1.Checked ? 0 : rbL2.Checked ? 1 : 2;
+    switch (luckystar)
+    {
+      case 0:
+        message = ", но ведь крем польётся с широкой!";
+        break;
+      case 1:
+        message = ", но ведь крем польётся с узкой!";
+        break;
+      case 2:
+        message = ", хмм... а какая сторона верхняя?";
+        break;
+    }
+    l.Insert(0, String.Format("  {0}{1}", nickname, message));
+
+    steinsgate = rbS1.Checked ? 0 : rbS2.Checked ? 1 : 2;
+    switch (steinsgate)
+    {
+      case 0:
+        message = ", ...";
+        break;
+      case 1:
+        message = ", ту-ту-ру!";
+        break;
+      case 2:
+        message = ", OM MANGO NOM NOM";
+        break;
+    }
+    l.Insert(0, String.Format("  {0}{1}", nickname, message));
+    
     Session["nicks"] = nicks;
     Session["list"] = l;
     Session["nick"] = nickname;

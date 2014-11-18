@@ -1,0 +1,95 @@
+\documentclass[pscyr]{hedlab}
+\usepackage[russian]{babel}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{listings}
+
+\lstset{
+  basicstyle=\footnotesize,
+  inputencoding=koi8-r,
+  extendedchars=True,
+  language=C,
+  numbers=left,
+  numberstyle=\footnotesize,
+  breakatwhitespace=\false,
+  breaklines=True,
+  tabsize=2,
+  keepspaces=true,
+}
+
+\labname{Разработка веб-приложения с использованием технологии ASP.NET}
+\labnum{2}
+\student{}
+\labdate{}
+
+\begin{document}
+
+  \makeheader
+
+  \emph{Цель:} получить практические навыки создания многостраничных
+  веб-приложений и реализации обмена информацией между страницами.
+  
+  \emph{Задание:} разработайте прикладной веб-сайт, удовлетворяющий следующим
+  требованиям. Он должен иметь:
+  \begin{itemize}
+    \item не менее пяти веб-форм, связанных между собой гиперссылками;
+    \item не менее 10 элементов управления на каждой веб-странице, включая
+      элементы ввода информации;
+    \item не менее 5 методов обработки событий для каждой веб-страницы.
+  \end{itemize}
+  Реализовать механизм передачи информации между страницами с использованием
+  переменной сессии.
+
+  \emph{Выполнение лабораторной работы:}
+  
+  \textbf{Страница \#1:} мини-чат
+  \begin{figure}[h!]
+    \center
+    \includegraphics[width=.95\textwidth]{01}
+  \end{figure}
+  \lstinputlisting{code_1_k.cs}
+  
+  \textbf{Страница \#2:} мини-опрос
+  \begin{figure}[h!]
+    \center
+    \includegraphics[width=.95\textwidth]{02}
+  \end{figure}
+  \lstinputlisting{code_2_k.cs}
+  
+  \newpage
+  
+  \textbf{Страница \#3:} мини-игра в города
+  \begin{figure}[h!]
+    \center
+    \includegraphics[width=.95\textwidth]{03}
+  \end{figure}
+  \lstinputlisting{code_3_k.cs}
+  
+  \textbf{Страница \#4:} мини-игра в угадайку
+  \begin{figure}[h!]
+    \center
+    \includegraphics[width=.95\textwidth]{04}
+  \end{figure}
+  \lstinputlisting{code_4_k.cs}
+  
+  \newpage
+  
+  \textbf{Страница \#5:} мини-предсказание
+  \begin{figure}[h!]
+    \center
+    \includegraphics[width=.95\textwidth]{05}
+  \end{figure}
+  \lstinputlisting{code_5_k.cs}
+  
+  \vspace{-1.5em}  
+  \emph{Вывод:} в результате проделанной работы
+  \vspace{-.5em}  
+  \begin{enumerate}
+    \itemsep -5pt
+    \item установил и настроил веб-сервер Microsoft IIS;
+    \item установил инструмент разработки веб-приложений Microsoft Visual
+      Studio и СУБД Microsoft SQL Server;
+    \item создал и запустил веб-узел.
+  \end{enumerate}
+
+\end{document}
