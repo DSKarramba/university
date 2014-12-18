@@ -1,0 +1,6 @@
+<array name="images">
+    <item>@drawable/cat_0</item>
+    <item>@drawable/cat_1</item>
+    <item>@drawable/cat_2</item>
+    <item>@drawable/cat_3</item>
+</array>
