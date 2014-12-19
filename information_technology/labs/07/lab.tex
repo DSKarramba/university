@@ -1,0 +1,57 @@
+\documentclass[pscyr]{hedlab}
+\usepackage[russian]{babel}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{listings}
+
+\lstset{
+    basicstyle=\footnotesize,
+    inputencoding=utf8,
+    extendedchars=True,
+    language=[Sharp]C,
+    numbers=left,
+    numberstyle=\footnotesize,
+    breakatwhitespace=\false,
+    breaklines=True,
+    tabsize=2,
+    keepspaces=true,
+}
+
+\labname{Создание Web-служб}
+\labnum{7}
+\student{Чечеткин И. А., САПР-1.1п}
+\labdate{}
+
+\begin{document}
+    \makeheader
+    \emph{Цель:} получение практических навыков создания веб-служб и
+      реализации вызов веб-методов из ASP.NET приложения.
+
+    \emph{Задачи:} 
+    \begin{enumerate}
+        \item Создать веб-службу, реализующую несколько веб-методов.
+        \item Реализовать вызов методов веб-сервиса в ASP.NET приложении.
+    \end{enumerate}
+    
+    \lstinputlisting[inputencoding=koi8-r,
+      title={Исходный код Web-службы:}]{code/service.cs}
+
+    \lstinputlisting[title={Вызов функций Web-службы:}]{code/page.cs}
+
+    \lstinputlisting[language=SQL,title={Хранимые процедуры:}]{code/sql.sql}
+
+    \pagebreak
+
+    \begin{figure}[h!]
+        \center
+        \includegraphics[width=.6\textwidth]{01} \\
+        \includegraphics[width=.6\textwidth]{02} \\
+        \includegraphics[width=.6\textwidth]{03}
+    \end{figure}
+
+    \emph{Вывод:} в результате проделанной работы
+    \begin{enumerate}
+        \item Создал веб-службу, реализующую несколько веб-методов.
+        \item Реализовал вызов методов веб-сервиса в ASP.NET приложении.
+    \end{enumerate}
+\end{document}
