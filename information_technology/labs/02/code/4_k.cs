@@ -25,7 +25,6 @@ public partial class Default2 : System.Web.UI.Page
     {
       Session["list"] = new List<string>{};
     }
-
     if (Session["nick"] != null)
     {
       tbN.Text = Session["nick"].ToString();
