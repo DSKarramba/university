@@ -1,2 +1,0 @@
-INDEX VERSION 1.126+D:\Users\DS_Karramba\Folders\repositories\university\models_and_methods_ICS\lab_01\code\.metadata\.plugins\org.eclipse.jdt.core
-1186216036.index
