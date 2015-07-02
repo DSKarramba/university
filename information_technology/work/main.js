@@ -1,7 +1,13 @@
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 
-var pi = Math.PI;
+var pi = Math.PI,   e = Math.E,       i = math.complex('i'),
+    sin = math.sin, cos = math.cos,   pow = math.pow,
+    add = math.add, sqrt = math.sqrt, mul = math.multiply,
+    abs = math.abs, div = math.divide,  ln = math.log,
+    im = math.im, re = math.re, atg = math.atanh,
+    no = function(a) { return math.complex(-a.re, -a.im) },
+    sub = function(a, b) { return add(a, no(b)) };
 
 var h = 600, w = 600, r = 200;
 var phi_0 = -pi / 4, theta_0 = pi / 3;
@@ -11,22 +17,6 @@ ctx.canvas.width = w;
 
 ctx.fillStyle = '#bacbac';
 ctx.fillRect(0, 0, w, h);
-
-sin = function(angle) {
-  return Math.sin(angle);
-}
-
-cos = function(angle) {
-  return Math.cos(angle);
-}
-
-tg = function(angle) {
-  return Math.tan(angle);
-}
-
-sqrt = function(number) {
-  return Math.sqrt(number);
-}
 
 Vector = (function() {
   function Vector(x, y, z) {
@@ -70,11 +60,60 @@ angleToCoords = function(phi, theta) {
   return new Vector(x, y, z);  
 }
 
+angleToComponents = function(phi, theta) {
+  var alpha = 0, beta = 0;
+  alpha = math.complex(cos(theta / 2), 0);
+  beta = mul(pow(e, mul(i, phi)), sin(theta / 2));
+  return {'alpha': alpha, 'beta': beta}
+}
+
+componentsToAngle = function(alpha, beta) {
+  var phi, theta;
+  phi = re(mul(no(i), ln(div(beta, sqrt(sub(1, pow(alpha, 2)))))));
+  theta = re(mul(4, atg(div(sub(1, alpha), add(1, alpha)))));
+  return {'phi': phi, 'theta': theta};
+}
+
+gate = function(qubit, type) {
+  var alpha = qubit.alpha;
+  var beta = qubit.beta;
+  switch (type) {
+    case 'X':
+      qubit.alpha = beta;
+      qubit.beta = alpha;
+      break;
+    case 'Y':
+      qubit.alpha = mul(i, no(beta));
+      qubit.beta = mul(i, alpha);
+      break;
+    case 'Z':
+      qubit.beta = no(beta);
+      break;
+    case 'H':
+      qubit.alpha = mul(1 / sqrt(2), add(alpha, beta));
+      qubit.beta = mul(1 / sqrt(2), sub(alpha, beta));
+      break;
+    case 'T':
+      qubit.beta = mul(beta, pow(e, mul(i, pi / 8)));
+      break;
+    case 'S':
+      qubit.beta = mul(beta, i);
+      break;
+  }
+  alpha = qubit.alpha, beta = qubit.beta;
+  var angle = componentsToAngle(alpha, beta);
+  qubit.phi = angle.phi, qubit.theta = angle.theta;
+  redraw();
+}
+
 Qubit = (function() {
   // init function
   function Qubit(phi, theta) {
     this.phi = phi;
     this.theta = theta;
+    var comps = angleToComponents(phi, theta);
+    this.alpha = comps.alpha;
+    this.beta = comps.beta;
   }
   
   // rotating by theta & phi angles
@@ -234,14 +273,9 @@ Background = (function() {
 })();
 
 var bg = new Background();
-var Phi = 0;        // start angle phi
-var Theta = pi / 2; // start angle theta
-array = [];         // list for points
-bg.clear();
+var Phi = pi / math.floor(math.random(10));   // start angle phi
+var Theta = pi / math.floor(math.random(10)); // start angle theta
 q = new Qubit(Phi, Theta);
-bg.drawAxes();
-bg.drawSphere();
-q.draw();
 
 function redraw() {
   // drawing
@@ -250,13 +284,17 @@ function redraw() {
   bg.drawSphere();
   q.draw();
   
-  // rotating vector
-  q.rotate(0.001, 0.02);
-  var labelPhi = document.getElementById('phi');
-  var labelTheta = document.getElementById('theta');
+  var labelAlpha = document.getElementById('alpha');
+  var labelBeta = document.getElementById('beta');
 
-  labelTheta.innerHTML = 'Theta = ' + q.theta.toFixed(3);
-  labelPhi.innerHTML = 'Phi = ' + q.phi.toFixed(3);
+  var are = q.alpha.re.toFixed(2);
+  var aim = q.alpha.im;
+  var bre = q.beta.re.toFixed(2);
+  var bim = q.beta.im;
+  labelAlpha.innerHTML = '&#x03b1; = ' + are +
+    ((aim < 0) ? ' - ' : ' + ') + abs(aim).toFixed(2) + 'i';
+  labelBeta.innerHTML = '&#x03b2; = ' + bre +
+    ((bim < 0) ? ' - ' : ' + ') + abs(bim).toFixed(2) + 'i';
 }
 
-drawing = setInterval(redraw, 5);
+redraw();

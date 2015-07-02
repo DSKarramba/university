@@ -2,16 +2,24 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Qubits</title>
+    <title>Qubit</title>
+    <link rel="stylesheet" href="main.css">
+    <script language="javascript" src="math.min.js"></script>
   </head>
   <body>
-    <div class="container">
-      <canvas id="canvas">Upgrade your browser!</canvas>
-      <script language="javascript" src="main.js"></script>
+    <div id="panel">
+      <button onClick="gate(q, 'X')">Гейт X</button>
+      <button onClick="gate(q, 'Y')">Гейт Y</button>
+      <button onClick="gate(q, 'Z')">Гейт Z</button>
+      <button onClick="gate(q, 'H')">Гейт H</button>
+      <button onClick="gate(q, 'T')">Гейт T</button>
+      <button onClick="gate(q, 'S')">Гейт S</button>
+      <br/><br/>
+      <span id="alpha">&#x03b1; =</span>
+      <br/>
+      <span id="beta">&#x03b2; =</span>
     </div>
-    <div class="info">
-      <span id="phi">phi =</span>
-      <span id="theta">theta =</span>
-    </div>
+    <canvas id="canvas">Upgrade your browser!</canvas>
+    <script language="javascript" src="main.js"></script>
   </body>
 </html>
