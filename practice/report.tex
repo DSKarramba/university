@@ -4,25 +4,27 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english, russian]{babel}
 \usepackage{indentfirst}
+\usepackage[square, numbers, sort&compress]{natbib}
 \usepackage{setspace}
 \usepackage{titlesec}
 \usepackage{titletoc}
 \usepackage{tocloft}
 \usepackage{caption}
+\usepackage{pscyr}
 \usepackage{subcaption}
 \usepackage[hyphens]{url}
 \usepackage{hyperref}
 \usepackage[left=2.5cm, right=1.5cm, top=2.0cm, bottom=2.0cm]{geometry}
 \usepackage{graphicx}
 \usepackage{listings}
+\usepackage{amsmath}
 
 \graphicspath{{images/}}
-\renewcommand{\rmdefault}{ftm}
 
 \titleformat{\chapter}
-    {\centering\normalsize}
+    {\normalsize}
     {\thechapter}
-    {8pt}{\MakeUppercase}
+    {1ex}{\MakeUppercase}
 \titlecontents{chapter}[0pt]
     {}%
     {\contentsmargin{0pt}
@@ -45,16 +47,39 @@
     {\contentsmargin{0pt}\normalsize}
     {\titlerule*[.5pc]{.}\contentspage}[]
 \titleformat{\section}
-    {\centering\normalsize}
+    {\normalsize}
     {\thesection}
-    {1em}{}
+    {1ex}{}
 \titleformat{\subsection}
-    {\centering\normalsize}
+    {\normalsize}
     {\thesubsection}
-    {1em}{}
-\titlespacing*{\chapter}{0pt}{10pt}{10pt}
-\titlespacing*{\section}{\parindent}{*2}{*2}
-\titlespacing*{\subsection}{\parindent}{*2}{*2}
+    {1ex}{}
+\titlespacing*{\chapter}{0em}{10pt}{10pt}
+\titlespacing*{\section}{0em}{5pt}{5pt}
+\titlespacing*{\subsection}{0em}{5pt}{5pt}
+
+\makeatletter
+\renewcommand{\@biblabel}[1]{#1}
+\renewenvironment{thebibliography}[1]
+    {\chapter*{\bibname}%
+    \@mkboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}%
+    \list{\@biblabel{\@arabic\c@enumiv}}%
+        {\settowidth\labelwidth{\@biblabel{#1}}%
+        \leftmargin=0pt
+        \itemindent=50pt
+        \@openbib@code
+        \usecounter{enumiv}%
+        \let\p@enumiv\@empty
+        \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+    \sloppy
+    \clubpenalty4000
+    \@clubpenalty \clubpenalty
+    \widowpenalty4000%
+    \sfcode`\.\@m}
+        {\def\@noitemerr
+        {\@latex@warning{Empty `thebibliography' environment}}%
+    \endlist}
+\makeatother
 
 \makeatletter
 \renewcommand\chapter{\thispagestyle{plain}%
@@ -63,14 +88,14 @@
 \secdef\@chapter\@schapter}
 \makeatother
 
-\Urlmuskip = 0mu plus 1mu
-
 \DeclareCaptionLabelFormat{figure}{Рисунок #2}
 \DeclareCaptionLabelFormat{table}{Таблица #2}
+\DeclareCaptionLabelFormat{listing}{Листинг #2}
 \DeclareCaptionLabelSeparator{sep}{~---~}
 \captionsetup{labelsep=sep, justification=centering, font=small}
 \captionsetup[figure]{labelformat=figure}
 \captionsetup[table]{labelformat=table}
+\captionsetup[listing]{labelformat=listing}
 
 \setcounter{tocdepth}{2}
 \renewcommand{\cfttoctitlefont}{\normalfont\hspace{0.38\textwidth}}
@@ -101,10 +126,12 @@
 
 \begin{document}
     \onehalfspacing
-    \input{title}
+    \input{job}
     \input{journal}
+    \input{title}
     \newpage
     \tableofcontents
     \newpage
+    \pagestyle{plain}
     \input{text}
 \end{document}

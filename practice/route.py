@@ -1,6 +1,6 @@
 import time
 import subprocess
-from json import load as json_load
+import json
 from urllib import urlopen
 import numpy as np
 import warnings
@@ -42,6 +42,11 @@ class route():
             osrm = subprocess.Popen('osrm-routed ~/map/map.osrm', shell=True)
             time.sleep(5)
             self.osrm = osrm
+        try:
+            with open('route_cache.txt', 'r') as file_:
+                self.cache = json.load(file_)
+        except:
+            pass
 
     def route_distance(self, a, b):
         """ Get distance between points.
@@ -90,7 +95,7 @@ class route():
                 # get responce
                 responce = urlopen(url)
                 # parse json
-                data = json_load(responce)
+                data = json.load(responce)
 
                 # if route isn't found
                 if data['status'] is not 0:
@@ -101,7 +106,7 @@ class route():
                     # locate first point
                     loc = 'http://localhost:5000/locate?loc={},{}'.format(*a)
                     l_resp = urlopen(loc)
-                    l_data = json_load(l_resp)
+                    l_data = json.load(l_resp)
                     # if can't locate
                     if l_data['status'] is not 0:
                         # stop osrm machine
@@ -114,18 +119,34 @@ class route():
                     # locate second point
                     loc = 'http://localhost:5000/locate?loc={},{}'.format(*b)
                     l_resp = urlopen(loc)
-                    l_data = json_load(l_resp)
+                    l_data = json.load(l_resp)
                     if l_data['status'] is not 0:
                         self.stop()
                         raise ValueError(l_data['status_message'])
                     else:
                         second = l_data['mapped_coordinate']
 
+                    e = map(lambda i: np.round(i, decimals=5), first)
+                    f = map(lambda i: np.round(i, decimals=5), second)
+                    key3 = '{}{}{}{}'.format(*np.append(e, f))
+                    key4 = '{}{}{}{}'.format(*np.append(f, e))
+                    try:
+                        dist = self.cache[key3]
+                        return dist
+                    except KeyError:
+                        pass
+                    try:
+                        dist = self.cache[key4]
+                        return dist
+                    except KeyError:
+                        pass
+
                     # try to find route between located points
                     url = "http://localhost:5000/viaroute?loc={},{}&loc={},{}" \
-                        "&geometry=false&alt=false".format(*np.append(first, second))
+                        "&geometry=false&alt=false".format(*np.append(first,
+                        second))
                     responce = urlopen(url)
-                    data = json_load(responce)
+                    data = json.load(responce)
                     if data['status'] is not 0:
                         self.stop()
                         raise ValueError(data['status_message'])
@@ -142,11 +163,5 @@ class route():
         if self.osrm is not None:
             self.osrm.terminate()
             self.osrm = None
-
-if __name__ == "__main__":
-    a = np.array([48.763205, 44.779587])
-    b = np.array([48.798497, 44.765854])
-    rt = route()
-    rt.start()
-    print(rt.route_distance(a, b))
-    rt.stop()
+        with open('route_cache.txt', 'w') as file_:
+            json.dump(self.cache, file_)

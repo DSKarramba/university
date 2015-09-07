@@ -352,8 +352,6 @@ if __name__ == '__main__':
     km.fit('route')
     # print info
     print('Fit time: {}, clusters: {}'.format(km.fit_time, km.n_cluster))
-    # plot results
-    # km.plotClusters()
     # export centers to 'centers.js'
     km.exportCentersToTextFile('k_centers.js')
     # export points to 'points.js'
