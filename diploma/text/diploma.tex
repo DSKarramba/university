@@ -1,0 +1,25 @@
+\input{00-config.tex}
+
+\begin{document}
+    \pagestyle{plain}
+    \input{00-title}
+    % полуторный интервал
+    \onehalfspacing
+    % начинаем нумерацию отсюда
+    \setcounter{page}{4}
+    \input{01a-abstract}
+    \newpage
+    % содержание для ПЗ
+    \startcontents
+    \printcontents{ }{1}{\contentsname}
+    \input{01b-intro}
+    \input{01-problem}
+    \input{02-methods}
+    \input{03-test}
+    \input{04-test}
+    \input{05a-conclusion}
+    \input{05b-literature}
+    % главы приложения
+    \input{06a-specification}
+    \input{06b-other}
+\end{document}
