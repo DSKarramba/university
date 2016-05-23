@@ -1,0 +1,32 @@
+%% change page number %%
+% \setcounter{page}{70}
+%% specification moved to .. %%
+\APPENDIX{Приложение А}{Техническое задание}
+\addtocounter{page}{10}
+
+\APPENDIX{Приложение Б}{Исходный код}
+
+\noindentСсылка на исходный код \url{https://github.com/vstu-cad-stuff/clustering/tree/master}.\\
+Ссылка на демонстрационные примеры \url{https://vstu-cad-stuff.github.io/clustering/}.
+
+\noindentМодуль по настройке кластеризации и ее запуску:
+\lstinputlisting{../source/kmeans.py}
+
+\noindentМодуль кластеризации:
+\lstinputlisting{../source/KMeansMachine.py}
+
+\noindentМодуль метрики \emph{Route}:
+\lstinputlisting{../source/routelib.py}
+
+\noindentМодуль вспомогательного класса:
+\lstinputlisting{../source/ClusteringMachine.py}
+
+\noindentМодуль по загрузке данных из файлов:
+\lstinputlisting{../source/DataCollector.py}
+
+\noindentМодуль инициализации начального положения центров кластеров:
+\lstinputlisting{../source/InitMachine.py}
+
+\pagebreak
+\noindentМодуль для преобразования данных в формат для визуализации. Для расчета выпуклых оболочек используется алгоритм Джарвиса:
+\lstinputlisting{../source/converter.py}

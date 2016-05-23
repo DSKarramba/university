@@ -7,7 +7,7 @@
 \usepackage{titletoc}
 \usepackage{tocvsec2}
 \usepackage{indentfirst}
-\usepackage{amsmath, amssymb}
+\usepackage{amsmath, amssymb, array}
 \usepackage{textcomp}
 \usepackage{cite, enumerate, float}
 \usepackage{graphicx}
@@ -19,7 +19,8 @@
 \usepackage[square, numbers, sort&compress]{natbib}
 \usepackage{tocloft}
 \usepackage{hyperref}
-\usepackage{caption, color}
+\usepackage{caption}
+\usepackage[pdftex]{color}
 \usepackage{listings}
 \usepackage{fancybox, fancyhdr}
 \usepackage{algorithm2e}
@@ -28,6 +29,10 @@
 
 % Times New Roman
 \renewcommand{\rmdefault}{ftm}
+
+% центрированный столбец заданной ширины (процент от \textwidth). Требует пакет array
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1\textwidth}}
+\renewcommand{\arraystretch}{1.2}
 
 % стили заголовков
 \titleclass{\part}{top}
@@ -190,7 +195,7 @@
     commentstyle=\ttm,
     otherkeywords={self},
     emphstyle=\textit\ttm,
-    stringstyle=\color{darkgray},
+    stringstyle=\color[gray]{.25},
     numbers=left,
     numbersep=5pt,
     numberstyle=\tiny,
