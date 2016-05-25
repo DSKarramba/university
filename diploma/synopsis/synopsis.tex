@@ -10,6 +10,7 @@
 \usepackage{pscyr}
 \usepackage{graphicx}
 \graphicspath{{../images/}}
+\usepackage{amssymb}
 
 \DeclareCaptionLabelFormat{figure}{Рисунок #2}
 \DeclareCaptionLabelFormat{table}{Таблица #2}
@@ -52,6 +53,19 @@
 \titlespacing*{\section}{-1em}{*2}{*2}
 
 \setlength{\parindent}{10mm}
+
+\def\labelitemi{---}
+
+\newcommand\abs[1]{\left|#1\right|}
+
+\usepackage{algorithm2e}
+\SetKwInput{KwData}{Исходные параметры}
+\SetKwInput{KwResult}{Результат}
+\SetKwIF{If}{ElseIf}{Else}{Если}{тогда}{иначе\ если}{иначе}{конец\ условия}
+\SetKwFor{While}{до\ тех\ пор,\ пока}{выполнять}{конец\ цикла}
+\SetKwFor{For}{Для}{выполнить}{конец\ цикла}
+\SetKwFor{ForEach}{Для\ каждого}{выполнить}{конец\ цикла}
+\SetAlgorithmName{Алгоритм}{алгоритм}{Список алгоритмов}
 
 \begin{document}
     \begin{titlepage}
