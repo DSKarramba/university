@@ -7,17 +7,14 @@
 \usepackage{titlesec}
 \usepackage{setspace,caption}
 \usepackage{indentfirst}
+\usepackage[boxed]{algorithm2e}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{amssymb}
 \usepackage{pscyr}
 \usepackage{graphicx}
 \graphicspath{{../images/}}
-\usepackage{amssymb}
-
-\DeclareCaptionLabelFormat{figure}{Рисунок #2}
-\DeclareCaptionLabelFormat{table}{Таблица #2}
-\DeclareCaptionLabelSeparator{sep}{~---~}
-\captionsetup{labelsep=sep, justification=centering, font=small}
-\captionsetup[figure]{labelformat=figure}
-\captionsetup[table]{labelformat=table}
 
 \renewcommand{\rmdefault}{ftm}
 
@@ -52,19 +49,26 @@
     {}{1em}{}
 \titlespacing*{\section}{-1em}{*2}{*2}
 
+\DeclareCaptionLabelFormat{figure}{Рисунок #2}
+\DeclareCaptionLabelSeparator{sep}{~---~}
+\captionsetup{labelsep=sep, justification=centering, font=normal}
+\captionsetup[figure]{labelformat=figure}
+
 \setlength{\parindent}{10mm}
 
 \def\labelitemi{---}
 
+\setlist[enumerate]{topsep=0pt,itemsep=0pt,partopsep=0pt,parsep=0pt}
+\setlist[itemize]{topsep=0pt,itemsep=0pt,partopsep=0pt,parsep=0pt}
+
 \newcommand\abs[1]{\left|#1\right|}
 
-\usepackage{algorithm2e}
 \SetKwInput{KwData}{Исходные параметры}
 \SetKwInput{KwResult}{Результат}
-\SetKwIF{If}{ElseIf}{Else}{Если}{тогда}{иначе\ если}{иначе}{конец\ условия}
-\SetKwFor{While}{до\ тех\ пор,\ пока}{выполнять}{конец\ цикла}
-\SetKwFor{For}{Для}{выполнить}{конец\ цикла}
-\SetKwFor{ForEach}{Для\ каждого}{выполнить}{конец\ цикла}
+\SetKwIF{If}{ElseIf}{Else}{Если}{тогда}{иначе если}{иначе}{конец условия}
+\SetKwFor{While}{до тех пор, пока}{выполнять}{конец цикла}
+\SetKwFor{For}{Для}{выполнить}{конец цикла}
+\SetKwFor{ForEach}{Для каждого}{выполнить}{конец цикла}
 \SetAlgorithmName{Алгоритм}{алгоритм}{Список алгоритмов}
 
 \begin{document}
@@ -72,7 +76,7 @@
         \hspace{20em}На правах рукописи\\
         \begin{center}
             \vspace{8em}Чечеткин Илья Александрович\\
-            \large\vspace{2em}\textbf{\MakeUppercase{Методы кластеризации предпочтений жителей по перемещению}}\normalsize\\
+            \large\vspace{2em}\textbf{\MakeUppercase{Метод кластеризации предпочтений жителей по перемещению}}\normalsize\\
             \vspace{8em}09.04.01 -- Информатика и вычислительная техника\\
             \vspace{8em}Автореферат\\магистерской диссертации
         \end{center}
@@ -83,15 +87,10 @@
         \newpage
         \thispagestyle{empty}
         Работа выполнена на кафедре <<Системы автоматизированного проектирования и поискового 
-        конструирования>> в государственном образовательном учреждении высшего профессионального 
-        образования <<Волгоградский государственный технический университет>>\\
+        конструирования>> в федеральном государственном бюджетном образовательном учреждении
+        высшего образования <<Волгоградский государственный технический университет>>\\
         \vspace{3em}\begin{flushleft}
             Научный руководитель:\\
-            \hspace{4cm}доктор технических наук,\\
-            \hspace{4cm}и.о.зав.каф. Щербаков Максим Владимирович\\
-        \end{flushleft}
-        \vspace{1em}\begin{flushleft}
-            Научный консультант:\\
             \hspace{4cm}доктор технических наук,\\
             \hspace{4cm}и.о.зав.каф. Щербаков Максим Владимирович\\
         \end{flushleft}
@@ -99,5 +98,5 @@
     \newpage
     \onehalfspacing
     \setcounter{page}{3}
-    \input{01-text}
+    \input{text}
 \end{document} 
