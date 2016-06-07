@@ -1,0 +1,64 @@
+\documentclass[pscyr,notitlepage,chapters]{hedwork}
+\usepackage[russian]{babel}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{hedmaths}
+\usepackage[unicode=True,colorlinks=True,linkcolor=black,
+  urlcolor=black,citecolor=black]{hyperref}
+\usepackage{mleftright}
+
+\makeatletter
+  \renewcommand{\@chapapp}{}
+\makeatother
+\renewcommand{\thesection}{\thechapter.\arabic{section}.}
+\renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
+\renewcommand{\thesubsubsection}{\thesubsection\arabic{subsubsection}.}
+
+\renewcommand{\UrlFont}{\small\normalfont}
+
+\let\oldtheta\theta \let\theta\vartheta \let\vartheta\oldtheta
+\renewcommand{\l}{\ell}
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\RE}{\mathbb{R}}
+\newcommand{\sign}{\mathrm{sign}}
+\newcommand{\T}{\mathrm{T}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\emindent}{\hspace*{1em}}
+
+\newcommand{\maketitlepage}{
+    \begin{titlepage}
+        \singlespacing
+        \newpage
+        \begin{center}
+            Министерство образования и науки Российской Федерации \\
+            Федеральное государственное бюджетное образовательное \\
+            учреждение высшего профессионального образования \\
+            <<Волгоградский государственный технический университет>> \\
+            Факультет электроники и вычислительной техники\\
+            Кафедра <<САПР и ПК>>
+        \end{center}
+        \vspace{9em}
+        \begin{center}
+            \Large\scshape <<Машинное обучение>>
+        \end{center}
+        \vspace{1em}        
+        \begin{center}
+            Методическое пособие
+        \end{center}
+        \vspace{3em}
+        
+        \vspace{\fill}
+        \begin{center}
+            Волгоград, \the\year
+        \end{center}
+
+    \end{titlepage}
+    \setcounter{page}{2}
+}
+
+\begin{document}
+    \maketitlepage
+    \tableofcontents
+    \newpage
+    \input{text}
+\end{document}
