@@ -4,11 +4,7 @@
 \usepackage[english, russian]{babel}
 \usepackage[left=2.5cm, right=1.5cm, top=2.0cm, bottom=2.0cm]{geometry}
 \usepackage[column]{hedfeatures}
-\usepackage{paralist, enumerate, enumitem}
-\usepackage{multirow}
 \renewcommand{\rmdefault}{ftm}
-
-\newcolumntype{L}[1]{>{\arraybackslash}m{#1\textwidth}}
 
 \begin{document}
     \begin{titlepage}
@@ -22,7 +18,7 @@
         \vspace{2cm}
         \begin{center}
             \large \textbf{ДНЕВНИК} \\
-            по преддипломной практике \the\year\ г.
+            по педагогической практике \the\year г.
         \end{center}
         \begin{flushleft}
             Студента\\
@@ -40,38 +36,44 @@
             По учебному плану: \hspace{0.2cm} начало \underline{\hspace{4.5cm}} 
             конец \underline{\hspace{4.5cm}}\\
             Дата прибытия на практику: <<\underline{\hspace{1cm}}>> \underline{\hspace{3cm}} 
-            \the\year\ г.\\
+            \the\year г.\\
             Дата выбытия: \hspace{3cm}<<\underline{\hspace{1cm}}>> \underline{\hspace{3cm}} 
-            \the\year\ г.
+            \the\year г.
         \end{flushleft}
         \vspace{2cm}
         \begin{flushleft}
             РУКОВОДИТЕЛЬ ПРАКТИКИ\\
-            Кафедра \underline{САПР~и~ПК\hspace{2.4cm}} Должность \underline{профессор\hspace{2.8cm}} \\
-            Фамилия \underline{Кравец\hspace{3.3cm}} Имя \underline{Алла\hspace{5.5cm}}\\
-            Отчество \underline{Григорьевна\hspace{2.2cm}}
+            Кафедра \underline{САПР~и~ПК\hspace{2.4cm}} Должность \underline{ст. преподаватель\hspace{2.45em}} \\
+            Фамилия \underline{Уварова\hspace{3.15cm}} Имя \underline{Татьяна\hspace{4.85cm}}\\
+            Отчество \underline{Вениаминовна\hspace{1.65cm}}
         \end{flushleft}
         \vspace{\fill}
         \begin{center}
             Волгоград \the\year
         \end{center}
     \end{titlepage}
-    \begin{center}
-        \begin{tabular}{|C{.13}|L{.6}|L{.2}|L{.1}|}
+    \begin{table}[h!]
+        \centering
+        \begin{tabular}{|m{.15\textwidth}|m{.5\textwidth}|m{.25\textwidth}|}
             \hline
-            Сроки (недели/ даты) & Работа, выполненная студентом & Отметка руководителя, подпись\\ \hline
-            1-2 & Выбор основных направлений и оформление задания на преддипломную практику & \\ \hline
-            \multicolumn{1}{|C{.13}|}{\multirow{3}{*}{3-8}} & Разработана методика тестирования системы 
-                кластеризации предпочтений жителей. & \\ \cline{2-3}
-            & Произведены испытания разработанной системы кластеризации предпочтений на тестовом наборе входных данных. & \\ \cline{2-3}
-            & Произведена оценка разработанной системы и обоснована эффективность 
-                используемых алгоритмов. & \\ \hline
-            9 & Подготовка материалов отчёта. & \\ \hline
+            Количество часов & Работа, выполненная студентом & Отметка
+            руководителя, подпись \\ \hline
+            0.5 & Получение задания & \\ \hline
+            5 & Сбор информации по теме & \\ \hline
+            1 & Систематизация собранной информации & \\ \hline
+            1.5 & Составление структуры методических указаний & \\ \hline
+            5 & Подготовка теоретической части & \\ \hline
+            3 & Подготовка презентационных материалов & \\ \hline
+            5 & Верстка теоретической части & \\ \hline
+            2 & Подготовка примера выполнения лабораторной работы & \\ \hline
+            5 & Подготовка практической части & \\ \hline
+            4 & Верстка практической части & \\ \hline
+            4 & Проверка, редактирование & \\ \hline
         \end{tabular}
-    \end{center}
+    \end{table}
     \pagestyle{empty}
     \vspace{\fill}
-    \noindent<<\underline{\hspace{1cm}}>> \underline{\hspace{5cm}} \the\year\ г.\\
+    \noindent<<\underline{\hspace{1cm}}>> \underline{\hspace{5cm}} \the\year г.\\
     Студент \hspace{1cm} \underline{Чечеткин~И.~А.\hspace{2.85cm}} \hspace{2cm} (\underline{\hspace{5cm}})\\
-    Руководитель \underline{Кравец~А.~Г.\hspace{3.42cm}} \hspace{2cm} (\underline{\hspace{5cm}})\\
+    Руководитель \underline{Уварова~Т.~В.\hspace{3.25cm}} \hspace{2cm} (\underline{\hspace{5cm}})\\
 \end{document}
