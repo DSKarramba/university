@@ -4,30 +4,24 @@
 \usepackage[utf8x]{inputenc}
 \usepackage[english, russian]{babel}
 \usepackage[title, titletoc]{appendix}
-\usepackage{titletoc}
-\usepackage{tocvsec2}
-\usepackage{indentfirst}
-\usepackage{amsmath, amssymb, array}
-\usepackage{textcomp}
+\usepackage{titletoc, tocvsec2, tocloft, titlesec}
+\usepackage{amsmath, textcomp, amssymb, array}
 \usepackage{cite, enumerate, float}
 \usepackage{graphicx}
-\usepackage{subcaption}
+\usepackage{subcaption, setspace, indentfirst, caption}
 \usepackage{multirow}
 \usepackage{times}
-\usepackage{setspace}
-\usepackage{titlesec}
 \usepackage[square, numbers, sort&compress]{natbib}
-\usepackage{tocloft}
-\usepackage{hyperref}
-\usepackage{caption}
-\usepackage[pdftex]{color}
 \usepackage{listings}
 \usepackage{fancybox, fancyhdr}
-\usepackage{algorithm2e}
-\usepackage{pscyr}
+\usepackage[figure, boxed]{algorithm2e}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage[pdftex]{color}
 \graphicspath{{../images/}}
 
 % Times New Roman
+\usepackage{pscyr}
 \renewcommand{\rmdefault}{ftm}
 
 % центрированный столбец заданной ширины (процент от \textwidth). Требует пакет array
@@ -54,7 +48,6 @@
 
 % оступ для абзацев текста
 \setlength{\parindent}{15mm}
-% \newcommand{\hindent}{15mm}
 
 % настройка отступов в заголовках
 \titlespacing*{\part}{\parindent}{-30pt}{*2}
@@ -91,13 +84,11 @@
 \DeclareCaptionLabelFormat{figure}{Рисунок #2}
 \DeclareCaptionLabelFormat{table}{Таблица #2}
 \DeclareCaptionLabelSeparator{sep}{~---~}
-\captionsetup{labelsep=sep, justification=centering, font=small}
+\captionsetup{labelsep=sep, justification=centering, font=normal}
 \captionsetup[figure]{labelformat=figure}
-\captionsetup[table]{labelformat=table}
+\captionsetup[table]{labelformat=table, justification=raggedright}
 
 \renewcommand{\cfttoctitlefont}{\normalfont\hspace{0.38\textwidth}}
-\renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}}
-\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
 \renewcommand{\cftbeforepartskip}{0em}
 \renewcommand{\cftbeforechapskip}{0em}
 \renewcommand{\cftpartfont}{\normalsize}
@@ -109,7 +100,7 @@
 \renewcommand{\cftbeforetoctitleskip}{-1em}
 \renewcommand{\cftpartaftersnumb}{}
 \renewcommand{\cftparskip}{-1mm}
-\renewcommand{\cftdotsep}{2}
+\renewcommand{\cftdot}{\ }
 \renewcommand{\thepart}{}
 
 % глубина в содержании
@@ -202,13 +193,18 @@
     breaklines=true,
 }
 
+% меняем стандартный стиль bullet на ---
 \def\labelitemi{---}
 
 % Русификация плагина algorithm2e
 \SetKwInput{KwData}{Исходные параметры}
 \SetKwInput{KwResult}{Результат}
-\SetKwIF{If}{ElseIf}{Else}{Если}{тогда}{иначе\ если}{иначе}{конец\ условия}
-\SetKwFor{While}{до\ тех\ пор,\ пока}{выполнять}{конец\ цикла}
-\SetKwFor{For}{Для}{выполнить}{конец\ цикла}
-\SetKwFor{ForEach}{Для\ каждого}{выполнить}{конец\ цикла}
+\SetKwIF{If}{ElseIf}{Else}{Если}{тогда}{иначе если}{иначе}{конец условия}
+\SetKwFor{While}{до тех пор, пока}{выполнять}{конец цикла}
+\SetKwFor{For}{Для}{выполнить}{конец цикла}
+\SetKwFor{ForEach}{Для каждого}{выполнить}{конец цикла}
 \SetAlgorithmName{Алгоритм}{алгоритм}{Список алгоритмов}
+
+% настраиваем окружение enumerate и itemize
+\setlist[enumerate]{topsep=0pt,itemsep=0pt,partopsep=0pt,parsep=0pt}
+\setlist[itemize]{topsep=0pt,itemsep=0pt,partopsep=0pt,parsep=0pt}

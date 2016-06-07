@@ -1,10 +1,4 @@
-%% change page number %%
-% \setcounter{page}{70}
-%% specification moved to .. %%
-\APPENDIX{Приложение А}{Техническое задание}
-\addtocounter{page}{10}
-
-\APPENDIX{Приложение Б}{Исходный код}
+\APPENDIX{Приложение А}{Исходный код}
 
 \noindentСсылка на исходный код:
 \begin{center}
@@ -19,21 +13,28 @@
 \noindentМодуль по настройке кластеризации и ее запуску:
 \lstinputlisting{../source/kmeans.py}
 
+\pagebreak
 \noindentМодуль кластеризации:
 \lstinputlisting{../source/KMeansMachine.py}
 
-\noindentМодуль метрики \emph{Route}:
+\pagebreak
+\noindentМодуль метрики Route:
 \lstinputlisting{../source/routelib.py}
 
+\pagebreak
 \noindentМодуль вспомогательного класса:
 \lstinputlisting{../source/ClusteringMachine.py}
 
+\pagebreak
 \noindentМодуль по загрузке данных из файлов:
 \lstinputlisting{../source/DataCollector.py}
 
+\pagebreak
 \noindentМодуль инициализации начального положения центров кластеров:
 \lstinputlisting{../source/InitMachine.py}
 
 \pagebreak
 \noindentМодуль для преобразования данных в формат для визуализации. Для расчета выпуклых оболочек используется алгоритм Джарвиса:
 \lstinputlisting{../source/converter.py}
+
+\APPENDIX{Приложение Б}{Техническое задание}
