@@ -4,14 +4,24 @@
 \usepackage[russian]{babel}
 \usepackage{graphicx}
 \usepackage{hyperref}
+\usepackage{algorithm2e}
 \setbeamertemplate{caption}[numbered]
 \usetheme[minimal, numbers, totalnumbers, nologo, nonav]{Statmod}
 \hypersetup{colorlinks, urlcolor=blue, linkcolor=white}
 \graphicspath{{../images//}}
+\newcommand{\abs}[1]{\left|#1\right|}
+
+\SetKwInput{KwData}{Исходные параметры}
+\SetKwInput{KwResult}{Результат}
+\SetKwIF{If}{ElseIf}{Else}{Если}{тогда}{иначе если}{иначе}{конец условия}
+\SetKwFor{While}{До тех пор, пока}{выполнять}{конец\ цикла}
+\SetKwFor{For}{Для}{выполнить}{конец\ цикла}
+\SetKwFor{ForEach}{Для каждого}{выполнить}{конец\ цикла}
+\SetAlgorithmName{Алгоритм}{алгоритм}{Список алгоритмов}
 
 \author{Чечеткин Илья Александрович, САПР-2п1}
-\title[Методы кластеризации предпочтений жителей]
-    {Методы кластеризцаии предпочтений жителей города по перемещению}
+\title[Метод кластеризации предпочтений жителей]
+    {Метод кластеризцаии предпочтений жителей города по перемещению}
 
 \begin{document}
     \input{slides}
